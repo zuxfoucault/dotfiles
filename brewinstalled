@@ -1,0 +1,12 @@
+gdbm 1.10
+git 1.8.0.2
+libevent 2.0.20
+macvim 7.3-66
+nmap 6.25
+pcre 8.32
+pkg-config 0.27.1
+reattach-to-user-namespace ece193
+tmux 1.7
+zsh 5.0.0
+
+#dotfiles reference: http://www.drbunsen.org/text-triumvirate.html 
