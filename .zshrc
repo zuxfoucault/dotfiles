@@ -41,6 +41,8 @@ source $ZSH/oh-my-zsh.sh
 export EDITOR="vim"
 bindkey -v 
 
+function cdl {cd $1; lsa;}
+
 # vi style incremental search
 bindkey '^R' history-incremental-search-backward
 bindkey '^S' history-incremental-search-forward
