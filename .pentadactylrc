@@ -1,0 +1,40 @@
+"1.0rc1
+
+"loadplugins '\.(js|penta)$'
+group user
+command! hl set hlf!
+command! -nargs=* sitesearch exe "t http://www.google.com.tw/search?q=" + encodeURIComponent("<args>") + "&sitesearch=" + window.content.location.hostname
+"map -count -modes=c,i,n,t,v <C-a> <Pass>
+"map -count -modes=c,i,n,t,v <C-c> <Pass>
+"map -count -modes=c,i,t <C-v> <Pass>
+"map -count -modes=c,i,t <C-x> <Pass>
+"map -count -modes=c,i,t <C-z> <Pass>
+"map -count -modes=n,v <C-p> <count><Pass>
+map -count -modes=n,v p -builtin <count>P
+map -count -modes=n,v P -builtin <count>p
+map -count -modes=n h -builtin <count><count>gT
+map -count -modes=n l -builtin <count><count>gt
+map -count -modes=n j -builtin <count>18j
+map -count -modes=n k -builtin <count>18k
+map -modes=n ; -builtin :
+map -modes=n <C-c> <C-6>
+map -description='Yank all locations to the clipboard' -modes=n,v <C-y> -ex yank :tabdo :echo buffer.uri.spec
+map <F2> -description='show' -e set go!=TB
+
+javascript <<EOF
+tabs.openURLs = function() {
+let urls = dactyl.clipboardRead();
+let urlsArray = urls.split(options.get("urlseparator").value);
+for(var i in urlsArray) {
+dactyl.open(urlsArray[i], { from: "paste", where: dactyl.NEW_TAB });
+}
+};
+EOF
+
+"map <c-p> -d "Open urls based on the current clipboard contents" -js tabs.openURLs();
+"set urlseparator='(\||\s+)'
+hi FontFixed -a font-size:18px !important; font-family:"Menlo" !important;
+"hi FontFixed -a font-size:20px !important; font-family:"Helvetica" !important;
+set guioptions+=N
+
+" vim: set ft=pentadactyl:
