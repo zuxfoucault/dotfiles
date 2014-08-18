@@ -3,7 +3,7 @@
 
 "Only indent a little, and use spaces for it
 "setlocal sw=2 ts=2
-setlocal expandtab
+"setlocal expandtab
 "Break lines at 80 chars
 "setlocal textwidth=80
 
@@ -136,15 +136,18 @@ let g:Tex_HotKeyMappings='align*,align,bmatrix'
 let g:Tex_PromptedCommands='parencite,textcite,phantomsection\label,hyperref,footnote,pageref'
 
 
+
 "call IMAP('REQ', 'Eq.~\eqref{eq:<++>}<++>', 'tex')
 "call IMAP('REEQ', 'Eqs.~\eqref{eqs:<++>}<++>', 'tex')
 call IMAP('FIT', '\textit{<++>}<++>', 'tex')
-call IMAP('SOU', '\sout{<++>}<++>', 'tex')
-call IMAP('ULI', '\uline{<++>}<++>', 'tex')
+call IMAP('SOU', '\sout{', 'tex')
+call IMAP('ULI', '\uline{', 'tex')
+"call IMAP('ULI', '\uline{<++>}<++>', 'tex')
 "call IMAP('RFI', 'Fig.~\ref{fig:<++>}<++>', 'tex')
 "call IMAP('RTA', 'Table~\ref{tab:<++>}<++>', 'tex')
 "call IMAP('RSE', '\S\ref{sec:<++>}<++>', 'tex')
 "call IMAP('RCH', 'Chapter~\ref{chap:<++>}<++>', 'tex')
+call IMAP('PSSE', '\begin{spacing}{1}\section{<++>}\end{spacing}', 'tex')
 "
 "call IMAP('EFI', "\\begin{figure}[htb]\<cr>\\centering\<cr>\\includegraphics[width=3in]{<+file+>}\<cr>\\caption{<+caption text+>}\<cr>\\label{fig:<+label+>}\<cr>\\end{figure}<++>", "tex")
 "call IMAP('ESU', '\subfloat[<++>]{% <++>% }% <++>', 'tex')
@@ -155,6 +158,13 @@ call IMAP('ULI', '\uline{<++>}<++>', 'tex')
 "call IMAP('`1', '\oder{<++>}{<++>}<++>', 'tex')
 "call IMAP('`!', '\pder{<++>}{<++>}<++>', 'tex')
 "call IMAP('`3', '\topbox{<++>}<++>', 'tex')
+
+" avoid conflict with UltiSnips
+imap <C-f> <Plug>IMAP_JumpForward
+
+" avoid <F1> remapping issue
+map <Nop> <Plug>Tex_Help
+imap <Nop> <Plug>Tex_Help
 
 ""command-shift-1
 "imap <D-!> align*<F5>
@@ -173,7 +183,10 @@ call IMAP('ULI', '\uline{<++>}<++>', 'tex')
 "disable folding by default
 "let g:Tex_AutoFolding=0
 
-" " Run LaTeX through TexShop
+" select Syntastic checkers
+let g:syntastic_tex_checkers = ['chktex']
+
+" " Run LaTeX through TexShop {{{
 " " http://reference-man.blogspot.com/2009/01/vimtexshop-integration.html
 " function! SRJ_runLatex()
 "   if &ft != 'tex'
@@ -200,5 +213,6 @@ call IMAP('ULI', '\uline{<++>}<++>', 'tex')
 
 " Disable matching parenthesis for TeX to reduce processor usage while typing
 "NoMatchParen
-"set sm
+"set sm " }}}
+
 

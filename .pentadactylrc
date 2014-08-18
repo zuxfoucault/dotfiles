@@ -14,12 +14,17 @@ map -count -modes=n,v p -builtin <count>P
 map -count -modes=n,v P -builtin <count>p
 map -count -modes=n h -builtin <count><count>gT
 map -count -modes=n l -builtin <count><count>gt
-map -count -modes=n j -builtin <count>18j
-map -count -modes=n k -builtin <count>18k
+map -count -modes=n j -builtin <count>13j
+map -count -modes=n k -builtin <count>13k
 map -modes=n ; -builtin :
 map -modes=n <C-c> <C-6>
 map -description='Yank all locations to the clipboard' -modes=n,v <C-y> -ex yank :tabdo :echo buffer.uri.spec
 map <F2> -description='show' -e set go!=TB
+vnoremap H ^
+vnoremap L $
+noremap -modes caret H ^
+noremap -modes caret L $
+
 
 javascript <<EOF
 tabs.openURLs = function() {

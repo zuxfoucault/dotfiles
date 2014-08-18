@@ -1,7 +1,9 @@
 # Path to your oh-my-zsh configuration.
 ZSH=$HOME/.oh-my-zsh
 
-export PATH="/usr/local/bin:/usr/local/sbin:~/bin:$PATH:$HOME/.rvm/bin:/usr/texbin"
+#export PATH="/usr/local/bin:/usr/local/sbin:~/bin:$PATH:$HOME/.rvm/bin:/usr/texbin:$HOME/playGround/shCollection"
+export PATH="/usr/local/bin:$PATH:$HOME/.rvm/bin:/usr/texbin:$HOME/playGround/shCollection"
+export TERM="xterm-256color-italic"
 
 #PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 
@@ -37,13 +39,27 @@ ZSH_THEME="at0915"
 
 #autoload -U compinit && compinit -u # autojump tab completion non-security
 
-plugins=(git autojump)
+##Uncomment following line if you want to disable command autocorrection
+#DISABLE_CORRECTION="true"
+
+# Uncomment following line if you want red dots to be displayed while waiting for completion
+COMPLETION_WAITING_DOTS="true"
+
+# Uncomment following line if you don't want greedy autocomplete
+setopt MENU_COMPLETE
+
+plugins=(git git-extras history-substring-search fasd tmux osx vi-mode python zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
+source /Users/zuxfoucault/.oh-my-zsh/custom/plugins/opp.zsh/opp.zsh
+source /Users/zuxfoucault/.oh-my-zsh/custom/plugins/opp.zsh/opp/*.zsh
+
+
+#alias v='f -e mvim'
 
 # Customize to your needs...
 export EDITOR="vim"
-bindkey -v 
+#bindkey -v
 
 
 export KEYTIMEOUT=1 # kill the lag of transition between modes
@@ -52,7 +68,7 @@ export KEYTIMEOUT=1 # kill the lag of transition between modes
 export CLICOLOR=1
 export LS_COLORS='di=1:fi=0:ln=31:pi=5:so=5:bd=5:cd=5:or=31:mi=0:ex=35:*.rpm=90'
 
-function cdl {cd $1; lsa;}
+function cdl {cd $1; l;}
 #function pdfl {
 #if [ "$#" -ne "0" ]
 #   then
@@ -62,9 +78,9 @@ function cdl {cd $1; lsa;}
 #}
 function skim {open -a /Applications/Skim.app $1;}
 
-alias lsa='ls -law'
-alias lsu='ls -altuw'
-alias vimnote='mvim `date +N%Y%m%d%H`'
+alias l='ls -law'
+alias lu='ls -altuw'
+alias vimnote='mvim `date +N%Y%m%d%H%M%S`.tex'
 #alias -g skim='-a /Applications/Skim.app'
 
 
@@ -98,3 +114,57 @@ bindkey '^P' history-search-backward
 bindkey '^N' history-search-forward
 
 
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
+
+export LC_CTYPE="en_US.UTF-8"
+
+## Use modern completion system
+#autoload -Uz compinit
+#compinit
+
+#zstyle ':completion:*' auto-description 'specify: %d'
+#zstyle ':completion:*' completer _expand _complete _correct _approximate
+#zstyle ':completion:*' format 'Completing %d'
+#zstyle ':completion:*' group-name ''
+#zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
+#zstyle ':completion:*' list-colors ''
+#zstyle ':completion:*' list-prompt %SAt %p: Hit TAB for more, or the character to insert%s
+#zstyle ':completion:*' matcher-list '' 'm:{a-z}={A-Z}' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=* l:|=*'
+#zstyle ':completion:*' menu select=long
+#zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p%s
+#zstyle ':completion:*' use-compctl false
+#zstyle ':completion:*' verbose true
+#
+#zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
+#zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
+
+#autoload predict-on
+#predict-on
+
+# Setupzsh-history-substring-search
+source /Users/zuxfoucault/.oh-my-zsh/custom/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
+
+# bind UP and DOWN arrow keys
+zmodload zsh/terminfo
+bindkey "$terminfo[kcuu1]" history-substring-search-up
+bindkey "$terminfo[kcud1]" history-substring-search-down
+
+# bind k and j for VI mode
+bindkey -M vicmd 'k' history-substring-search-up
+bindkey -M vicmd 'j' history-substring-search-down
+
+
+## Setup zsh-autosuggestions
+#source /Users/zuxfoucault/.oh-my-zsh/custom/plugins/zsh-autosuggestions/autosuggestions.zsh
+#
+## Enable autosuggestions automatically
+#zle-line-init() {
+#    zle autosuggest-start
+#}
+#zle -N zle-line-init
+#
+## use ctrl+t to toggle autosuggestions(hopefully this wont be needed as
+## zsh-autosuggestions is designed to be unobtrusive)
+#bindkey '^T' autosuggest-toggle
+#bindkey '^f' vi-forward-blank-word
