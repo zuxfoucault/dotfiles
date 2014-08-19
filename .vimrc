@@ -190,6 +190,13 @@ set splitbelow
 set splitright
 set spell spelllang=en_us
 
+" easytags setting
+" write to the first existing tags file seen by Vim
+"set tags=./tags;
+"let g:easytags_dynamic_files = 1
+
+
+
 " }}} test {{{
 " Trailing whitespace
 " Only shown when not in insert mode.

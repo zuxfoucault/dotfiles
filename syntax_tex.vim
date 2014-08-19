@@ -13,7 +13,7 @@
 
 syn keyword esp contained %%%
 syntax case match
-syntax match vimlinknotesTopic /:[A-Za-z0-9]\+\>/
+syntax match vimlinknotesTopic /:::[A-Za-z0-9]\+\>/
 syntax match vimlinknotesDef   /^%%[ \t]*[A-Za-z0-9]\+\>/ contains=esp
 
 highlight default link vimlinknotesTopic Underlined
