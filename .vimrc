@@ -194,8 +194,13 @@ set spell spelllang=en_us
 " write to the first existing tags file seen by Vim
 "set tags=./tags;
 "let g:easytags_dynamic_files = 1
+let g:easytags_ignored_filetypes = '^vim$'
 
-
+" Fugitive setting
+autocmd User fugitive
+  \ if fugitive#buffer().type() =~# '^\%(tree\|blob\)$' |
+  \   nnoremap <buffer> .. :edit %:h<CR> |
+  \ endif
 
 " }}} test {{{
 " Trailing whitespace
@@ -507,7 +512,6 @@ let g:UltiSnipsJumpForwardTrigger="<c-j>"
 " avoid vim latex conflict with UltiSnips
 "imap <C-f> <Plug>IMAP_JumpForward
 "}}}
-
 
 
 " Add the virtualenv's site-packages to vim path {{{
