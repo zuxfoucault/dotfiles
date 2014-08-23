@@ -267,6 +267,7 @@ vnoremap L g_
 nnoremap <C-Left> 5<C-W><
 nnoremap <C-Right> 5<C-W>>
 inoremap <C-a> <ESC>A
+"noremap ∂  :put =expand('%:p')<CR> " put the file path
 
 " Open a Quickfix window for the last search.
 nnoremap <silent><Leader>/ :execute 'vimgrep /'.@/.'/g %'<CR>:copen<CR>

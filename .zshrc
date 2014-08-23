@@ -55,7 +55,6 @@ source /Users/zuxfoucault/.oh-my-zsh/custom/plugins/opp.zsh/opp.zsh
 source /Users/zuxfoucault/.oh-my-zsh/custom/plugins/opp.zsh/opp/*.zsh
 
 
-#alias v='f -e mvim'
 
 # Customize to your needs...
 export EDITOR="vim"
@@ -82,7 +81,9 @@ alias l='ls -law'
 alias lu='ls -altuw'
 alias vimnote='mvim `date +N%Y%m%d%H%M%S`.tex'
 #alias -g skim='-a /Applications/Skim.app'
-
+alias ag='ag -S'
+alias v='f -e mvim'
+#alias v='f -t -e mvim -b ~/.viminfo'
 
 #typeset -A abbreviations
 #abbreviations=(

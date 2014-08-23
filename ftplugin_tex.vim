@@ -139,7 +139,8 @@ let g:Tex_PromptedCommands='parencite,textcite,phantomsection\label,hyperref,foo
 
 "call IMAP('REQ', 'Eq.~\eqref{eq:<++>}<++>', 'tex')
 "call IMAP('REEQ', 'Eqs.~\eqref{eqs:<++>}<++>', 'tex')
-call IMAP('FIT', '\textit{<++>}<++>', 'tex')
+"call IMAP('FIT', '\textit{<++>}<++>', 'tex')
+call IMAP('TIT', '\textit{', 'tex')
 call IMAP('SOU', '\sout{', 'tex')
 call IMAP('ULI', '\uline{', 'tex')
 "call IMAP('ULI', '\uline{<++>}<++>', 'tex')
@@ -147,8 +148,10 @@ call IMAP('ULI', '\uline{', 'tex')
 "call IMAP('RTA', 'Table~\ref{tab:<++>}<++>', 'tex')
 "call IMAP('RSE', '\S\ref{sec:<++>}<++>', 'tex')
 "call IMAP('RCH', 'Chapter~\ref{chap:<++>}<++>', 'tex')
-call IMAP('PSSE', '\begin{spacing}{1}\section{<++>}\end{spacing}', 'tex')
-"
+call IMAP('PSSE', '\begin{spacing}{2}\section{<++>}\end{spacing}', 'tex')
+
+
+
 "call IMAP('EFI', "\\begin{figure}[htb]\<cr>\\centering\<cr>\\includegraphics[width=3in]{<+file+>}\<cr>\\caption{<+caption text+>}\<cr>\\label{fig:<+label+>}\<cr>\\end{figure}<++>", "tex")
 "call IMAP('ESU', '\subfloat[<++>]{% <++>% }% <++>', 'tex')
 "call IMAP('ETA', "\\begin{table}[htb]\<cr>\\centering\<cr>\\begin{tabular}{<+dimensions+>}\<cr><++>\<cr>\\end{tabular}\<cr>\\caption{<+Caption text+>}\<cr>\\label{tab:<+label+>}\<cr>\\end{table}<++>", "tex")
