@@ -11,6 +11,7 @@
 "setlocal wildignore=*.log,*.aux,*.bbl,*.out
 
 " turn spell checking on
+set spelllang=en_us spell
 setlocal spell
 
 "if has('gui_macvim')
@@ -124,6 +125,10 @@ map <D-e> ;only<CR>
 " Inverse search
 "nmap <D-S-LeftMouse> <leader>ls
 
+if has('gui_macvim')
+nmap <D-i> ;TTemplate<CR>
+endif
+
 " ************
 
 
@@ -143,14 +148,15 @@ let g:Tex_PromptedCommands='parencite,textcite,phantomsection\label,hyperref,foo
 call IMAP('TIT', '\textit{', 'tex')
 call IMAP('SOU', '\sout{', 'tex')
 call IMAP('ULI', '\uline{', 'tex')
+call IMAP('TBF', '\textbf{', 'tex')
 "call IMAP('ULI', '\uline{<++>}<++>', 'tex')
 "call IMAP('RFI', 'Fig.~\ref{fig:<++>}<++>', 'tex')
 "call IMAP('RTA', 'Table~\ref{tab:<++>}<++>', 'tex')
 "call IMAP('RSE', '\S\ref{sec:<++>}<++>', 'tex')
 "call IMAP('RCH', 'Chapter~\ref{chap:<++>}<++>', 'tex')
-call IMAP('PSSE', '\begin{spacing}{2}\section{<++>}\end{spacing}', 'tex')
-
-
+call IMAP('PSSE', '\begin{spacing}{1}\section{<++>}\end{spacing}', 'tex')
+call IMAP('HRF', '\href{<++>}{<++>}<++>', 'tex')
+call IMAP('UUL', '\url{<++>}<++>', 'tex')
 
 "call IMAP('EFI', "\\begin{figure}[htb]\<cr>\\centering\<cr>\\includegraphics[width=3in]{<+file+>}\<cr>\\caption{<+caption text+>}\<cr>\\label{fig:<+label+>}\<cr>\\end{figure}<++>", "tex")
 "call IMAP('ESU', '\subfloat[<++>]{% <++>% }% <++>', 'tex')

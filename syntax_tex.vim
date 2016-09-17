@@ -4,6 +4,8 @@
 " Last Change:  2011 Dec 12 
 "Mon Aug 18 20:01:05 CST 2014
 
+syntax sync fromstart
+
 
 "if version < 600
 "  syn clear
@@ -11,11 +13,11 @@
 "  finish
 "endif
 
-syn keyword esp contained %%%
-syntax case match
+"syn keyword esp contained %%%
+"syntax case match
 syntax match vimlinknotesTopic /+++[A-Za-z0-9_\.]\+\>/
 syntax match vimlinknotesDef   /^%%%[ \t]*[A-Za-z0-9_\.]\+\>/ contains=esp
-syntax match vimlinknotesHead /^|||[A-Za-z0-9]\+\>.*/
+syntax match vimlinknotesHead /|||[A-Za-z0-9]\+\>.*/
 " topic and head match difference: topic as linking tags best as single words,
 " and Head as defining search tags for ag, it's better to make multiple words
 " searchable.
@@ -24,8 +26,10 @@ syntax match vimlinknotesHead /^|||[A-Za-z0-9]\+\>.*/
 
 highlight default link vimlinknotesTopic Underlined
 highlight default link vimlinknotesDef   Statement
-highlight default link vimlinknotesHead   Underlined
+highlight default link vimlinknotesHead  Underlined
 
 
-"let b:current_syntax = "tex"
+"let b:current_syntax = "latex"
 
+"syn sync maxlines=200
+"syn sync minlines=50

@@ -56,8 +56,12 @@ fun! SetupVAM()
   "let &rtp.=(empty(&rtp)?'':',').plugin_root_dir.'/vim-addon-manager'
   " 'powerline', 'AutomaticLaTeXPlugin' 
   " Tell VAM which plugins to fetch & load:
-  call vam#ActivateAddons(['powerline', 'LaTeX-Suite_aka_Vim-LaTeX', 'ctrlp', 'Solarized', 'The_NERD_tree', 'vim-multiple-cursors', 'YouCompleteMe', 'Buffergator', 'fugitive', 'Screen_vim__gnu_screentmux', 'EasyMotion', 'Gundo' , 'yankstack', 'Syntastic','UltiSnips', 'Python-mode-klen', 'unimpaired', 'Tagbar', 'ack', 'surround', 'Vim-R-plugin', 'easytags', 'vim-misc'], {'auto_install' : 1})
-  " sample: call vam#ActivateAddons(['pluginA','pluginB', 'LaTeX-Suite_aka_Vim-LaTeX' 'AutomaticLaTeXPlugin', 'Vim-R-plugin', 'Supertab', 'vim-online-thesaurus', 'python%790'...], {'auto_install' : 0})
+  call vam#ActivateAddons(['powerline', 'LaTeX-Suite_aka_Vim-LaTeX', 'ctrlp', 'Solarized', 'The_NERD_tree', 'vim-multiple-cursors', 'YouCompleteMe', 'Buffergator', 'fugitive', 'Screen_vim__gnu_screentmux', 'EasyMotion', 'Gundo' , 'yankstack', 'Syntastic','UltiSnips', 'vim-snippets', 'Python-mode-klen', 'jedi-vim', 'virtualenv', 'unimpaired', 'Tagbar', 'ack', 'surround', 'easytags', 'vim-misc', 'autocorrect', 'goyo', 'vim-textobj-quote', 'textobj-user', 'vim-lexical', 'limelight', 'vim-textobj-sentence', 'vim-wordy', 'MatlabFilesEdition', 'Tabular', 'vim-online-thesaurus', 'Indent_Guides', 'vim-signature', 'vim-expand-region'], {'auto_install' : 1})
+
+" sample: call vam#ActivateAddons(['pluginA','pluginB', 'LaTeX-Suite_aka_Vim-LaTeX' 'AutomaticLaTeXPlugin', 'Vim-R-plugin', 'Supertab', 'vim-online-thesaurus', 'python%790'...], {'auto_install' : 0})
+
+" need self-updated: 'vim-lexical', 'limelight', 'vim-textobj-sentence', 'vim-wordy'
+
   " Also See "plugins-per-line" below
 
   " Addons are put into plugin_root_dir/plugin-name directory
@@ -104,9 +108,18 @@ call SetupVAM()
 " Last Change:	Sat Aug 29 2009
 
 "29 set nocompatible
-set laststatus=2   " Always show the statusline 1210
+set laststatus=2   " Always show the statusline 1210l
+set showcmd " show information about how the current command going on
 set encoding=utf-8 " Necessary to show Unicode glyphs 1210
 set t_Co=256 " Explicitly tell Vim that the terminal supports 256 colors 1210
+set fillchars+=stl:\ ,stlnc:\
+if !has('gui_macvim')
+	set term=xterm-256color
+endif
+set termencoding=utf-8
+
+set wildmenu
+
 
 " The default for 'backspace' is very confusing to new users, so change it to a
 " more sensible value.  Add "set backspace&" to your ~/.vimrc to reset it.
@@ -118,9 +131,18 @@ set backspace+=indent,eol,start
 set langmenu=none
 
 syntax enable
+
+"Solarized color
 let g:solarized_termtrans = 1
 colorscheme solarized
 "togglebg#map("<F5>") 
+set background=dark
+
+"leader mapping
+"let mapleader = "\<Space>"
+
+" remap ESC
+"inoremap ii <Esc>
 
 " Yank text to the OS X clipboard
  noremap <leader>y "*y
@@ -189,26 +211,44 @@ set tabstop=4
 set splitbelow
 set splitright
 set spell spelllang=en_us
+"set spell
+set complete+=kspell
+
 
 " easytags setting
 " write to the first existing tags file seen by Vim
 "set tags=./tags;
 "let g:easytags_dynamic_files = 1
 let g:easytags_ignored_filetypes = '^vim$'
+let g:easytags_async = 1
+" nnoremap ¨ :UpdateTags -R . " see gui_macvim
 
 " Fugitive setting
+"open the parent tree
 autocmd User fugitive
   \ if fugitive#buffer().type() =~# '^\%(tree\|blob\)$' |
   \   nnoremap <buffer> .. :edit %:h<CR> |
   \ endif
 
-" }}} test {{{
+"Auto-clean fugitive buffers
+autocmd BufReadPost fugitive://* set bufhidden=delete
+
+" {{{ CtrlP: default command to invoke CtrlP
+let g:ctrlp_cmd = 'CtrlPMRU'
+"let g:ctrlp_cmd = 'CtrlPMixed'
+" }}}
+
+"numbers setting
+let g:numbers_exclude = ['tagbar', 'gundo', 'nerdtree']
+
 " Trailing whitespace
 " Only shown when not in insert mode.
-augroup trailing
+augroup trailing " don't know why cause some trouble => it's encoding error
 	au!
-	au InsertEnter * :set listchars-=trail:⌴
-	au InsertLeave * :set listchars+=trail:⌴
+	au InsertEnter * :set listchars-=trail:»
+	au InsertLeave * :set listchars+=trail:»
+	"au InsertEnter * :set listchars-=trail:⌴
+	"au InsertLeave * :set listchars+=trail:⌴
 augroup END
 
 augroup CursorLine
@@ -234,6 +274,77 @@ augroup line_return
 augroup END
 
 
+" vim-lexical setting
+augroup lexical
+  autocmd!
+  autocmd FileType markdown,mkd call lexical#init()
+  autocmd FileType textile,tex call lexical#init()
+  "autocmd FileType text call lexical#init({ 'spell': 0 })
+  autocmd FileType text call lexical#init()
+  autocmd FileType tex call lexical#init()
+augroup END
+
+let g:lexical#spell = 1
+let g:lexical#thesaurus = ['~/.vim/thesaurus/mthesaur.txt',] " define paths to thesauruses
+let g:lexical#dictionary = ['/usr/share/dict/words', '/usr/share/dict/web2a', '~/.vim/spell/en.utf-8.add',]
+let g:lexical#spell_key = '<leader>s' " Spell-check
+let g:lexical#thesaurus_key = '<leader>[' " Thesaurus lookup
+let g:lexical#dictionary_key = '<leader>k' " Dictionary completion
+
+
+"vim-online-thesaurus
+let g:online_thesaurus_map_keys = 0
+nnoremap <leader>] :OnlineThesaurusCurrentWord<CR>
+
+"" Limelight integrated with Goyo
+"autocmd User GoyoEnter Limelight
+"autocmd User GoyoLeave Limelight!
+
+
+" vim-textobj-quote
+augroup textobj_quote
+ autocmd!
+  autocmd FileType markdown call textobj#quote#init()
+  autocmd FileType textile call textobj#quote#init()
+  autocmd FileType text call textobj#quote#init({'educate': 0})
+  autocmd FileType tex call textobj#quote#init()
+augroup END
+
+
+" vim-textobj-sentence
+augroup textobj_sentence
+  autocmd!
+  autocmd FileType markdown call textobj#sentence#init()
+  autocmd FileType textile call textobj#sentence#init()
+  autocmd FileType tex call textobj#sentence#init()
+augroup END
+
+
+" vim-wordy ring
+let g:wordy#ring = [
+  \ 'weak',
+  \ ['being', 'passive-voice', ],
+  \ 'business-jargon',
+  \ 'weasel',
+  \ 'puffery',
+  \ ['problematic', 'redundant', ],
+  \ ['colloquial', 'idiomatic', 'similies', ],
+  \ 'art-jargon',
+  \ ['contractions', 'opinion', 'vague-time', 'said-synonyms', ],
+  \ ]
+
+" NERDTree split explore
+let g:NERDTreeHijackNetrw=1
+
+" vim-wordy
+nnoremap <silent> K :NextWordy<cr>
+
+" map in operator-pending mode
+"onoremap w iw
+
+"Open new split panes to right and bottom, which feels more natural than Vim’s default
+"set splitbelow "has been set above
+"set splitright
 "nnoremap <C-J> <C-W><C-J>
 "nnoremap <C-K> <C-W><C-K>
 "nnoremap <C-L> <C-W><C-L>
@@ -257,6 +368,8 @@ augroup END
 "noremap <C-H> :tabp<CR>
 nnoremap ; :
 nnoremap : ;
+"nnoremap p P
+"nnoremap P p
 noremap j gj
 noremap k gk
 noremap gj j
@@ -267,7 +380,18 @@ vnoremap L g_
 nnoremap <C-Left> 5<C-W><
 nnoremap <C-Right> 5<C-W>>
 inoremap <C-a> <ESC>A
-"noremap ∂  :put =expand('%:p')<CR> " put the file path
+"remap tab navigation key
+nnoremap $ gT
+nnoremap ^ gt
+
+"Simple calculations with Vim's expression register
+nnoremap Q 0yt=A<C-r>=<C-r>"<CR><Esc>
+
+"move to eol and save text
+"nnoremap ∂  :put =expand('%:p')<CR> " put the file path, see gui_macvim
+"nnoremap ô  :r !date "put the date-time info.
+"nnoremap ó :call Aasa()<CR> "init auto save
+
 
 " Open a Quickfix window for the last search.
 nnoremap <silent><Leader>/ :execute 'vimgrep /'.@/.'/g %'<CR>:copen<CR>
@@ -298,10 +422,28 @@ nnoremap zO zczO
 
 if !has('gui_macvim')
 	"nnoremap Ω  mzzMzvzz1<c-e>`z:Pulse<cr>
-	nnoremap Ω  mzzMzvzz`z:Pulse<cr>
+	"nnoremap Ω  mzzMzvzz`z:Pulse<cr>
+	nnoremap Ω  mzzMzvzz`z:call PulseCursorLine()<cr>
+	nnoremap ¨ :UpdateTags! -R .
+	"update ctags
+	nnoremap ∂ :put =expand('%:p')<CR>
+	"put the file path
+	nnoremap ô :r !date<CR>
+	"put the date-time info.
+	nnoremap ó :call Aasa()<CR>
+	"init auto save
 else
 	"nnoremap <M-z> mzzMzvzz1<c-e>`z:Pulse<cr>
-	nnoremap <M-z> mzzMzvzz`z:Pulse<cr>
+	"nnoremap <M-z> mzzMzvzz`z:Pulse<cr>
+	nnoremap <M-z> mzzMzvzz`z:call PulseCursorLine()<cr>
+	nnoremap <M-u> :UpdateTags! -R .<CR>
+	"update ctags
+	nnoremap <M-d> :put =expand('%:p')<CR> 
+	"put the file path
+	nnoremap <M-t> :r !date<CR>
+	"put the date-time info.
+	nnoremap <M-s> :call Aasa()<CR>
+	"init auto save
 endif
 
 " Pulse Line {{{
@@ -334,13 +476,64 @@ endfunction " }}}
 command! -nargs=0 Pulse call s:Pulse()
 " }}}
 
+" {{{ Pulse the cursor line when repeating a search with "n" or "N"
+if has('gui_running')
+let g:PulseColorList = [ '#2a2a2a', '#333333', '#3a3a3a', '#444444', '#4a4a4a' ]
+let g:PulseColorattr = 'guibg'
+else
+let g:PulseColorList = [ 'DarkGrey', 'DarkGrey', 'DarkGrey' ]
+let g:PulseColorattr = 'ctermbg'
+endif
+function! PulseCursorLine()
+for pulse in g:PulseColorList
+execute 'hi CursorLine ' . g:PulseColorattr . '=' . pulse
+redraw
+sleep 6m
+endfor
+for pulse in reverse(copy(g:PulseColorList))
+execute 'hi CursorLine ' . g:PulseColorattr . '=' . pulse
+redraw
+sleep 6m
+endfor
+execute 'hi CursorLine ' . g:PulseColorattr . '=NONE'
+endfunction
+" }}}
+
 "}}}
+
+"function! MyFoldText() " {{{
+"    let line = getline(v:foldstart)
+"
+"    let nucolwidth = &fdc + &number * &numberwidth
+"    let windowwidth = winwidth(0) - nucolwidth - 3
+"    let foldedlinecount = v:foldend - v:foldstart
+"
+"    " expand tabs into spaces
+"    let onetab = strpart('          ', 0, &tabstop)
+"    let line = substitute(line, '\t', onetab, 'g')
+"
+"    let line = strpart(line, 0, windowwidth - 2 -len(foldedlinecount))
+"    let fillcharcount = windowwidth - len(line) - len(foldedlinecount)
+"    return line . '…' . repeat(" ",fillcharcount) . foldedlinecount . '…' . ' '
+"endfunction " }}}
+"set foldtext=MyFoldText()
+
+" }}}
+
+
+let g:vim_search_pulse_mode = 'pattern'
+let g:vim_search_pulse_disable_auto_mappings = 1
+let g:vim_search_pulse_duration = 50
+" default: 400
+
 
 " Toggle Gundo
 nnoremap <F2> :GundoToggle<CR>
 
 "NERD Tree\
 nnoremap  <F6> :NERDTreeToggle<cr>
+"NERD Tree split explore
+"nnoremap  <F6> :e.<cr>
 
 " Tagbar
 nnoremap <F8> :TagbarToggle<CR>
@@ -350,18 +543,30 @@ noremap <F1> :SyntasticReset<CR>
 inoremap <F1> <ESC>:SyntasticReset<CR>
 
 " invoke EasyMotion <Leader><Leader>
-map <F4> <Leader><Leader>
-imap <F4> <ESC><Leader><Leader>
+"map <F4> <Leader><Leader>
+"imap <F4> <ESC><Leader><Leader>
+map  / <Plug>(easymotion-sn)
+omap / <Plug>(easymotion-tn)
+"map n <Plug>(easymotion-next)
+"map N <Plug>(easymotion-prev)
+
+" vim-wheel
+let g:wheel#map#up   = '<D-k>'
+let g:wheel#map#down = '<D-j>'
 
 " Vim-R-plugin
 let r_syntax_folding = 1
 
 " invoke suggest words
-inoremap <F3> <ESC>z=
+"inoremap <F3> <ESC>z=
+inoremap <F3> <C-x><C-k>
+nnoremap <F3> i<C-x><C-s>
+"noremap <F3> z=
+"noremap <F3> <LEADER>s
 
 " avoid key map conflict between py-mode and buffergator
 let g:pymode_breakpoint_bind = '<leader><leader>b'
-"let g:pymode_rope = 0
+let g:pymode_rope = 0
 "let g:pymode_rope_completion = 0
 "let g:pymode_lint = 0
 "let g:pymode_virtualenv = 0
@@ -369,8 +574,22 @@ let g:pymode_breakpoint_bind = '<leader><leader>b'
 "let g:pymode_rope_completion_bind = '<C-Space>m'
 
 " YCM
-let g:ycm_path_to_python_interpreter = '/usr/bin/python'
+"let g:ycm_path_to_python_interpreter = '/usr/bin/python'
+let g:ycm_path_to_python_interpreter = '/usr/local/bin/python'
+"show the completion menu even when typing inside comments.
+let g:ycm_complete_in_comments = 1
+"collect identifiers from strings and comments
+let g:ycm_collect_identifiers_from_comments_and_strings = 1
+"collect identifiers from tags files.
+let g:ycm_collect_identifiers_from_tags_files = 1
+"completer will seed its identifier with the keywords of current programming language 
+let g:ycm_seed_identifiers_with_syntax = 1
+"
+"au BufNew,BufEnter,BufRead *.c,*.cpp,*.hpp let g:ycm_global_extra_conf='/Users/zuxfoucault/.vim/vim-addons/YouCompleteMe/.ycm_extra_conf.py'
 
+"nnoremap <leader>jd :YcmCompleter GoToDeclaration<CR>
+"" upported in filetypes: 'c, cpp, objc, objcpp, python, cs'
+"nnoremap <leader>je :YcmCompleter GoToDefinition<CR>
 
 " yankstack: avoid <mete- > in vim terminal
 if !has('gui_macvim')
@@ -378,30 +597,63 @@ nmap π <Plug>yankstack_substitute_older_paste
 nmap ∏ <Plug>yankstack_substitute_newer_paste
 "nmap <leader>p <Plug>yankstack_substitute_older_paste
 "nmap <leader>P <Plug>yankstack_substitute_newer_paste
+endif
+
+if has('gui_macvim')
 highlight Comment cterm=italic
 endif
+
+"vim-expand-region
+vmap v <Plug>(expand_region_expand)
+vmap <C-v> <Plug>(expand_region_shrink)
+
+"Tabular
+"let mapleader=','
+if exists(":Tabularize")
+	nmap <Leader>a= :Tabularize /=<CR>
+	vmap <Leader>a= :Tabularize /=<CR>
+	nmap <Leader>a: :Tabularize /:\zs<CR>
+	vmap <Leader>a: :Tabularize /:\zs<CR>
+endif
+
+inoremap <silent> <Bar>   <Bar><Esc>:call <SID>align()<CR>a
+
+function! s:align()
+  let p = '^\s*|\s.*\s|\s*$'
+  if exists(':Tabularize') && getline('.') =~# '^\s*|' && (getline(line('.')-1) =~# p || getline(line('.')+1) =~# p)
+    let column = strlen(substitute(getline('.')[0:col('.')],'[^|]','','g'))
+    let position = strlen(matchstr(getline('.')[0:col('.')],'.*|\s*\zs.*'))
+    Tabularize/|/l1
+    normal! 0
+    call search(repeat('[^|]*|',column).'\s\{-\}'.repeat('.',position),'ce',line('.'))
+  endif
+endfunction
+
 
 "set timeout timeoutlen=3000 ttimeoutlen=100
 set ttimeoutlen=100
 
+" GUI related
 if has('gui_macvim')
 "set guifont==Monaco:h26
 "set guifont=Menlo\ Regular:h24
 "set guifont=Consolas:h28
-set guifont=Anonymous\ Pro:h28
+set guifont=Anonymous\ Pro:h32
 
 "MacVim: switch OSX windows with swipes
 "nnoremap <silent> <SwipeLeft> :macaction _cycleWindowsBackwards:<CR>
 "nnoremap <silent> <SwipeRight> :macaction _cycleWindows:<CR>
 set guicursor+=a:blinkon0
-set transparency=15
+"set transparency=15
 set guioptions-=r " Hide scrollbars
 set macmeta
+set linespace=5
 endif
 
 setlocal foldmethod=marker
 
-" auto-save while text changed
+
+" auto-save while text changed {{{
 fun Aasa()
 	autocmd TextChanged,InsertLeave *
 	\ if expand("%") != "" |
@@ -413,6 +665,20 @@ fun Aasa()
 "	\ update |
 "	\ endif
 endfun
+" }}}
+
+"  StripTrailingWhitespace {{{
+function! StripTrailingWhitespace()
+  normal mZ
+  let l:chars = col("$")
+  %s/\s\+$//e
+  if (line("'Z") != line(".")) || (l:chars != col("$"))
+    echo "Trailing whitespace stripped\n"
+  endif
+  normal `Z
+  normal mZ
+endfunction
+" }}}
 
 " Search options
 " Ignore case when searching
@@ -431,8 +697,24 @@ set hlsearch
 " leader+space will clear it. 
 nnoremap <leader><space> :noh<cr>
 " Keep search matches in the middle of the window.
-nnoremap n nzzzv
-nnoremap N Nzzzv
+"nnoremap n nzzzv
+"nnoremap n nzzzv
+"after implement PulseCursorLine
+"nnoremap n nzzzv:call PulseCursorLine()<cr>
+"nnoremap N Nzzzv:call PulseCursorLine()<cr>
+"after install vim-search-pulse
+nmap n nzzzv<Plug>Pulse
+nmap N Nzzzv<Plug>Pulse
+nmap * *zzzv<Plug>Pulse
+nmap # #zzzv<Plug>Pulse
+" Pulses cursor line on first match
+" when doing search with / or ?
+"cmap <enter> <Plug>PulseFirst "not good, next line will cancel it
+cmap <enter> <enter>
+
+"Save A File In Vim / Vi Without Root Permission
+command W :execute ':silent w !sudo tee % > /dev/null' | :edit!
+
 " Omni completion 
 set omnifunc=syntaxcomplete#Complete
 
@@ -451,6 +733,8 @@ nnoremap <silent> <leader>3 :call HiInterestingWord(3)<cr>
 nnoremap <silent> <leader>4 :call HiInterestingWord(4)<cr>
 nnoremap <silent> <leader>5 :call HiInterestingWord(5)<cr>
 nnoremap <silent> <leader>6 :call HiInterestingWord(6)<cr>
+
+nnoremap <silent> <leader>0 :call clearmatches()<cr>
 " }}}
 
 function! HiInterestingWord(n) "{{{
@@ -487,6 +771,7 @@ hi def InterestingWord6 guifg=#000000 ctermfg=16 guibg=#ff2c4b ctermbg=195
 " }}}
 " }}}
 
+" UltiSnips
 " resolve for YCM and UltiSnips conflicts {{{
 "function! g:UltiSnips_Complete()
 "    call UltiSnips_ExpandSnippet()
@@ -514,6 +799,9 @@ let g:UltiSnipsJumpForwardTrigger="<c-j>"
 "imap <C-f> <Plug>IMAP_JumpForward
 "}}}
 
+"Snippet Search Path
+let g:UltiSnipsSnippetDirectories=["UltiSnips"]
+
 
 " Add the virtualenv's site-packages to vim path {{{
 "py << EOF
@@ -527,3 +815,97 @@ let g:UltiSnipsJumpForwardTrigger="<c-j>"
 "    execfile(activate_this, dict(__file__=activate_this))
 "EOF
 " }}}
+
+" Customized nerdtree preview function {{{
+let g:nerd_preview_enabled = 0
+let g:preview_last_buffer  = 0
+
+function! NerdTreePreview()
+  " Only on nerdtree window
+  if (&ft ==# 'nerdtree')
+    " Get filename
+    let l:filename = substitute(getline("."), "^\\s\\+\\|\\s\\+$","","g")
+
+    " Preview if it is not a folder
+    let l:lastchar = strpart(l:filename, strlen(l:filename) - 1, 1)
+    if (l:lastchar != "/" && strpart(l:filename, 0 ,2) != "..")
+
+      let l:store_buffer_to_close = 1
+      if (bufnr(l:filename) > 0)
+        " Don't close if the buffer is already open
+        let l:store_buffer_to_close = 0
+      endif
+
+      " Do preview
+      execute "normal go"
+
+      " Close previews buffer
+      if (g:preview_last_buffer > 0)
+        execute "bwipeout " . g:preview_last_buffer
+        let g:preview_last_buffer = 0
+      endif
+
+      " Set last buffer to close it later
+      if (l:store_buffer_to_close)
+        let g:preview_last_buffer = bufnr(l:filename)
+      endif
+    endif
+  elseif (g:preview_last_buffer > 0)
+    " Close last previewed buffer
+    let g:preview_last_buffer = 0
+  endif
+endfunction
+
+function! NerdPreviewToggle()
+  if (g:nerd_preview_enabled)
+    let g:nerd_preview_enabled = 0
+    augroup nerdpreview
+      autocmd!
+      augroup END
+  else
+    let g:nerd_preview_enabled = 1
+    augroup nerdpreview
+      autocmd!
+      autocmd CursorMoved * nested call NerdTreePreview()
+    augroup END
+  endif
+endfunction
+"}}}
+
+
+" Setup markdown preview
+function! s:setupMarkup()
+  "nnoremap <leader>l :silent !open -a MacDown.app '%:p'<cr>
+  nnoremap <D-r> :silent !open -a MacDown.app '%:p'<cr>
+endfunction
+au BufRead,BufNewFile *.{md,markdown,mdown,mkd,mkdn} call s:setupMarkup()
+
+"let g:indent_guides_auto_colors = 0
+"autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=red   ctermbg=3
+"autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=4
+" 随 vim 自启动
+let g:indent_guides_enable_on_vim_startup=1
+" 从第二层开始可视化显示缩进
+let g:indent_guides_start_level=2
+" 色块宽度
+let g:indent_guides_guide_size=1
+" 快捷键 i 开/关缩进可视化
+:nmap <silent> <Leader>i <Plug>IndentGuidesToggle
+
+"" automatic change vim root directory for ctrlp
+"autocmd BufEnter * silent! lcd %:p:h
+
+" Split Words Into Lines
+" :26call SplitToLines()
+" 1,10call SplitToLines()
+" '<,'>call SplitToLines() in Visual mode
+function SplitToLines() range
+  for lnum in range(a:lastline, a:firstline, -1)
+    let words = split(getline(lnum))
+    execute lnum . "delete"
+    call append(lnum-1, words)
+  endfor
+endfunction
+
+" Add template automatically
+au BufNewFile N2016*0000.tex 0r /Volumes/SSD/googleDrive/papers/texNote/journal/template.tex

@@ -2,8 +2,9 @@
 ZSH=$HOME/.oh-my-zsh
 
 #export PATH="/usr/local/bin:/usr/local/sbin:~/bin:$PATH:$HOME/.rvm/bin:/usr/texbin:$HOME/playGround/shCollection"
-export PATH="/usr/local/bin:$PATH:$HOME/.rvm/bin:/usr/texbin:$HOME/playGround/shCollection"
-export TERM="xterm-256color-italic"
+export PATH="/usr/local/bin:$PATH:$HOME/.rvm/bin:/Volumes/SSD/Space/playGround/shCollection"
+#export TERM="xterm-256color-italic"
+export TERM="xterm-256color"
 
 #PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 
@@ -48,8 +49,7 @@ COMPLETION_WAITING_DOTS="true"
 # Uncomment following line if you don't want greedy autocomplete
 setopt MENU_COMPLETE
 
-plugins=(git git-extras history-substring-search fasd tmux osx vi-mode python zsh-syntax-highlighting)
-
+plugins=(zsh-autosuggestions git git-extras wd fasd osx vi-mode python brew zsh-syntax-highlighting history-substring-search colorize)
 source $ZSH/oh-my-zsh.sh
 source /Users/zuxfoucault/.oh-my-zsh/custom/plugins/opp.zsh/opp.zsh
 source /Users/zuxfoucault/.oh-my-zsh/custom/plugins/opp.zsh/opp/*.zsh
@@ -67,23 +67,55 @@ export KEYTIMEOUT=1 # kill the lag of transition between modes
 export CLICOLOR=1
 export LS_COLORS='di=1:fi=0:ln=31:pi=5:so=5:bd=5:cd=5:or=31:mi=0:ex=35:*.rpm=90'
 
-function cdl {cd $1; l;}
-#function pdfl {
+function cl() {cd $1; l;}
+#function pdfl() {
 #if [ "$#" -ne "0" ]
 #   then
 #   pdflatex ""$@".tex"
 #   open ""$@".pdf"
 #   fi
 #}
-function skim {open -a /Applications/Skim.app $1;}
+function skim() {open -a /Applications/Skim.app $1;}
+
+# easier for change directory and list
+unalias z
+function z() {fasd_cd -d $1; l;} #can't work
+unalias zz
+function zz() {fasd_cd -d -i $1; l;}
 
 alias l='ls -law'
 alias lu='ls -altuw'
 alias vimnote='mvim `date +N%Y%m%d%H%M%S`.tex'
+alias vimdate='mvim `date +N%Y%m%d`000000.tex'
+#alias vimnote='mvim `date +N%Y%m%d%H%M%S`.md'
+#alias vimdate='mvim `date +N%Y%m%d`000000.md'
+alias vimvo='mvim `date +V%Y%m%d`000000.tex'
 #alias -g skim='-a /Applications/Skim.app'
 alias ag='ag -S'
-alias v='f -e mvim'
-#alias v='f -t -e mvim -b ~/.viminfo'
+#alias vv='f -e mvim'
+alias v='LC_CTYPE=C LANG=C f -t -i -e mvim -b viminfo'
+#alias v='f -t -i -e mvim -b viminfo'
+#unalias v
+#function v() {export LC_CTYPE=C LANG=C; f -t -e mvim -b viminfo $1; unset LC_CTYPE=C LANG=C} #can't work
+alias mm='mvim'
+alias mynetcon='sudo lsof -n -P -i +c 15'
+
+# For tmux
+#alias tmn='tmux new -s $(basename $(pwd))'
+#alias tma='tmux attach -d -t'
+#alias tml='tmux list-sessions'
+# Adopt form oh-my-zsh
+alias ta='tmux attach -t'
+alias tad='tmux attach -d -t'
+alias ts='tmux new-session -s'
+alias tl='tmux list-sessions'
+alias tksv='tmux kill-server'
+alias tkss='tmux kill-session -t'
+
+
+# Homemade Growl
+alias growl='echo iterm2done'
+
 
 #typeset -A abbreviations
 #abbreviations=(
@@ -120,10 +152,11 @@ export PATH="/usr/local/heroku/bin:$PATH"
 
 export LC_CTYPE="en_US.UTF-8"
 
-## Use modern completion system
+## Use modern completion system (to 156) not good
+## will change previous modified string
 #autoload -Uz compinit
 #compinit
-
+#
 #zstyle ':completion:*' auto-description 'specify: %d'
 #zstyle ':completion:*' completer _expand _complete _correct _approximate
 #zstyle ':completion:*' format 'Completing %d'
@@ -139,33 +172,53 @@ export LC_CTYPE="en_US.UTF-8"
 #
 #zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
 #zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
-
+#
 #autoload predict-on
 #predict-on
 
+ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor root line)
+#source /Users/zuxfoucault/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
 # Setupzsh-history-substring-search
-source /Users/zuxfoucault/.oh-my-zsh/custom/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
+#source /Users/zuxfoucault/.oh-my-zsh/custom/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
 
 # bind UP and DOWN arrow keys
 zmodload zsh/terminfo
-bindkey "$terminfo[kcuu1]" history-substring-search-up
-bindkey "$terminfo[kcud1]" history-substring-search-down
-
+bindkey '^[[A' history-substring-search-up
+bindkey '^[[B' history-substring-search-down
 # bind k and j for VI mode
 bindkey -M vicmd 'k' history-substring-search-up
 bindkey -M vicmd 'j' history-substring-search-down
 
+# Setup zsh-autosuggestions
+#source /Users/zuxfoucault/.oh-my-zsh/custom/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 
-## Setup zsh-autosuggestions
-#source /Users/zuxfoucault/.oh-my-zsh/custom/plugins/zsh-autosuggestions/autosuggestions.zsh
-#
-## Enable autosuggestions automatically
+# Enable autosuggestions automatically
 #zle-line-init() {
 #    zle autosuggest-start
 #}
 #zle -N zle-line-init
-#
-## use ctrl+t to toggle autosuggestions(hopefully this wont be needed as
-## zsh-autosuggestions is designed to be unobtrusive)
-#bindkey '^T' autosuggest-toggle
-#bindkey '^f' vi-forward-blank-word
+
+
+# use ctrl+t to toggle autosuggestions(hopefully this wont be needed as
+# zsh-autosuggestions is designed to be unobtrusive)
+bindkey '^T' autosuggest-toggle
+bindkey '^f' vi-forward-blank-word
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=34"
+#AUTOSUGGESTION_HIGHLIGHT_COLOR="fg=34"
+#AUTOSUGGESTION_HIGHLIGHT_COLOR="fg=24" or 28
+eval "$(rbenv init -)"
+
+#alias matlab='LANG="en_US.UTF-8" && /Applications/MATLAB_R2012b.app/bin/matlab'
+
+# Easier to update
+#alias gg='scp -rv /Volumes/SSD/Space/playGround/meg/src_mne zuxfoucault@hpc.psy.ntu.edu.tw:/home/zuxfoucault/space/'
+
+
+test -e ${HOME}/.iterm2_shell_integration.zsh && source ${HOME}/.iterm2_shell_integration.zsh
+
+source ~/.iterm2_shell_integration.`basename $SHELL`
+
+# Login shell Tmux
+#[[ $- != *i* ]] && return¬
+#[[ -z "$TMUX" ]] && exec tmux new-session
