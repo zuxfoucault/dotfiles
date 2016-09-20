@@ -880,6 +880,8 @@ function! s:setupMarkup()
 endfunction
 au BufRead,BufNewFile *.{md,markdown,mdown,mkd,mkdn} call s:setupMarkup()
 
+
+
 "let g:indent_guides_auto_colors = 0
 "autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=red   ctermbg=3
 "autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=4
@@ -908,4 +910,5 @@ function SplitToLines() range
 endfunction
 
 " Add template automatically
-au BufNewFile N2016*0000.tex 0r /Volumes/SSD/googleDrive/papers/texNote/journal/template.tex
+"au BufNewFile N2016*0000.tex 0r /Volumes/SSD/googleDrive/papers/texNote/journal/template.tex
+au BufNewFile *.tex 0r /Volumes/SSD/googleDrive/papers/texNote/journal/template.tex

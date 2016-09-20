@@ -222,3 +222,7 @@ source ~/.iterm2_shell_integration.`basename $SHELL`
 # Login shell Tmux
 #[[ $- != *i* ]] && return¬
 #[[ -z "$TMUX" ]] && exec tmux new-session
+
+
+# setup java home
+export  JAVA_HOME="/Library/Internet Plug-Ins/JavaAppletPlugin.plugin/Contents/Home/"
