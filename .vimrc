@@ -58,7 +58,7 @@ fun! SetupVAM()
   " Tell VAM which plugins to fetch & load:
   call vam#ActivateAddons(['powerline', 'LaTeX-Suite_aka_Vim-LaTeX', 'ctrlp', 'Solarized', 'The_NERD_tree', 'vim-multiple-cursors', 'YouCompleteMe', 'Buffergator', 'fugitive', 'Screen_vim__gnu_screentmux', 'EasyMotion', 'Gundo' , 'yankstack', 'Syntastic','UltiSnips', 'vim-snippets', 'Python-mode-klen', 'jedi-vim', 'virtualenv', 'unimpaired', 'Tagbar', 'ack', 'surround', 'easytags', 'vim-misc', 'autocorrect', 'goyo', 'vim-textobj-quote', 'textobj-user', 'vim-lexical', 'limelight', 'vim-textobj-sentence', 'vim-wordy', 'MatlabFilesEdition', 'Tabular', 'vim-online-thesaurus', 'Indent_Guides', 'vim-signature', 'vim-expand-region'], {'auto_install' : 1})
 
-" sample: call vam#ActivateAddons(['pluginA','pluginB', 'LaTeX-Suite_aka_Vim-LaTeX' 'AutomaticLaTeXPlugin', 'Vim-R-plugin', 'Supertab', 'vim-online-thesaurus', 'python%790'...], {'auto_install' : 0})
+" sample: call vam#ActivateAddons(['pluginA','pluginB', , 'LaTeX-Suite_aka_Vim-LaTeX' 'AutomaticLaTeXPlugin', 'Vim-R-plugin', 'Supertab', 'vim-online-thesaurus', 'python%790'...], {'auto_install' : 0})
 
 " need self-updated: 'vim-lexical', 'limelight', 'vim-textobj-sentence', 'vim-wordy'
 
@@ -115,11 +115,23 @@ set t_Co=256 " Explicitly tell Vim that the terminal supports 256 colors 1210
 set fillchars+=stl:\ ,stlnc:\
 if !has('gui_macvim')
 	set term=xterm-256color
+	set mouse=a
 endif
 set termencoding=utf-8
 
 set wildmenu
-
+set wildmode=list:longest,full
+set wildignore+=.hg,.git,.svn                    " Version control
+set wildignore+=*.aux,*.out,*.toc                " LaTeX intermediate files
+set wildignore+=*.jpg,*.bmp,*.gif,*.png,*.jpeg   " binary images
+set wildignore+=*.o,*.obj,*.exe,*.dll,*.manifest " compiled object files
+set wildignore+=*.spl                            " compiled spelling word lists
+set wildignore+=*.sw?                            " Vim swap files
+set wildignore+=*.DS_Store                       " OSX bullshit
+set wildignore+=*.luac                           " Lua byte code
+set wildignore+=migrations                       " Django migrations
+set wildignore+=*.pyc                            " Python byte code
+set wildignore+=*.orig                           " Merge resolution files
 
 " The default for 'backspace' is very confusing to new users, so change it to a
 " more sensible value.  Add "set backspace&" to your ~/.vimrc to reset it.
@@ -158,7 +170,7 @@ set background=dark
 "set laststatus=2
 
 " vim-latex setting
-set grepprg=grep\ -nH\ $*
+"set grepprg=grep\ -nH\ $*
 let g:tex_flavor='latex'
 "let g:Tex_DefaultTargetFormat = 'pdf'
 "let g:Tex_CompileRule_pdf = 'latexmk -synctex=1 -pdf -pvc $*'
@@ -168,37 +180,41 @@ let g:tex_flavor='latex'
 "let g:atp_tab_map = 1
 "let g:atp_StatusLine=0
 
+
+
 " Ack.vim setting, using Ag
-nnoremap <silent><Leader>a :Ack!<space>
 let g:ackprg = 'ag --smart-case --nogroup --nocolor --column'
-"" Ack motions {{{
-"" Motions to Ack for things.  Works with pretty much everything, including:
-""   w, W, e, E, b, B, t*, f*, i*, a*, and custom text objects
-"" Awesome.
-"" Note: If the text covered by a motion contains a newline it won't work.  Ack
-"" searches line-by-line.
-"
-"nnoremap <silent> <leader>A :set opfunc=<SID>AckMotion<CR>g@
+" Ack motions {{{
+" Motions to Ack for things.  Works with pretty much everything, including:
+"   w, W, e, E, b, B, t*, f*, i*, a*, and custom text objects
+" Awesome.
+" Note: If the text covered by a motion contains a newline it won't work.  Ack
+" searches line-by-line.
+
+"nnoremap <silent><leader>a :set opfunc=<SID>AckMotion<CR>g@
 "xnoremap <silent> <leader>A :<C-U>call <SID>AckMotion(visualmode())<CR>
-"
+
+nnoremap <silent><leader>a :Ack! '\b<c-r><c-w>\b'<cr>
 "nnoremap <bs> :Ack! '\b<c-r><c-w>\b'<cr>
-"xnoremap <silent> <bs> :<C-U>call <SID>AckMotion(visualmode())<CR>
-"
-"function! s:CopyMotionForType(type)
-"    if a:type ==# 'v'
-"        silent execute "normal! `<" . a:type . "`>y"
-"    elseif a:type ==# 'char'
-"        silent execute "normal! `[v`]y"
-"    endif
-"endfunction
-"
-"function! s:AckMotion(type) abort
-"    let reg_save = @@
-"    call s:CopyMotionForType(a:type)
-"    execute "normal! :Ack! --literal " . shellescape(@@) . "\<cr>"
-"    let @@ = reg_save
-"endfunction
-"" }}}
+nnoremap <bs> :Ack! <c-r><c-w><cr>
+xnoremap <silent> <bs> :<C-U>call <SID>AckMotion(visualmode())<CR>
+nnoremap <silent><Leader>A :Ack!<space>
+
+function! s:CopyMotionForType(type)
+    if a:type ==# 'v'
+        silent execute "normal! `<" . a:type . "`>y"
+    elseif a:type ==# 'char'
+        silent execute "normal! `[v`]y"
+    endif
+endfunction
+
+function! s:AckMotion(type) abort
+    let reg_save = @@
+    call s:CopyMotionForType(a:type)
+    execute "normal! :Ack! --literal " . shellescape(@@) . "\<cr>"
+    let @@ = reg_save
+endfunction
+" }}}
 
 "let g:multi_cursor_use_default_mapping=0
 
@@ -210,6 +226,10 @@ set shiftwidth=4
 set tabstop=4
 set splitbelow
 set splitright
+"set textwidth=80
+"let &colorcolumn="80,".join(range(120,999),",")
+let &colorcolumn=80
+
 set spell spelllang=en_us
 "set spell
 set complete+=kspell
@@ -220,8 +240,36 @@ set complete+=kspell
 "set tags=./tags;
 "let g:easytags_dynamic_files = 1
 let g:easytags_ignored_filetypes = '^vim$'
+"let g:easytags_ignored_filetypes = '^tex$'
 let g:easytags_async = 1
+" ensure it checks the project specific tags file
+"let g:easytags_dynamic_files = 1
+" configure easytags to run ctags after saving the buffer
+"let g:easytags_events = ['BufWritePost']
+let g:easytags_auto_update = 0
+let g:easytags_by_filetype = '/Users/zuxfoucault/dotfiles/vimtags'
 " nnoremap ¨ :UpdateTags -R . " see gui_macvim
+
+"set tags+=tags
+set tags=./.tags;,~/dotfiles/vimtags/latex
+
+" Tagbar setting
+let g:tagbar_compact = 1
+let g:tagbar_type_tex = {
+    \ 'ctagstype' : 'tex2',
+    \ 'kinds'     : [
+        \ 'S:Sections',
+        \ 't:Topics',
+        \ 'g:Graphics:0:0',
+        \ 'l:Labels:0:0',
+        \ 'r:Refs:0:0',
+        \ 'p:Pagerefs:0:0',
+        \ 'T:Timestamps:0:0'
+    \ ],
+    \ 'sort'    : 0,
+\ }
+"    \ 'deffile' : expand('<sfile>:p:h:h') . '/ctags/latex.cnf'
+" avoid default Tex: c  chapters s  sections u  subsections b  subsubsections p  parts P  paragraphs G  subparagraphs l  labels
 
 " Fugitive setting
 "open the parent tree
@@ -236,6 +284,47 @@ autocmd BufReadPost fugitive://* set bufhidden=delete
 " {{{ CtrlP: default command to invoke CtrlP
 let g:ctrlp_cmd = 'CtrlPMRU'
 "let g:ctrlp_cmd = 'CtrlPMixed'
+
+"let g:ctrlp_dont_split = 'NERD_tree_2'
+"let g:ctrlp_jump_to_buffer = 0
+"let g:ctrlp_working_path_mode = 0
+"let g:ctrlp_match_window_reversed = 1
+"let g:ctrlp_split_window = 0
+"let g:ctrlp_max_height = 20
+"let g:ctrlp_extensions = ['tag']
+"
+"let g:ctrlp_map = '<leader>,'
+"nnoremap <leader>. :CtrlPTag<cr>
+"nnoremap <leader>E :CtrlP ../
+"
+"let g:ctrlp_prompt_mappings = {
+"\ 'PrtSelectMove("j")':   ['<c-j>', '<down>', '<s-tab>'],
+"\ 'PrtSelectMove("k")':   ['<c-k>', '<up>', '<tab>'],
+"\ 'PrtHistory(-1)':       ['<c-n>'],
+"\ 'PrtHistory(1)':        ['<c-p>'],
+"\ 'ToggleFocus()':        ['<c-tab>'],
+"\ }
+"
+"let ctrlp_filter_greps = "".
+"    \ "egrep -iv '\\.(" .
+"    \ "jar|class|swp|swo|log|so|o|pyc|jpe?g|png|gif|mo|po" .
+"    \ ")$' | " .
+"    \ "egrep -v '^(\\./)?(" .
+"    \ "deploy/|lib/|classes/|libs/|deploy/vendor/|.git/|.hg/|.svn/|.*migrations/|docs/build/" .
+"    \ ")'"
+"
+"let my_ctrlp_user_command = "" .
+"    \ "find %s '(' -type f -or -type l ')' -maxdepth 15 -not -path '*/\\.*/*' | " .
+"    \ ctrlp_filter_greps
+"
+"let my_ctrlp_git_command = "" .
+"    \ "cd %s && git ls-files --exclude-standard -co | " .
+"    \ ctrlp_filter_greps
+"
+"let my_ctrlp_ffind_command = "ffind --semi-restricted --dir %s --type e -B -f"
+"
+"let g:ctrlp_user_command = ['.git/', my_ctrlp_ffind_command, my_ctrlp_ffind_command]
+"
 " }}}
 
 "numbers setting
@@ -368,8 +457,8 @@ nnoremap <silent> K :NextWordy<cr>
 "noremap <C-H> :tabp<CR>
 nnoremap ; :
 nnoremap : ;
-"nnoremap p P
-"nnoremap P p
+nnoremap p P
+nnoremap P p
 noremap j gj
 noremap k gk
 noremap gj j
@@ -397,7 +486,7 @@ nnoremap Q 0yt=A<C-r>=<C-r>"<CR><Esc>
 nnoremap <silent><Leader>/ :execute 'vimgrep /'.@/.'/g %'<CR>:copen<CR>
 
 " Switching to the previously edited buffer "or :b#
-noremap <F10> <C-^>
+"noremap <F10> <C-^>
 
 " Ack for last search
 "nnoremap <silent><Leader>? :execute "Ack! '" . substitute(substitute(substitute(@/, "\\\\<", "\\\\b", ""), "\\\\>", "\\\\b", ""), "\\\\v", "", "") . "'"<CR>
@@ -424,27 +513,34 @@ if !has('gui_macvim')
 	"nnoremap Ω  mzzMzvzz1<c-e>`z:Pulse<cr>
 	"nnoremap Ω  mzzMzvzz`z:Pulse<cr>
 	nnoremap Ω  mzzMzvzz`z:call PulseCursorLine()<cr>
-	nnoremap ¨ :UpdateTags! -R .
+	"nnoremap ¨ :UpdateTags! -R .<CR>
+	nnoremap ¨ :UpdateTags! %<CR>
 	"update ctags
 	nnoremap ∂ :put =expand('%:p')<CR>
 	"put the file path
-	nnoremap ô :r !date<CR>
+	"nnoremap ô :r !date<CR>
+	"nnoremap ô :r !date "+\%\%>>\%Y\%m\%d \%H:\%M:\%S \%A \%Z"<CR>
 	"put the date-time info.
 	nnoremap ó :call Aasa()<CR>
 	"init auto save
 else
 	"nnoremap <M-z> mzzMzvzz1<c-e>`z:Pulse<cr>
 	"nnoremap <M-z> mzzMzvzz`z:Pulse<cr>
-	nnoremap <M-z> mzzMzvzz`z:call PulseCursorLine()<cr>
-	nnoremap <M-u> :UpdateTags! -R .<CR>
+	nnoremap <M-z> mzzMzvzz10<c-e>`z:call PulseCursorLine()<cr>
+	"nnoremap <M-u> :UpdateTags! -R .<CR>
+	nnoremap <M-u> :UpdateTags! %<CR>
 	"update ctags
-	nnoremap <M-d> :put =expand('%:p')<CR> 
+	nnoremap <M-d> :put =expand('%:p')<CR>
 	"put the file path
-	nnoremap <M-t> :r !date<CR>
+	"nnoremap <M-t> :r !date<CR>
+	"nnoremap <M-t> :r !date "+\%\%>>\%Y\%m\%d \%H:\%M:\%S \%A \%Z"<CR>
 	"put the date-time info.
 	nnoremap <M-s> :call Aasa()<CR>
 	"init auto save
 endif
+
+nnoremap <F10> :r !date "+\%\%>>\%Y\%m\%d \%H:\%M:\%S \%A \%Z"<CR>o
+
 
 " Pulse Line {{{
 function! s:Pulse() " {{{
@@ -541,6 +637,8 @@ nnoremap <F8> :TagbarToggle<CR>
 "Syntastic
 noremap <F1> :SyntasticReset<CR>
 inoremap <F1> <ESC>:SyntasticReset<CR>
+" Temporarily disable checker
+"let g:syntastic_check_on_wq = 0
 
 " invoke EasyMotion <Leader><Leader>
 "map <F4> <Leader><Leader>
@@ -638,7 +736,7 @@ if has('gui_macvim')
 "set guifont==Monaco:h26
 "set guifont=Menlo\ Regular:h24
 "set guifont=Consolas:h28
-set guifont=Anonymous\ Pro:h32
+set guifont=Anonymous\ Pro:h30
 
 "MacVim: switch OSX windows with swipes
 "nnoremap <silent> <SwipeLeft> :macaction _cycleWindowsBackwards:<CR>
@@ -652,6 +750,17 @@ endif
 
 setlocal foldmethod=marker
 
+
+" Function of open non-text file from vim; map with `gl`
+" Note: `gf` will open text in new window
+" Note: `gx` will open web hyperlink in browser
+function OpenNonTextFile()
+	let line = getline('.')
+	"let line = substitute(line, '\a', "*", "g")
+	"execute "silent !open " . line
+	execute "!open " . line
+endfunction
+nnoremap gl :call OpenNonTextFile()<CR>
 
 " auto-save while text changed {{{
 fun Aasa()
@@ -718,7 +827,9 @@ command W :execute ':silent w !sudo tee % > /dev/null' | :edit!
 " Omni completion 
 set omnifunc=syntaxcomplete#Complete
 
-set tags+=tags
+
+" vim-signature; taking out `z` for pulse usage
+let g:SignatureIncludeMarks = 'abcdefghijklmnopqrstuvwxyABCDEFGHIJKLMNOPQRSTUVWXYZ'
 
 " Highlight Word {{{
 " This mini-plugin provides a few mappings for highlighting words temporarily.
@@ -871,6 +982,40 @@ function! NerdPreviewToggle()
   endif
 endfunction
 "}}}
+
+
+" Automated Working Directories Jumping with Fuzzy Search
+" Ref: http://inlehmansterms.net/2014/09/04/sane-vim-working-directories/
+" follow symlinked file
+function! FollowSymlink()
+  let current_file = expand('%:p')
+  " check if file type is a symlink
+  if getftype(current_file) == 'link'
+    " if it is a symlink resolve to the actual file path
+    "   and open the actual file
+    let actual_file = resolve(current_file)
+    silent! execute 'file ' . actual_file
+  end
+endfunction
+
+" set working directory to git project root
+" or directory of current file if not git project
+function! SetProjectRoot()
+  " default to the current file's directory
+  lcd %:p:h
+  let git_dir = system("git rev-parse --show-toplevel")
+  " See if the command output starts with 'fatal' (if it does, not in a git repo)
+  let is_not_git_dir = matchstr(git_dir, '^fatal:.*')
+  " if git project, change local directory to git project root
+  if empty(is_not_git_dir)
+    lcd `=git_dir`
+  endif
+endfunction
+
+" follow symlink and set working directory
+autocmd BufRead *
+  \ call FollowSymlink() |
+  \ call SetProjectRoot()
 
 
 " Setup markdown preview

@@ -18,13 +18,30 @@ syntax sync fromstart
 " Original
 "syntax match vimlinknotesTopic /+++[A-Za-z0-9_\.]\+\>/
 "syntax match vimlinknotesDef   /^%%%[ \t]*[A-Za-z0-9_\.]\+\>/ contains=esp
-"syntax match vimlinknotesHead /|||[A-Za-z0-9]\+\>.*/ 
+"syntax match vimlinknotesHead /|||[A-Za-z0-9]\+\>.*/
 "syntax match texDelimiter /%||[A-Za-z0-9]\+\>.*/ "could consider use texDelimiter group
 
-syntax match texStatement /%||[A-Za-z0-9]\+\>.*/
-syntax match texStatement /%++[A-Za-z0-9_\.]\+\>/
-syntax match texStatement   /^%%%[ \t]*[A-Za-z0-9_\.]\+\>/
 
+"texTypeStyle: syntax color: yellow
+"texDelimiter: syntax color: red
+"texStatement: syntax color: bule green
+"texNewEnv: syntax color: green
+"syntax match texNewEnv /%||[A-Za-z0-9]\+\>.*/
+"syntax match texStatement /%++[A-Za-z0-9_\.]\+\>/
+"syntax match texDelimiter /^%%%[ \t]*[A-Za-z0-9_\.]\+\>/
+
+
+"All colors
+" http://www.calmar.ws/vim/256-xterm-24bit-rgb-color-chart.html
+hi def greenTex guifg=#00af00 ctermfg=34
+hi def orangeTex guifg=#af5f00 ctermfg=130
+hi def magentaTex guifg=#870087 ctermfg=90
+hi def blueTex guifg=#0087ff ctermfg=33
+syntax cluster texFoldGroup add=greenTex,orangeTex,magentaTex,blueTex
+syntax match greenTex /%||[A-Za-z0-9]\+\>.*/
+syntax match orangeTex /%++[A-Za-z0-9_\.]\+\>/
+syntax match magentaTex /^%%%[ \t]*[A-Za-z0-9_\.]\+\>/
+syntax match blueTex /^%>>.*/
 
 " topic and head match difference: topic as linking tags best as single words,
 " and Head as defining search tags for ag, it's better to make multiple words

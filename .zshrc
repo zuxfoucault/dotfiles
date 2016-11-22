@@ -86,7 +86,7 @@ function zz() {fasd_cd -d -i $1; l;}
 alias l='ls -law'
 alias lu='ls -altuw'
 alias vimnote='mvim `date +N%Y%m%d%H%M%S`.tex'
-alias vimdate='mvim `date +N%Y%m%d`000000.tex'
+alias m='mvim `date +N%Y%m%d`000000.tex'
 #alias vimnote='mvim `date +N%Y%m%d%H%M%S`.md'
 #alias vimdate='mvim `date +N%Y%m%d`000000.md'
 alias vimvo='mvim `date +V%Y%m%d`000000.tex'

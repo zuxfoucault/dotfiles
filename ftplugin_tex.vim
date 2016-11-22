@@ -11,8 +11,8 @@
 "setlocal wildignore=*.log,*.aux,*.bbl,*.out
 
 " turn spell checking on
-set spelllang=en_us spell
-setlocal spell
+"set spelllang=en_us spell
+"setlocal spell
 
 "if has('gui_macvim')
 " let the option key act as the "meta" key for vim-ltex completions
@@ -23,43 +23,58 @@ setlocal spell
 "endif
 
 " Before you start with Latex-Suite's completion function...
-"setlocal grepprg=grep\ -nH\ $*
-
+setlocal grepprg=grep\ -nH\ $*
 set iskeyword+=:
 "setlocal iskeyword+=:,- "for pattern like “fig:design-diagram,”
 
 " *********** FOR USE WITH SKIM ETC.
 " http://mactex-wiki.tug.org/wiki/index.php/SyncTeX
 "--remote-silent +":%line;foldo!" "%file"
-let g:Tex_DefaultTargetFormat = 'pdf'
- 
-"let g:Tex_TreatMacViewerAsUNIX = '1'
 
-let g:Tex_CompileRule_dvi = 'latex --interaction=nonstopmode $*'
-let g:Tex_CompileRule_ps = 'dvips -Pwww -o $*.ps $*.dvi'
-let g:Tex_CompileRule_pspdf = 'ps2pdf $*.ps'
-let g:Tex_CompileRule_dvipdf = 'dvipdfm $*.dvi'
+" Comment the following one will cause some of the ext .tex not function
+"let g:tex_flavor='latex'
+"let g:tex_flavor='vimlatex'
+"let g:Tex_DefaultTargetFormat = 'pdf'
+
+" for ,<leader>ls
+let g:Tex_TreatMacViewerAsUNIX = '1'
+
+"let g:Tex_DefaultTargetFormat = 'pdf'
+
+"let g:Tex_CompileRule_dvi = 'latex --interaction=nonstopmode $*'
+"let g:Tex_CompileRule_ps = 'dvips -Pwww -o $*.ps $*.dvi'
+"let g:Tex_CompileRule_pspdf = 'ps2pdf $*.ps'
+"let g:Tex_CompileRule_dvipdf = 'dvipdfm $*.dvi'
+
 "let g:Tex_CompileRule_pdf = 'pdflatex -synctex=1 --interaction=nonstopmode $*'
 "let g:Tex_CompileRule_pdf = 'latexmk -synctex=1 --interaction=nonstopmode $*'
 "let g:Tex_CompileRule_pdf = 'latexmk  -pdf $*'
 let g:Tex_CompileRule_pdf = 'latexmk $*'
  
-let g:Tex_ViewRule_dvi = 'texniscope'
+"let g:Tex_ViewRule_dvi = 'texniscope'
 "let g:Tex_ViewRule_ps = 'Preview'
-let g:Tex_ViewRule_ps = 'Skim'
+"let g:Tex_ViewRule_dvi = 'Skim'
+"let g:Tex_ViewRule_ps = 'Skim'
 let g:Tex_ViewRule_pdf = 'Skim'
+"let g:Tex_ViewRuleComplete_pdf = 'Skim'
+"let g:Tex_ViewRuleComplete_pdf = 'open -a /Applications/Skim.app $*'
 "let g:Tex_ViewRuleComplete_pdf = 'start open -a Skim.app "$*.pdf" &' "not
 "worked
 
-let g:Tex_FormatDependency_ps  = 'dvi,ps'
-let g:Tex_FormatDependency_pspdf = 'dvi,ps,pspdf'
-let g:Tex_FormatDependency_dvipdf = 'dvi,dvipdf'
+"let g:Tex_FormatDependency_ps  = 'dvi,ps'
+"let g:Tex_FormatDependency_pspdf = 'dvi,ps,pspdf'
+"let g:Tex_FormatDependency_dvipdf = 'dvi,dvipdf'
 "let g:Tex_MultipleCompileFormats = 'dvi,pdf'
+"let g:Tex_MultipleCompileFormats = 'pdf'
 " multiple compile seems kind of buggy
-let g:Tex_MultipleCompileFormats = ''
+"let g:Tex_MultipleCompileFormats = ''
 
-" don't move the main window around after compiling
-let g:Tex_GotoError = 0
+"map <leader>ls :w<CR>:silent !make <CR>:silent !/Applications/Skim.app/Contents/SharedSupport/displayline -r <C-r>=line('.')<CR> %<.pdf %<CR><CR>
+"let g:vimtex_view_general_viewer = '/Applications/Skim.app/Contents/SharedSupport/displayline'
+"let g:vimtex_view_general_options = '-r @line @pdf @tex'
+
+" don't move the main window around after compiling; if 0
+let g:Tex_GotoError = 1
 
 " Ignore missing references too
 let g:Tex_IgnoredWarnings =
@@ -127,7 +142,11 @@ map <D-e> ;only<CR>
 
 if has('gui_macvim')
 nmap <D-i> ;TTemplate<CR>
+" Modify: add :se paste in
+" after/ftplugin/latex-suite/templates.vim
+" To avoid indention while insert template
 endif
+"let g:tex_indent_brace=0
 
 " ************
 

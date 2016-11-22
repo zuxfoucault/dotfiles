@@ -2,7 +2,7 @@
 
 call IMAP('SPA', '\part{', 'tex')
 call IMAP('SCH', '\chapter{', 'tex')
-call IMAP('SSE', '\section{', 'tex')
+call IMAP('SSC', '\section{', 'tex')
 call IMAP('SSS', '\subsection{', 'tex')
 call IMAP('SS2', '\subsubsection{', 'tex')
 call IMAP('SPG', '\paragraph{', 'tex')

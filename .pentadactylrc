@@ -43,4 +43,5 @@ hi FontFixed -a font-size:18px !important; font-family:"Menlo" !important;
 "hi FontFixed -a font-size:20px !important; font-family:"Helvetica" !important;
 set guioptions+=N
 
+set editor='mvim -f +<line> +"sil! call cursor(0, <column>)" <file>'
 " vim: set ft=pentadactyl:
