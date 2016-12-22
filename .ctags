@@ -5,7 +5,7 @@
 --langdef=tex2
 --regex-tex2=/^%%%[ \t]*([A-za-z0-9_]+)/\1/l,label/
 --regex-tex2=/^%\+\+[ \t]*([A-za-z0-9_]+)/\1/r,ref/
---regex-tex2=/%\|\|[ \t]*([A-Za-z0-9_[:space:]]+)/\1/t,topic/
+--regex-tex2=/%\|\|[ \t]*([^}]+)/\1/t,topic/
 --regex-tex2=/%\>\>[ \t]*([^}]+)/\1/T,timestamp/
 
 --regex-tex2=/^\\tableofcontents/TABLE OF CONTENTS/S,toc/

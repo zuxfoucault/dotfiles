@@ -156,10 +156,6 @@ set background=dark
 " remap ESC
 "inoremap ii <Esc>
 
-" Yank text to the OS X clipboard
- noremap <leader>y "*y
- noremap <leader>yy "*Y
-
 " Preserve indentation while pasting text from the OS X clipboard
 " noremap <leader>p :set paste<CR>:put  *<CR>:set nopaste<CR>
 
@@ -453,12 +449,22 @@ nnoremap <silent> K :NextWordy<cr>
 "noremap <C-K> :bprev<CR>
 "noremap <C-J> <C-W>w
 "noremap <C-K> <C-W>p
-"noremap <C-L> :tabn<CR>
 "noremap <C-H> :tabp<CR>
+"noremap <C-L> :tabn<CR>
+
+" yankstack: key binding affected by yankstack;
+call yankstack#setup()
+nnoremap p gp
+nnoremap P gP
+nnoremap gp p
+nnoremap gP P
+
+" Yank text to the OS X clipboard
+ noremap <leader>y "*y
+ noremap <leader>yy "*Y
+
 nnoremap ; :
 nnoremap : ;
-nnoremap p P
-nnoremap P p
 noremap j gj
 noremap k gk
 noremap gj j
@@ -639,6 +645,9 @@ noremap <F1> :SyntasticReset<CR>
 inoremap <F1> <ESC>:SyntasticReset<CR>
 " Temporarily disable checker
 "let g:syntastic_check_on_wq = 0
+" For :lnext and :lprev to work
+let g:syntastic_always_populate_loc_list = 1
+"let g:syntastic_full_redraws
 
 " invoke EasyMotion <Leader><Leader>
 "map <F4> <Leader><Leader>
@@ -1014,8 +1023,8 @@ endfunction
 
 " follow symlink and set working directory
 autocmd BufRead *
-  \ call FollowSymlink() |
   \ call SetProjectRoot()
+"  \ call FollowSymlink() |
 
 
 " Setup markdown preview
@@ -1056,4 +1065,12 @@ endfunction
 
 " Add template automatically
 "au BufNewFile N2016*0000.tex 0r /Volumes/SSD/googleDrive/papers/texNote/journal/template.tex
-au BufNewFile *.tex 0r /Volumes/SSD/googleDrive/papers/texNote/journal/template.tex
+"au BufNewFile *.tex 0r /Volumes/SSD/googleDrive/papers/texNote/journal/template.tex
+au BufNewFile *.tex
+	\ if expand('%:p') =~ '/Volumes/SSD/googleDrive/papers/texNote/journal/N20.*0000' |
+	\ 0r /Volumes/SSD/googleDrive/papers/texNote/journal/templateJournal.tex |
+	\ execute 'r !date "+\%\%>>\%Y\%m\%d \%H:\%M:\%S \%A \%Z"' |
+	\ execute "normal! j" | start |
+	\ else |
+	\ 0r /Volumes/SSD/googleDrive/papers/texNote/journal/template.tex |
+	\ endif

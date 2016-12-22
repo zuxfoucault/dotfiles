@@ -49,7 +49,9 @@ COMPLETION_WAITING_DOTS="true"
 # Uncomment following line if you don't want greedy autocomplete
 setopt MENU_COMPLETE
 
-plugins=(zsh-autosuggestions git git-extras wd fasd osx vi-mode python brew zsh-syntax-highlighting history-substring-search colorize)
+plugins=(zsh-autosuggestions git git-extras wd fasd osx vi-mode python brew zsh-syntax-highlighting history-substring-search colorize colored-man-pages_mod)
+
+
 source $ZSH/oh-my-zsh.sh
 source /Users/zuxfoucault/.oh-my-zsh/custom/plugins/opp.zsh/opp.zsh
 source /Users/zuxfoucault/.oh-my-zsh/custom/plugins/opp.zsh/opp/*.zsh
@@ -116,6 +118,14 @@ alias tkss='tmux kill-session -t'
 # Homemade Growl
 alias growl='echo iterm2done'
 
+# LESS
+# Enable syntax-highlighting in less.
+# brew install source-highlight
+LESSPIPE=`which src-hilite-lesspipe.sh`
+export LESSOPEN="| ${LESSPIPE} %s"
+export LESS=' -R -X -F '
+alias less='less -m -N -g -i -J --underline-special --SILENT'
+
 
 #typeset -A abbreviations
 #abbreviations=(
@@ -145,6 +155,16 @@ bindkey '^R' history-incremental-search-backward
 bindkey '^S' history-incremental-search-forward
 bindkey '^P' history-search-backward
 bindkey '^N' history-search-forward
+
+
+# Task Completion Notification
+function f_notifyme {
+  LAST_EXIT_CODE=$?
+  CMD=$(fc -ln -1)
+  # No point in waiting for the command to complete
+  notifyme.sh "$CMD" "$LAST_EXIT_CODE" &
+}
+export PS1='$(f_notifyme)'$PS1
 
 
 ### Added by the Heroku Toolbelt

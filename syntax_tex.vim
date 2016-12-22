@@ -58,3 +58,10 @@ syntax match blueTex /^%>>.*/
 
 "syn sync maxlines=200
 "syn sync minlines=50
+
+
+" Try to resolve interference between cursorline and SpellBad undercurl;
+" Still working
+"hi SpellBad     guisp=Firebrick2 gui=undercurl
+"hi SpellBad     guisp=#c03000 gui=undercurl
+"hi SpellBad     guifg=NONE guibg=NONE guisp=#0087ff gui=undercurl

@@ -11,7 +11,9 @@
 \usepackage[sorting=nyt,style=apa,backend=biber]{biblatex}
 \DeclareLanguageMapping{american}{american-apa}
 %\addbibresource{~/bibtexData/MEG.bib}
-%\bibliography{~/bibtexData/MEG.bib}
+%% Modify “Bibliography” to “References”
+\defbibheading{references}[\refname]{\section*{\centering#1}\markboth{#1}{#1}}
+\bibliography{~/bibtexData/MEG.bib}
 
 % default: pdfLaTeX
 %\usepackage[american]{babel}
@@ -55,12 +57,22 @@
 	postaction = {draw,line width=1.4pt, white,shorten >= 4.5pt}]
 \tikzstyle{innerWhite} = [semithick, white,line width=1.4pt, shorten >= 4.5pt]
 
+\newcommand\mybox[2][]{\tikz[overlay]\node[fill=blue!20,inner sep=2pt, anchor=text, rectangle, rounded corners=1mm,#1] {#2};\phantom{#2}}
+%http://tex.stackexchange.com/questions/36401/drawing-boxes-around-words
+
 %\usepackage{footmisc}
 
 %\usepackage{amsmath}
 
 \usepackage[breaklinks]{hyperref}
 \usepackage[normalem]{ulem}
+
+
+% Color wave underline
+\makeatletter
+\newcommand\colorwave[1][blue]{\bgroup \markoverwith{\lower3.5\p@\hbox{\sixly \textcolor{#1}{\char58}}}\ULon}
+\font\sixly=lasy6 % does not re-load if already loaded, so no memory problem.
+\makeatother
 
 
 \usepackage{fancyhdr}
@@ -90,8 +102,11 @@
 %: for tabular line
 \usepackage{arydshln}
 
-%: ref
+
+% Intelligent cross-referencing
 %\usepackage{cleveref}
+
+% Typography of the Table of Contents, List of Figures and List of Tables
 %\usepackage{tocloft}
 
 
@@ -118,13 +133,18 @@
 %\renewcommand*{\chapterheadstartvskip}{\vspace*{0cm}}
 %\renewcommand*{\chapterheadendvskip}{\vspace{0cm}}
 \renewcommand*{\chapterheadstartvskip}{\vspace*{-\topskip}}
-\renewcommand{\chapterheadstartvskip}{\vspace *{-\baselineskip }}
+\renewcommand{\chapterheadstartvskip}{\vspace*{-\baselineskip}}
 
 \usepackage{titlesec}
 \titlespacing*{\section}{0pt}{1ex plus 1ex minus .2ex}{1ex plus .2ex}
 %\titlespacing*{\subsection}{0pt}{5.5ex plus 1ex minus .2ex}{4.3ex plus .2ex}
 %\titlespacing\subsubsection{0pt}{12pt plus 4pt minus 2pt}{0pt plus 2pt minus 2pt}
 
+\usepackage{wrapfig}
+\usepackage{graphicx}
+\graphicspath{{./}}
+%\graphicspath{{../}}
+\DeclareGraphicsExtensions{.png}
 
 %: 1. begin document
 \begin{document}
@@ -142,10 +162,14 @@
 %\currentpage
 %\pagediagram
 %\pagevalues
-%\layout %>>>
+%\layout %\>>>
 
 \begin{spacing}{1}
-	\section{<++>}
+	\chapter{\href{run:/
+<++>
+}{
+<++>
+}}
 \end{spacing}
 <++>
 \end{document}

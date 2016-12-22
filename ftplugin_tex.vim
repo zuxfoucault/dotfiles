@@ -85,7 +85,8 @@ let g:Tex_IgnoredWarnings =
 	\'Missing number, treated as zero.'."\n".
 	\'There were undefined references'."\n".
 	\'Citation %.%# undefined'."\n".
-	\'Reference %.%# undefined'
+	\'Reference %.%# undefined'."\n".
+	\'LaTeX Font Warning'
 
 let g:Tex_IgnoreLevel = 8
 
@@ -94,6 +95,8 @@ let g:Tex_UseMakefile = 0
 
 "let g:Tex_Debug = 1
 "let g:Tex_DebugLog = '~/vimlatex.log'
+
+let g:Tex_SmartKeyQuote = 0
 
 " ************
 
@@ -176,6 +179,8 @@ call IMAP('TBF', '\textbf{', 'tex')
 call IMAP('PSSE', '\begin{spacing}{1}\section{<++>}\end{spacing}', 'tex')
 call IMAP('HRF', '\href{<++>}{<++>}<++>', 'tex')
 call IMAP('UUL', '\url{<++>}<++>', 'tex')
+call IMAP('TODO:', '{\color{Yellow}TODO: }', 'tex')
+
 
 "call IMAP('EFI', "\\begin{figure}[htb]\<cr>\\centering\<cr>\\includegraphics[width=3in]{<+file+>}\<cr>\\caption{<+caption text+>}\<cr>\\label{fig:<+label+>}\<cr>\\end{figure}<++>", "tex")
 "call IMAP('ESU', '\subfloat[<++>]{% <++>% }% <++>', 'tex')
