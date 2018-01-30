@@ -5,8 +5,8 @@
 --langdef=tex2
 --regex-tex2=/^%%%[ \t]*([A-za-z0-9_]+)/\1/l,label/
 --regex-tex2=/^%\+\+[ \t]*([A-za-z0-9_]+)/\1/r,ref/
---regex-tex2=/%\|\|[ \t]*([^}]+)/\1/t,topic/
---regex-tex2=/%\>\>[ \t]*([^}]+)/\1/T,timestamp/
+--regex-tex2=/%\|\|[ \t]*(.*)/\1/t,topic/
+--regex-tex2=/%\>\>[ \t]*(.*)/\1/T,timestamp/
 
 --regex-tex2=/^\\tableofcontents/TABLE OF CONTENTS/S,toc/
 --regex-tex2=/^\\frontmatter/FRONTMATTER/S,frontmatter/
@@ -15,10 +15,10 @@
 --regex-tex2=/^\\bibliography\{/BIBLIOGRAPHY/S,bibliography/
 --regex-tex2=/^\\part[[:space:]]*(\[[^]]*\])?[[:space:]]*\{([^}]+)\}/PART \2/S,part/
 --regex-tex2=/^\\part[[:space:]]*\*[[:space:]]*\{([^}]+)\}/PART \1/S,part/
---regex-tex2=/^\\chapter[[:space:]]*(\[[^]]*\])?[[:space:]]*\{([^}]+)\}/CHAP \2/S,chapter/
---regex-tex2=/^\\chapter[[:space:]]*\*[[:space:]]*\{([^}]+)\}/CHAP \1/S,chapter/
---regex-tex2=/^\\section[[:space:]]*(\[[^]]*\])?[[:space:]]*\{([^}]+)\}/\. \2/S,section/
---regex-tex2=/^\\section[[:space:]]*\*[[:space:]]*\{([^}]+)\}/\. \1/S,section/
+--regex-tex2=/^\\chapter[[:space:]]*(\[[^]]*\])?[[:space:]]*\{([^}]*[[:space:]]*[^}]*[[:space:]]*[^}]*)\}/CHAP \2/S,chapter/{_multiline=2}
+--regex-tex2=/^\\chapter[[:space:]]*\*[[:space:]]*\{([^}]*[[:space:]]*[^}]*[[:space:]]*[^}]*)\}/CHAP \1/S,chapter/{_multiline=1}
+--regex-tex2=/^\\section[[:space:]]*(\[[^]]*\])?[[:space:]]*\{([^}]*[[:space:]]*[^}]*[[:space:]]*[^}]*)\}/\. \2/S,section/{_multiline=2}
+--regex-tex2=/^\\section[[:space:]]*\*[[:space:]]*\{([^}]*[[:space:]]*[^}]*[[:space:]]*[^}]*)\}/\. \1/S,section/{_multiline=1}
 --regex-tex2=/^\\subsection[[:space:]]*(\[[^]]*\])?[[:space:]]*\{([^}]+)\}/\.\. \2/S,subsection/
 --regex-tex2=/^\\subsection[[:space:]]*\*[[:space:]]*\{([^}]+)\}/\.\. \1/S,subsection/
 --regex-tex2=/^\\subsubsection[[:space:]]*(\[[^]]*\])?[[:space:]]*\{([^}]+)\}/\.\.\. \2/S,subsubsection/
@@ -32,4 +32,3 @@
 --regex-tex2=/\\pageref[[:space:]]*\{([^}]+)\}/\1/p,pageref/
 
 --regex-make=/^([^:# \t]+)[ \t]*[:]{1,2}/\1/t,targets/
-

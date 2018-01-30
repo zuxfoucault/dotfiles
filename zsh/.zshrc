@@ -44,12 +44,12 @@ ZSH_THEME="at0915"
 #DISABLE_CORRECTION="true"
 
 # Uncomment following line if you want red dots to be displayed while waiting for completion
-COMPLETION_WAITING_DOTS="true"
+#COMPLETION_WAITING_DOTS="true"
 
 # Uncomment following line if you don't want greedy autocomplete
 setopt MENU_COMPLETE
 
-plugins=(zsh-autosuggestions git git-extras wd fasd osx vi-mode python brew zsh-syntax-highlighting history-substring-search colorize colored-man-pages_mod)
+plugins=(git git-extras wd fasd osx vi-mode python history-substring-search colorize colored-man-pages_mod zsh-autosuggestions zsh-syntax-highlighting)
 
 
 source $ZSH/oh-my-zsh.sh
@@ -96,11 +96,15 @@ alias vimvo='mvim `date +V%Y%m%d`000000.tex'
 alias ag='ag -S'
 #alias vv='f -e mvim'
 alias v='LC_CTYPE=C LANG=C f -t -i -e mvim -b viminfo'
+alias vv='LC_CTYPE=C LANG=C f -t -i -e vim -b viminfo'
 #alias v='f -t -i -e mvim -b viminfo'
 #unalias v
 #function v() {export LC_CTYPE=C LANG=C; f -t -e mvim -b viminfo $1; unset LC_CTYPE=C LANG=C} #can't work
 alias mm='mvim'
 alias mynetcon='sudo lsof -n -P -i +c 15'
+alias tt='open -a TexShop'
+alias mkmk='mkdir `date +R%Y%m%d`'
+alias mkm='mkdir `date +%Y%m%d`'
 
 # For tmux
 #alias tmn='tmux new -s $(basename $(pwd))'
@@ -118,15 +122,20 @@ alias tkss='tmux kill-session -t'
 # Homemade Growl
 alias growl='echo iterm2done'
 
-# LESS
-# Enable syntax-highlighting in less.
-# brew install source-highlight
-LESSPIPE=`which src-hilite-lesspipe.sh`
-export LESSOPEN="| ${LESSPIPE} %s"
-export LESS=' -R -X -F '
-alias less='less -m -N -g -i -J --underline-special --SILENT'
+# LESS; Enable syntax-highlighting in less.
+#LESSPIPE=`which src-hilite-lesspipe.sh`
+#export LESSOPEN="| ${LESSPIPE} %s"
+export LESSOPEN="| source-highlight -f esc-solarized --style-file=esc-solarized.style -i %s -o STDOUT"
+export LESS='-R -X -F -PmL\:%lt-%lb/%L(%Pt-%Pb\%) B\:%bt-%bb(%pt-%pb\%)/%B F\:%f'
+alias le='less -m -N -g -i -J --underline-special --SILENT'
 
 
+# MacOS quick look
+alias ql='qlmanage -p'
+
+
+# turbovnc_bcc
+alias turbovnc_bcc='ssh -L 5901:localhost:5901 bc@10.20.12.240'
 #typeset -A abbreviations
 #abbreviations=(
 #	"skim" "-a /Applications/Skim.app"
@@ -213,16 +222,11 @@ bindkey -M vicmd 'j' history-substring-search-down
 # Setup zsh-autosuggestions
 #source /Users/zuxfoucault/.oh-my-zsh/custom/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 
-# Enable autosuggestions automatically
-#zle-line-init() {
-#    zle autosuggest-start
-#}
-#zle -N zle-line-init
-
 
 # use ctrl+t to toggle autosuggestions(hopefully this wont be needed as
 # zsh-autosuggestions is designed to be unobtrusive)
-bindkey '^T' autosuggest-toggle
+bindkey '^F' autosuggest-clear
+bindkey '^j' autosuggest-accept
 bindkey '^f' vi-forward-blank-word
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=34"
 #AUTOSUGGESTION_HIGHLIGHT_COLOR="fg=34"
@@ -234,6 +238,7 @@ eval "$(rbenv init -)"
 # Easier to update
 #alias gg='scp -rv /Volumes/SSD/Space/playGround/meg/src_mne zuxfoucault@hpc.psy.ntu.edu.tw:/home/zuxfoucault/space/'
 
+alias cn4='mosh hpc.psy.ntu.edu.tw -- ssh cn4'
 
 test -e ${HOME}/.iterm2_shell_integration.zsh && source ${HOME}/.iterm2_shell_integration.zsh
 
@@ -246,3 +251,9 @@ source ~/.iterm2_shell_integration.`basename $SHELL`
 
 # setup java home
 export  JAVA_HOME="/Library/Internet Plug-Ins/JavaAppletPlugin.plugin/Contents/Home/"
+
+# added by Miniconda3 4.3.21 installer
+export PATH="/Volumes/SSD/Space/miniconda3/bin:$PATH"
+
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

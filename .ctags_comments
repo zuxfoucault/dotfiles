@@ -1,0 +1,29 @@
+
+--regex-tex2=/%\|\|[ \t]*([A-Za-z0-9_[:space:]]+)/\1/t,topic/
+
+
+--regex-latex=/^\\part[[:space:]]*(\[[^]]*\])?[[:space:]]*\{([^}]+)\}/PART \2/s,part/
+--regex-latex=/^\\part[[:space:]]*\*[[:space:]]*\{([^}]+)\}/PART \1/s,part/
+--regex-latex=/^\\chapter[[:space:]]*(\[[^]]*\])?[[:space:]]*\{([^}]+)\}/CHAP \2/s,chapter/
+--regex-latex=/^\\chapter[[:space:]]*\*[[:space:]]*\{([^}]+)\}/CHAP \1/s,chapter/
+--regex-latex=/^\\section[[:space:]]*(\[[^]]*\])?[[:space:]]*\{([^}]+)\}/\. \2/s,section/
+--regex-latex=/^\\section[[:space:]]*\*[[:space:]]*\{([^}]+)\}/\. \1/s,section/
+--regex-latex=/^\\subsection[[:space:]]*(\[[^]]*\])?[[:space:]]*\{([^}]+)\}/\.\. \2/s,subsection/
+--regex-latex=/^\\subsection[[:space:]]*\*[[:space:]]*\{([^}]+)\}/\.\. \1/s,subsection/
+--regex-latex=/^\\subsubsection[[:space:]]*(\[[^]]*\])?[[:space:]]*\{([^}]+)\}/\.\.\. \2/s,subsubsection/
+--regex-latex=/^\\subsubsection[[:space:]]*\*[[:space:]]*\{([^}]+)\}/\.\.\. \1/s,subsubsection/
+--regex-latex=/^\\includegraphics[[:space:]]*(\[[^]]*\])?[[:space:]]*(\[[^]]*\])?[[:space:]]*\{([^}]+)\}/\3/g,graphic+listing/
+--regex-latex=/^\\lstinputlisting[[:space:]]*(\[[^]]*\])?[[:space:]]*(\[[^]]*\])?[[:space:]]*\{([^}]+)\}/\3/g,graphic+listing/
+--regex-latex=/\\label[[:space:]]*\{([^}]+)\}/\1/l,label/
+--regex-latex=/\\ref[[:space:]]*\{([^}]+)\}/\1/r,ref/
+--regex-latex=/\\pageref[[:space:]]*\{([^}]+)\}/\1/p,pageref/
+--regex-make=/^([^:# \t]+)[ \t]*[:]{1,2}/\1/t,targets/
+
+
+Mon Dec 26 18:38:06 CST 2016
+before add support for multiline regex parser
+--regex-tex2=/^\\chapter[[:space:]]*(\[[^]]*\])?[[:space:]]*\{([^}]+)\}/CHAP \2/S,chapter/
+--regex-tex2=/^\\chapter[[:space:]]*\*[[:space:]]*\{([^}]+)\}/CHAP \1/S,chapter/
+--regex-tex2=/^\\section[[:space:]]*(\[[^]]*\])?[[:space:]]*\{([^}]+)\}/\. \2/S,section/
+--regex-tex2=/^\\section[[:space:]]*\*[[:space:]]*\{([^}]+)\}/\. \1/S,section/
+

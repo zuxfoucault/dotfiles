@@ -98,6 +98,10 @@ let g:Tex_UseMakefile = 0
 
 let g:Tex_SmartKeyQuote = 0
 
+" see 8df6178 - Change behaviour and default of Tex_AdvancedMath
+" recovery of <M-i>, &lt;Alt&gt mapping
+let g:Tex_AdvancedMath = 1
+
 " ************
 
 " ************
@@ -167,19 +171,22 @@ let g:Tex_PromptedCommands='parencite,textcite,phantomsection\label,hyperref,foo
 "call IMAP('REQ', 'Eq.~\eqref{eq:<++>}<++>', 'tex')
 "call IMAP('REEQ', 'Eqs.~\eqref{eqs:<++>}<++>', 'tex')
 "call IMAP('FIT', '\textit{<++>}<++>', 'tex')
-call IMAP('TIT', '\textit{', 'tex')
 call IMAP('SOU', '\sout{', 'tex')
 call IMAP('ULI', '\uline{', 'tex')
 call IMAP('TBF', '\textbf{', 'tex')
+call IMAP('ENQ', '\enquote{', 'tex')
 "call IMAP('ULI', '\uline{<++>}<++>', 'tex')
 "call IMAP('RFI', 'Fig.~\ref{fig:<++>}<++>', 'tex')
 "call IMAP('RTA', 'Table~\ref{tab:<++>}<++>', 'tex')
 "call IMAP('RSE', '\S\ref{sec:<++>}<++>', 'tex')
 "call IMAP('RCH', 'Chapter~\ref{chap:<++>}<++>', 'tex')
-call IMAP('PSSE', '\begin{spacing}{1}\section{<++>}\end{spacing}', 'tex')
-call IMAP('HRF', '\href{<++>}{<++>}<++>', 'tex')
+call IMAP('SPS', '\begin{spacing}{1}\section{<++>}\end{spacing}', 'tex')
+call IMAP('SPC', '\begin{spacing}{1}\chapter{\href{<++>}{<++>}}\end{spacing}', 'tex')
+call IMAP('HRE', '\href{<++>}{<++>}<++>', 'tex')
 call IMAP('UUL', '\url{<++>}<++>', 'tex')
 call IMAP('TODO:', '{\color{Yellow}TODO: }', 'tex')
+call IMAP('TT', '$todo$', 'tex')
+call IMAP('VVV', "\\begin{verbatim}\<cr><++>\<cr>\\end{verbatim}<++>", 'tex')
 
 
 "call IMAP('EFI', "\\begin{figure}[htb]\<cr>\\centering\<cr>\\includegraphics[width=3in]{<+file+>}\<cr>\\caption{<+caption text+>}\<cr>\\label{fig:<+label+>}\<cr>\\end{figure}<++>", "tex")
@@ -248,4 +255,5 @@ let g:syntastic_tex_checkers = ['chktex']
 "NoMatchParen
 "set sm " }}}
 
-
+" disable converting latex symbols to unicode chars on the fly
+let g:tex_conceal = ""

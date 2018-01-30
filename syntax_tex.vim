@@ -65,3 +65,7 @@ syntax match blueTex /^%>>.*/
 "hi SpellBad     guisp=Firebrick2 gui=undercurl
 "hi SpellBad     guisp=#c03000 gui=undercurl
 "hi SpellBad     guifg=NONE guibg=NONE guisp=#0087ff gui=undercurl
+
+" IMAP method
+call IMAP('FIT', '\textit{', 'tex')
+call IMAP('FSL', '\textsl{', 'tex')

@@ -56,9 +56,9 @@ fun! SetupVAM()
   "let &rtp.=(empty(&rtp)?'':',').plugin_root_dir.'/vim-addon-manager'
   " 'powerline', 'AutomaticLaTeXPlugin' 
   " Tell VAM which plugins to fetch & load:
-  call vam#ActivateAddons(['powerline', 'LaTeX-Suite_aka_Vim-LaTeX', 'ctrlp', 'Solarized', 'The_NERD_tree', 'vim-multiple-cursors', 'YouCompleteMe', 'Buffergator', 'fugitive', 'Screen_vim__gnu_screentmux', 'EasyMotion', 'Gundo' , 'yankstack', 'Syntastic','UltiSnips', 'vim-snippets', 'Python-mode-klen', 'jedi-vim', 'virtualenv', 'unimpaired', 'Tagbar', 'ack', 'surround', 'easytags', 'vim-misc', 'autocorrect', 'goyo', 'vim-textobj-quote', 'textobj-user', 'vim-lexical', 'limelight', 'vim-textobj-sentence', 'vim-wordy', 'MatlabFilesEdition', 'Tabular', 'vim-online-thesaurus', 'Indent_Guides', 'vim-signature', 'vim-expand-region'], {'auto_install' : 1})
+  call vam#ActivateAddons(['powerline', 'LaTeX-Suite_aka_Vim-LaTeX', 'ctrlp', 'Solarized', 'The_NERD_tree', 'vim-multiple-cursors', 'YouCompleteMe', 'Buffergator', 'fugitive', 'Screen_vim__gnu_screentmux', 'EasyMotion', 'Gundo' , 'yankstack', 'Syntastic','UltiSnips', 'vim-snippets', 'Python-mode-klen', 'jedi-vim', 'virtualenv', 'unimpaired', 'Tagbar', 'ack', 'surround', 'easytags', 'vim-misc', 'autocorrect', 'goyo', 'vim-textobj-quote', 'textobj-user', 'vim-lexical', 'limelight', 'vim-textobj-sentence', 'vim-wordy', 'MatlabFilesEdition', 'Tabular', 'vim-online-thesaurus', 'indentLine', 'vim-signature', 'vim-expand-region', 'ALE_-_Asynchronous_Lint_Engine', 'vim-easy-align'], {'auto_install' : 1})
 
-" sample: call vam#ActivateAddons(['pluginA','pluginB', , 'LaTeX-Suite_aka_Vim-LaTeX' 'AutomaticLaTeXPlugin', 'Vim-R-plugin', 'Supertab', 'vim-online-thesaurus', 'python%790'...], {'auto_install' : 0})
+" sample: call vam#ActivateAddons(['pluginA','pluginB', , 'LaTeX-Suite_aka_Vim-LaTeX' 'AutomaticLaTeXPlugin', 'Vim-R-plugin', 'Supertab', 'vim-online-thesaurus', 'Indent_Guides', 'python%790'...], {'auto_install' : 0})
 
 " need self-updated: 'vim-lexical', 'limelight', 'vim-textobj-sentence', 'vim-wordy'
 
@@ -111,10 +111,12 @@ call SetupVAM()
 set laststatus=2   " Always show the statusline 1210l
 set showcmd " show information about how the current command going on
 set encoding=utf-8 " Necessary to show Unicode glyphs 1210
-set t_Co=256 " Explicitly tell Vim that the terminal supports 256 colors 1210
 set fillchars+=stl:\ ,stlnc:\
 if !has('gui_macvim')
 	set term=xterm-256color
+	set t_Co=256 " Explicitly tell Vim that the terminal supports 256 colors 1210
+	set t_AB=[48;5;%dm
+	set t_AF=[38;5;%dm
 	set mouse=a
 endif
 set termencoding=utf-8
@@ -176,7 +178,8 @@ let g:tex_flavor='latex'
 "let g:atp_tab_map = 1
 "let g:atp_StatusLine=0
 
-
+" ALE setting
+let g:ale_emit_conflict_warnings = 0
 
 " Ack.vim setting, using Ag
 let g:ackprg = 'ag --smart-case --nogroup --nocolor --column'
@@ -286,7 +289,7 @@ let g:ctrlp_cmd = 'CtrlPMRU'
 "let g:ctrlp_working_path_mode = 0
 "let g:ctrlp_match_window_reversed = 1
 "let g:ctrlp_split_window = 0
-"let g:ctrlp_max_height = 20
+let g:ctrlp_max_height = 20
 "let g:ctrlp_extensions = ['tag']
 "
 "let g:ctrlp_map = '<leader>,'
@@ -325,6 +328,11 @@ let g:ctrlp_cmd = 'CtrlPMRU'
 
 "numbers setting
 let g:numbers_exclude = ['tagbar', 'gundo', 'nerdtree']
+
+
+" indentLine
+let g:indentLine_color_term = 24
+let g:indentLine_color_gui = '#005f87'
 
 " Trailing whitespace
 " Only shown when not in insert mode.
@@ -648,6 +656,7 @@ inoremap <F1> <ESC>:SyntasticReset<CR>
 " For :lnext and :lprev to work
 let g:syntastic_always_populate_loc_list = 1
 "let g:syntastic_full_redraws
+"let g:syntastic_mode_map = { 'passive_filetypes': ['python'] }
 
 " invoke EasyMotion <Leader><Leader>
 "map <F4> <Leader><Leader>
@@ -674,6 +683,7 @@ nnoremap <F3> i<C-x><C-s>
 " avoid key map conflict between py-mode and buffergator
 let g:pymode_breakpoint_bind = '<leader><leader>b'
 let g:pymode_rope = 0
+"let g:pymode_python = 'python3'
 "let g:pymode_rope_completion = 0
 "let g:pymode_lint = 0
 "let g:pymode_virtualenv = 0
@@ -682,7 +692,7 @@ let g:pymode_rope = 0
 
 " YCM
 "let g:ycm_path_to_python_interpreter = '/usr/bin/python'
-let g:ycm_path_to_python_interpreter = '/usr/local/bin/python'
+let g:ycm_path_to_python_interpreter = '/usr/local/bin/python2'
 "show the completion menu even when typing inside comments.
 let g:ycm_complete_in_comments = 1
 "collect identifiers from strings and comments

@@ -1,6 +1,6 @@
 <+	+>	!comp!	!exe!
 % !TEX TS-program = pdflatexmk
-\documentclass[paper=a4,fontsize=14pt]{scrreprt}
+\documentclass[paper=a4,fontsize=14pt,pagesize,DIV=calc]{scrreprt}
 %\documentclass[12pt]{article}
 %\documentclass[paper=a4,fontsize=14pt]{scrartcl}
 %\documentclass[paper=a4,headheight=13cm,headinclude,fontsize=14pt]{scrreprt}
@@ -13,14 +13,13 @@
 %\addbibresource{~/bibtexData/MEG.bib}
 %% Modify “Bibliography” to “References”
 \defbibheading{references}[\refname]{\section*{\centering#1}\markboth{#1}{#1}}
-\bibliography{~/bibtexData/MEG.bib}
 
 % default: pdfLaTeX
 %\usepackage[american]{babel}
 \usepackage[T1]{fontenc}
 \usepackage{lmodern}
 %\usepackage[adobe-utopia]{mathdesign}
-\usepackage[utf8]{inputenc}
+%\usepackage[utf8]{inputenc} %bug
 \usepackage[babel=true]{microtype}
 
 
@@ -62,7 +61,7 @@
 
 %\usepackage{footmisc}
 
-%\usepackage{amsmath}
+\usepackage{amsmath}
 
 \usepackage[breaklinks]{hyperref}
 \usepackage[normalem]{ulem}
@@ -135,16 +134,29 @@
 \renewcommand*{\chapterheadstartvskip}{\vspace*{-\topskip}}
 \renewcommand{\chapterheadstartvskip}{\vspace*{-\baselineskip}}
 
-\usepackage{titlesec}
-\titlespacing*{\section}{0pt}{1ex plus 1ex minus .2ex}{1ex plus .2ex}
-%\titlespacing*{\subsection}{0pt}{5.5ex plus 1ex minus .2ex}{4.3ex plus .2ex}
-%\titlespacing\subsubsection{0pt}{12pt plus 4pt minus 2pt}{0pt plus 2pt minus 2pt}
-
 \usepackage{wrapfig}
 \usepackage{graphicx}
 \graphicspath{{./}}
 %\graphicspath{{../}}
-\DeclareGraphicsExtensions{.png}
+%\DeclareGraphicsExtensions{.png}
+
+
+% Adjust maximum depth of itemize (and its bullet symbol)
+\usepackage{pifont}
+\usepackage{enumitem}
+\setlistdepth{9}
+\setlist[itemize,1]{label=\ding{223}}
+\setlist[itemize,2]{label=\ding{229}}
+\setlist[itemize,3]{label=\ding{242}}
+\setlist[itemize,4]{label=\ding{235}}
+\setlist[itemize,5]{label=\ding{212}}
+\setlist[itemize,6]{label=\ding{236}}
+\setlist[itemize,7]{label=\textbullet}
+\setlist[itemize,8]{label=\ding{245}}
+\setlist[itemize,9]{label=$\bullet$}
+\renewlist{itemize}{itemize}{9}
+\setlist[itemize]{leftmargin=*} % left margin or indent; labelindent=\parindent
+
 
 %: 1. begin document
 \begin{document}
@@ -165,7 +177,7 @@
 %\layout %\>>>
 
 \begin{spacing}{1}
-	\chapter{\href{run:/
+\chapter{\href{run:/
 <++>
 }{
 <++>
