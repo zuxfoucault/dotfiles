@@ -1,4 +1,5 @@
 !_TAG_FILE_SORTED	2	/0=unsorted, 1=sorted, 2=foldcase/
+attention_network	/Volumes/SSD/googleDrive/papers/texNote/201803/attention_network/attention_network.tex	/^%%%attention_network$/;"	l	language:latex
 barch_head	/Volumes/SSD/googleDrive/papers/texNote/journal/N20171216000000.tex	/^%%%barch_head$/;"	l	language:latex
 Bioelectricity	/Volumes/SSD/googleDrive/papers/texNote/journal/N20161118000000.tex	/^%%%Bioelectricity$/;"	l	language:latex
 englishLive_revise	/Volumes/SSD/googleDrive/papers/texNote/journal/N20161203000000.tex	/^%%%englishLive_revise$/;"	l	language:latex
@@ -6,9 +7,13 @@ gaba_network_head	/Volumes/SSD/Space/RCBC/note/network/method/N20171221000000.te
 gradSchoolApplication_head	/Volumes/SSD/googleDrive/papers/texNote/journal/N20171112000000.tex	/^%%%gradSchoolApplication_head$/;"	l	language:latex
 moe_100rank	/Volumes/SSD/googleDrive/papers/texNote/journal/N20171201000000.tex	/^%%%moe_100rank$/;"	l	language:latex
 moe_head	/Volumes/SSD/googleDrive/papers/texNote/journal/N20171119000000.tex	/^%%%moe_head$/;"	l	language:latex
-network_letter	/Volumes/SSD/googleDrive/papers/texNote/journal/N20180125000000.tex	/^%%%network_letter$/;"	l	language:latex
+network_msm	/Volumes/SSD/Space/RCBC/note/network/network_literature/network.tex	/^%%%network_msm$/;"	l	language:latex
+northoff_transdn_head	/Volumes/SSD/googleDrive/papers/texNote/201801/northoff/transDn/head/transDn.tex	/^%%%northoff_transdn_head$/;"	l	language:latex
+northoff_transdn_note	/Volumes/SSD/googleDrive/papers/texNote/journal/N20180102000000.tex	/^%%%northoff_transdn_note$/;"	l	language:latex
+northoff_transdn_reference	/Volumes/SSD/googleDrive/papers/texNote/201801/northoff/spatiotemporal/spatiotemporal.tex	/^%%%northoff_transdn_reference$/;"	l	language:latex
 plotly_head	/Volumes/SSD/googleDrive/papers/texNote/journal/N20161102000000.tex	/^%%%plotly_head$/;"	l	language:latex
 review_transdn	/Volumes/SSD/googleDrive/papers/texNote/fourtJan/RandyBunkner/transDn/head/transDn.tex	/^%%%review_transdn$/;"	l	language:latex
+semantic_map_head	/Volumes/SSD/googleDrive/papers/texNote/201704/ICB/proposal/p1.tex	/^%%%semantic_map_head$/;"	l	language:latex
 sonia_Bishop	/Volumes/SSD/googleDrive/papers/texNote/sixtNov/SoniaBishop/current_projects.tex	/^%%%sonia_Bishop$/;"	l	language:latex
 sop_head	/Volumes/SSD/googleDrive/papers/texNote/SOP/sopBerkeley/SOPtex.tex	/^%%%sop_head$/;"	l	language:latex
 striatumPsychopathy	/Volumes/SSD/googleDrive/papers/texNote/fourtJan/JoshuaBuckholtz/bridgeLawAndNeuroscience/bridgeLawAndNeuroscience.tex	/^%%%striatumPsychopathy$/;"	l	language:latex

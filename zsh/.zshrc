@@ -59,7 +59,9 @@ source /Users/zuxfoucault/.oh-my-zsh/custom/plugins/opp.zsh/opp/*.zsh
 
 
 # Customize to your needs...
-export EDITOR="vim"
+#export EDITOR="vim"
+# for ftags
+export EDITOR=mvim
 #bindkey -v
 
 
@@ -105,6 +107,8 @@ alias mynetcon='sudo lsof -n -P -i +c 15'
 alias tt='open -a TexShop'
 alias mkmk='mkdir `date +R%Y%m%d`'
 alias mkm='mkdir `date +%Y%m%d`'
+alias todo='ag "todo"'
+alias mtodos='mm /Volumes/SSD/googleDrive/papers/texNote/journal/todos.tex'
 
 # For tmux
 #alias tmn='tmux new -s $(basename $(pwd))'
@@ -238,7 +242,7 @@ eval "$(rbenv init -)"
 # Easier to update
 #alias gg='scp -rv /Volumes/SSD/Space/playGround/meg/src_mne zuxfoucault@hpc.psy.ntu.edu.tw:/home/zuxfoucault/space/'
 
-alias cn4='mosh hpc.psy.ntu.edu.tw -- ssh cn4'
+#alias cn4='mosh hpc.psy.ntu.edu.tw -- ssh cn4'
 
 test -e ${HOME}/.iterm2_shell_integration.zsh && source ${HOME}/.iterm2_shell_integration.zsh
 
@@ -255,5 +259,74 @@ export  JAVA_HOME="/Library/Internet Plug-Ins/JavaAppletPlugin.plugin/Contents/H
 # added by Miniconda3 4.3.21 installer
 export PATH="/Volumes/SSD/Space/miniconda3/bin:$PATH"
 
-
+# fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+export FZF_DEFAULT_COMMAND='fd --type f'
+export FZF_DEFAULT_OPTS="--reverse --inline-info"
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+# Options to fzf command
+export FZF_COMPLETION_OPTS='+c -x'
+alias fzfpreview="fzf --preview '[[ \$(file --mime {}) =~ binary ]] && echo {} is a binary file || (highlight -O ansi -l {} || coderay {} || rougify {} || cat {}) 2> /dev/null | head -500'"
+#export FZF_DEFAULT_COMMAND='(git ls-tree -r --name-only HEAD || find . -path "*/\.*" -prune -o -type f -print -o -type l -print | sed s/^..//) 2> /dev/null'
+_fzf_compgen_path() {
+  fd --hidden --follow --exclude ".git" . "$1"
+}
+
+# Use fd to generate the list for directory completion
+_fzf_compgen_dir() {
+  fd --type d --hidden --follow --exclude ".git" . "$1"
+}
+
+# fzf alt-c
+#bindkey '^X^T' fzf-file-widget
+#bindkey '^T' transpose-chars
+
+# ftags - search ctags
+# https://github.com/junegunn/fzf/wiki/examples
+ftags() {
+  local line
+  [ -e /Users/zuxfoucault/dotfiles/vimtags/latex ] &&
+  line=$(
+    awk 'BEGIN { FS="\t" } !/^!/ {print toupper($4)"\t"$1"\t"$2"\t"$3}' /Users/zuxfoucault/dotfiles/vimtags/latex |
+    cut -c1-80 | fzf --nth=1,2
+  ) && ${EDITOR:-vim} $(cut -f3 <<< "$line") -c "set nocst" \
+                                      -c "silent tag $(cut -f2 <<< "$line")"
+}
+
+# Search for academic PDFs by author, title, journal, institution
+p () {
+    local DIR open
+    declare -A already
+    DIR="${HOME}/.cache/pdftotext"
+    mkdir -p "${DIR}"
+    if [ "$(uname)" = "Darwin" ]; then
+        open=open
+    else
+        open="gio open"
+    fi
+
+    {
+    ag -g ".pdf$"; # fast, without pdftotext
+    ag -g ".pdf$" \
+    | while read -r FILE; do
+        local EXPIRY HASH CACHE
+        HASH=$(md5sum "$FILE" | cut -c 1-32)
+        # Remove duplicates (file that has same hash as already seen file)
+        [ ${already[$HASH]+abc} ] && continue # see https://stackoverflow.com/a/13221491
+        already[$HASH]=$HASH
+        EXPIRY=$(( 86400 + $RANDOM * 20 )) # 1 day (86400 seconds) plus some random
+        CMD="pdftotext -f 1 -l 1 '$FILE' - 2>/dev/null | tr \"\n\" \"_\" "
+        CACHE="$DIR/$HASH"
+        test -f "${CACHE}" && [ $(expr $(date +%s) - $(date -r "$CACHE" +%s)) -le $EXPIRY ] || eval "$CMD" > "${CACHE}"
+        echo -e "$FILE\t$(cat ${CACHE})"
+    done
+    } | fzf -e  -d '\t' \
+        --preview-window up:75% \
+        --preview '
+                v=$(echo {q} | tr " " "|");
+                echo {1} | grep -E "^|$v" -i --color=always;
+                pdftotext -f 1 -l 1 {1} - | grep -E "^|$v" -i --color=always' \
+        | awk 'BEGIN {FS="\t"; OFS="\t"}; {print "\""$1"\""}' \
+        | xargs $open > /dev/null 2> /dev/null
+}
+

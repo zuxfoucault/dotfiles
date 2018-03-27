@@ -56,7 +56,7 @@ fun! SetupVAM()
   "let &rtp.=(empty(&rtp)?'':',').plugin_root_dir.'/vim-addon-manager'
   " 'powerline', 'AutomaticLaTeXPlugin' 
   " Tell VAM which plugins to fetch & load:
-  call vam#ActivateAddons(['powerline', 'LaTeX-Suite_aka_Vim-LaTeX', 'ctrlp', 'Solarized', 'The_NERD_tree', 'vim-multiple-cursors', 'YouCompleteMe', 'Buffergator', 'fugitive', 'Screen_vim__gnu_screentmux', 'EasyMotion', 'Gundo' , 'yankstack', 'Syntastic','UltiSnips', 'vim-snippets', 'Python-mode-klen', 'jedi-vim', 'virtualenv', 'unimpaired', 'Tagbar', 'ack', 'surround', 'easytags', 'vim-misc', 'autocorrect', 'goyo', 'vim-textobj-quote', 'textobj-user', 'vim-lexical', 'limelight', 'vim-textobj-sentence', 'vim-wordy', 'MatlabFilesEdition', 'Tabular', 'vim-online-thesaurus', 'indentLine', 'vim-signature', 'vim-expand-region', 'ALE_-_Asynchronous_Lint_Engine', 'vim-easy-align'], {'auto_install' : 1})
+  call vam#ActivateAddons(['powerline', 'LaTeX-Suite_aka_Vim-LaTeX', 'ctrlp', 'Solarized', 'The_NERD_tree', 'vim-multiple-cursors', 'YouCompleteMe', 'Buffergator', 'fugitive', 'Screen_vim__gnu_screentmux', 'EasyMotion', 'Gundo' , 'yankstack', 'Syntastic','UltiSnips', 'vim-snippets', 'Python-mode-klen', 'jedi-vim', 'virtualenv', 'unimpaired', 'Tagbar', 'ack', 'surround', 'easytags', 'vim-misc', 'autocorrect', 'goyo', 'vim-textobj-quote', 'textobj-user', 'vim-lexical', 'limelight', 'vim-textobj-sentence', 'vim-wordy', 'MatlabFilesEdition', 'Tabular', 'vim-online-thesaurus', 'indentLine', 'vim-signature', 'vim-expand-region', 'ALE_-_Asynchronous_Lint_Engine', 'vim-easy-align', 'vim-pandoc', 'vim-pandoc-syntax', 'fzf-vim'], {'auto_install' : 1})
 
 " sample: call vam#ActivateAddons(['pluginA','pluginB', , 'LaTeX-Suite_aka_Vim-LaTeX' 'AutomaticLaTeXPlugin', 'Vim-R-plugin', 'Supertab', 'vim-online-thesaurus', 'Indent_Guides', 'python%790'...], {'auto_install' : 0})
 
@@ -220,7 +220,7 @@ endfunction
 set number  "activate line number
 set list    "show invisible characters
 set listchars=tab:▸\ ,eol:¬,extends:❯,precedes:❮
-"set showbreak=↪
+set showbreak=↪
 set shiftwidth=4
 set tabstop=4
 set splitbelow
@@ -325,6 +325,220 @@ let g:ctrlp_max_height = 20
 "let g:ctrlp_user_command = ['.git/', my_ctrlp_ffind_command, my_ctrlp_ffind_command]
 "
 " }}}
+
+
+" fzf
+set rtp+=/usr/local/opt/fzf
+let g:fzf_command_prefix = 'Fzf'
+let g:fzf_launcher = '/Users/zuxfoucault/dotfiles/fzf_MacVim.sh %s'
+" [Tags] Command to generate tags file
+"let g:fzf_tags_command = 'ctags -R'
+
+"" Command for git grep
+"" - fzf#vim#grep(command, with_column, [options], [fullscreen])
+"command! -bang -nargs=* GGrep
+"  \ call fzf#vim#grep('git grep --line-number '.shellescape(<q-args>), 0, <bang>0)
+"
+"" Override Colors command. You can safely do this in your .vimrc as fzf.vim
+"" will not override existing commands.
+"command! -bang Colors
+"  \ call fzf#vim#colors({'left': '15%', 'options': '--reverse --margin 30%,0'}, <bang>0)
+"
+"" Augmenting Ag command using fzf#vim#with_preview function
+""   * fzf#vim#with_preview([[options], preview window, [toggle keys...]])
+""     * For syntax-highlighting, Ruby and any of the following tools are required:
+""       - Highlight: http://www.andre-simon.de/doku/highlight/en/highlight.php
+""       - CodeRay: http://coderay.rubychan.de/
+""       - Rouge: https://github.com/jneen/rouge
+""
+""   :Ag  - Start fzf with hidden preview window that can be enabled with "?" key
+""   :Ag! - Start fzf in fullscreen and display the preview window above
+"command! -bang -nargs=* Ag
+"  \ call fzf#vim#ag(<q-args>,
+"  \                 <bang>0 ? fzf#vim#with_preview('up:60%')
+"  \                         : fzf#vim#with_preview('right:50%:hidden', '?'),
+"  \                 <bang>0)
+"
+"" Similarly, we can apply it to fzf#vim#grep. To use ripgrep instead of ag:
+"command! -bang -nargs=* Rg
+"  \ call fzf#vim#grep(
+"  \   'rg --column --line-number --no-heading --color=always '.shellescape(<q-args>), 1,
+"  \   <bang>0 ? fzf#vim#with_preview('up:60%')
+"  \           : fzf#vim#with_preview('right:50%:hidden', '?'),
+"  \   <bang>0)
+"
+"" Likewise, Files command with preview window
+"command! -bang -nargs=? -complete=dir Files
+"  \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
+
+" Customize fzf colors to match your color scheme
+"let g:fzf_colors =
+"\ { 'fg':      ['fg', 'Normal'],
+"  \ 'bg':      ['bg', 'Normal'],
+"  \ 'hl':      ['fg', 'Comment'],
+"  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+"  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+"  \ 'hl+':     ['fg', 'Statement'],
+"  \ 'info':    ['fg', 'PreProc'],
+"  \ 'border':  ['fg', 'Ignore'],
+"  \ 'prompt':  ['fg', 'Conditional'],
+"  \ 'pointer': ['fg', 'Exception'],
+"  \ 'marker':  ['fg', 'Keyword'],
+"  \ 'spinner': ['fg', 'Label'],
+"  \ 'header':  ['fg', 'Comment'] }
+
+" Enable per-command history.
+" CTRL-N and CTRL-P will be automatically bound to next-history and
+" previous-history instead of down and up. If you don't like the change,
+" explicitly bind the keys to down and up in your $FZF_DEFAULT_OPTS.
+let g:fzf_history_dir = '~/.local/share/fzf-history'
+
+"" Jump to tags
+"function! s:tags_sink(line)
+"  let parts = split(a:line, '\t\zs')
+"  let excmd = matchstr(parts[2:], '^.*\ze;"\t')
+"  execute 'silent e' parts[1][:-2]
+"  let [magic, &magic] = [&magic, 0]
+"  execute excmd
+"  let &magic = magic
+"endfunction
+"
+"function! s:tags()
+"  if empty(tagfiles())
+"    echohl WarningMsg
+"    echom 'Preparing tags'
+"    echohl None
+"    call system('ctags -R')
+"  endif
+"
+"  call fzf#run({
+"  \ 'source':  'cat '.join(map(tagfiles(), 'fnamemodify(v:val, ":S")')).
+"  \            '| grep -v -a ^!',
+"  \ 'options': '+m -d "\t" --with-nth 1,4.. -n 1 --tiebreak=index',
+"  \ 'down':    '40%',
+"  \ 'sink':    function('s:tags_sink')})
+"endfunction
+"command! Tags call s:tags()
+"
+"" Jump to tags in the current buffer
+"function! s:align_lists(lists)
+"  let maxes = {}
+"  for list in a:lists
+"    let i = 0
+"    while i < len(list)
+"      let maxes[i] = max([get(maxes, i, 0), len(list[i])])
+"      let i += 1
+"    endwhile
+"  endfor
+"  for list in a:lists
+"    call map(list, "printf('%-'.maxes[v:key].'s', v:val)")
+"  endfor
+"  return a:lists
+"endfunction
+"
+"function! s:btags_source()
+"  let lines = map(split(system(printf(
+"    \ 'ctags -f - --sort=no --excmd=number --language-force=%s %s 2>/dev/null',
+"    \ &filetype, expand('%:S'))), "\n"), 'split(v:val, "\t")')
+"  if v:shell_error
+"    throw 'failed to extract tags'
+"  endif
+"  return map(s:align_lists(lines), 'join(v:val, "\t")')
+"endfunction
+"
+"function! s:btags_sink(line)
+"  execute split(a:line, "\t")[2]
+"endfunction
+"
+"function! s:btags()
+"  try
+"    call fzf#run({
+"    \ 'source':  s:btags_source(),
+"    \ 'options': '+m -d "\t" --with-nth 1,4.. -n 1 --tiebreak=index',
+"    \ 'down':    '40%',
+"    \ 'sink':    function('s:btags_sink')})
+"  catch
+"    echohl WarningMsg
+"    echom v:exception
+"    echohl None
+"  endtry
+"endfunction
+"command! BTags call s:btags()
+"
+"" Search lines in all open vim buffers
+"function! s:line_handler(l)
+"  let keys = split(a:l, ':\t')
+"  exec 'buf' keys[0]
+"  exec keys[1]
+"  normal! ^zz
+"endfunction
+"
+"function! s:buffer_lines()
+"  let res = []
+"  for b in filter(range(1, bufnr('$')), 'buflisted(v:val)')
+"    call extend(res, map(getbufline(b,0,"$"), 'b . ":\t" . (v:key + 1) . ":\t" . v:val '))
+"  endfor
+"  return res
+"endfunction
+"
+"command! FZFLines call fzf#run({
+"\   'source':  <sid>buffer_lines(),
+"\   'sink':    function('<sid>line_handler'),
+"\   'options': '--extended --nth=3..',
+"\   'down':    '60%'
+"\})
+"
+"" Narrow ag results within vim
+"function! s:ag_to_qf(line)
+"  let parts = split(a:line, ':')
+"  return {'filename': parts[0], 'lnum': parts[1], 'col': parts[2],
+"        \ 'text': join(parts[3:], ':')}
+"endfunction
+"
+"function! s:ag_handler(lines)
+"  if len(a:lines) < 2 | return | endif
+"
+"  let cmd = get({'ctrl-x': 'split',
+"               \ 'ctrl-v': 'vertical split',
+"               \ 'ctrl-t': 'tabe'}, a:lines[0], 'e')
+"  let list = map(a:lines[1:], 's:ag_to_qf(v:val)')
+"
+"  let first = list[0]
+"  execute cmd escape(first.filename, ' %#\')
+"  execute first.lnum
+"  execute 'normal!' first.col.'|zz'
+"
+"  if len(list) > 1
+"    call setqflist(list)
+"    copen
+"    wincmd p
+"  endif
+"endfunction
+"
+"command! -nargs=* Ag call fzf#run({
+"\ 'source':  printf('ag --nogroup --column --color "%s"',
+"\                   escape(empty(<q-args>) ? '^(?=.)' : <q-args>, '"\')),
+"\ 'sink*':    function('<sid>ag_handler'),
+"\ 'options': '--ansi --expect=ctrl-t,ctrl-v,ctrl-x --delimiter : --nth 4.. '.
+"\            '--multi --bind=ctrl-a:select-all,ctrl-d:deselect-all '.
+"\            '--color hl:68,hl+:110',
+"\ 'down':    '50%'
+"\ })
+"
+"" fuzzy search files in parent directory of current file
+"function! s:fzf_neighbouring_files()
+"  let current_file =expand("%")
+"  let cwd = fnamemodify(current_file, ':p:h')
+"  let command = 'ag -g "" -f ' . cwd . ' --depth 0'
+"
+"  call fzf#run({
+"        \ 'source': command,
+"        \ 'sink':   'e',
+"        \ 'options': '-m -x +s',
+"        \ 'window':  'enew' })
+"endfunction
+"
+"command! FZFNeigh call s:fzf_neighbouring_files()
 
 "numbers setting
 let g:numbers_exclude = ['tagbar', 'gundo', 'nerdtree']
@@ -680,6 +894,10 @@ nnoremap <F3> i<C-x><C-s>
 "noremap <F3> z=
 "noremap <F3> <LEADER>s
 
+
+" python
+autocmd BufRead *.py set expandtab "shiftwidth=4 tabstop=4
+
 " avoid key map conflict between py-mode and buffergator
 let g:pymode_breakpoint_bind = '<leader><leader>b'
 let g:pymode_rope = 0
@@ -692,7 +910,8 @@ let g:pymode_rope = 0
 
 " YCM
 "let g:ycm_path_to_python_interpreter = '/usr/bin/python'
-let g:ycm_path_to_python_interpreter = '/usr/local/bin/python2'
+let g:ycm_path_to_python_interpreter = '/usr/local/bin/python3'
+"let g:ycm_path_to_python_interpreter = '/Volumes/SSD/Space/miniconda3/bin/python'
 "show the completion menu even when typing inside comments.
 let g:ycm_complete_in_comments = 1
 "collect identifiers from strings and comments
