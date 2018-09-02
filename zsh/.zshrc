@@ -87,7 +87,7 @@ function z() {fasd_cd -d $1; l;} #can't work
 unalias zz
 function zz() {fasd_cd -d -i $1; l;}
 
-alias l='ls -law'
+alias l='ls -lawtr'
 alias lu='ls -altuw'
 alias vimnote='mvim `date +N%Y%m%d%H%M%S`.tex'
 alias m='mvim `date +N%Y%m%d`000000.tex'
@@ -245,8 +245,7 @@ eval "$(rbenv init -)"
 #alias cn4='mosh hpc.psy.ntu.edu.tw -- ssh cn4'
 
 test -e ${HOME}/.iterm2_shell_integration.zsh && source ${HOME}/.iterm2_shell_integration.zsh
-
-source ~/.iterm2_shell_integration.`basename $SHELL`
+#source ~/.iterm2_shell_integration.`basename $SHELL`
 
 # Login shell Tmux
 #[[ $- != *i* ]] && return¬

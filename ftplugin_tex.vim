@@ -186,6 +186,7 @@ call IMAP('HRE', '\href{<++>}{<++>}<++>', 'tex')
 call IMAP('UUL', '\url{<++>}<++>', 'tex')
 call IMAP('TODO:', '{\color{Yellow}TODO: }', 'tex')
 call IMAP('TT', '$todo$', 'tex')
+call IMAP('RRR', '%||reflection', 'tex')
 call IMAP('VVV', "\\begin{verbatim}\<cr><++>\<cr>\\end{verbatim}<++>", 'tex')
 
 

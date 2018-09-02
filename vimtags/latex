@@ -2,18 +2,20 @@
 attention_network	/Volumes/SSD/googleDrive/papers/texNote/201803/attention_network/attention_network.tex	/^%%%attention_network$/;"	l	language:latex
 barch_head	/Volumes/SSD/googleDrive/papers/texNote/journal/N20171216000000.tex	/^%%%barch_head$/;"	l	language:latex
 Bioelectricity	/Volumes/SSD/googleDrive/papers/texNote/journal/N20161118000000.tex	/^%%%Bioelectricity$/;"	l	language:latex
+cdan_literature	/Volumes/SSD/Space/RCBC/note/cdan/literature/cdan_20180504.tex	/^%%%cdan_literature$/;"	l	language:latex
+cdan_method	/Volumes/SSD/Space/RCBC/note/cdan/method/cdan_20180504.tex	/^%%%cdan_method$/;"	l	language:latex
+cerebellum_mdd_literature	/Volumes/SSD/Space/RCBC/note/cerebellum_mdd/literature/N20180529000000.tex	/^%%%cerebellum_mdd_literature$/;"	l	language:latex
+cerebellum_mdd_methon	/Volumes/SSD/Space/RCBC/note/cerebellum_mdd/method/N20180523000000.tex	/^%%%cerebellum_mdd_methon$/;"	l	language:latex
 englishLive_revise	/Volumes/SSD/googleDrive/papers/texNote/journal/N20161203000000.tex	/^%%%englishLive_revise$/;"	l	language:latex
 gaba_network_head	/Volumes/SSD/Space/RCBC/note/network/method/N20171221000000.tex	/^%%%gaba_network_head$/;"	l	language:latex
+gaba_network_literature	/Volumes/SSD/Space/RCBC/note/network/network_literature/network.tex	/^%%%gaba_network_literature$/;"	l	language:latex
 gradSchoolApplication_head	/Volumes/SSD/googleDrive/papers/texNote/journal/N20171112000000.tex	/^%%%gradSchoolApplication_head$/;"	l	language:latex
-moe_100rank	/Volumes/SSD/googleDrive/papers/texNote/journal/N20171201000000.tex	/^%%%moe_100rank$/;"	l	language:latex
 moe_head	/Volumes/SSD/googleDrive/papers/texNote/journal/N20171119000000.tex	/^%%%moe_head$/;"	l	language:latex
 network_msm	/Volumes/SSD/Space/RCBC/note/network/network_literature/network.tex	/^%%%network_msm$/;"	l	language:latex
-northoff_transdn_head	/Volumes/SSD/googleDrive/papers/texNote/201801/northoff/transDn/head/transDn.tex	/^%%%northoff_transdn_head$/;"	l	language:latex
-northoff_transdn_note	/Volumes/SSD/googleDrive/papers/texNote/journal/N20180102000000.tex	/^%%%northoff_transdn_note$/;"	l	language:latex
-northoff_transdn_reference	/Volumes/SSD/googleDrive/papers/texNote/201801/northoff/spatiotemporal/spatiotemporal.tex	/^%%%northoff_transdn_reference$/;"	l	language:latex
 plotly_head	/Volumes/SSD/googleDrive/papers/texNote/journal/N20161102000000.tex	/^%%%plotly_head$/;"	l	language:latex
 review_transdn	/Volumes/SSD/googleDrive/papers/texNote/fourtJan/RandyBunkner/transDn/head/transDn.tex	/^%%%review_transdn$/;"	l	language:latex
 semantic_map_head	/Volumes/SSD/googleDrive/papers/texNote/201704/ICB/proposal/p1.tex	/^%%%semantic_map_head$/;"	l	language:latex
+sfn_head	/Volumes/SSD/googleDrive/papers/texNote/journal/N20180503000000.tex	/^%%%sfn_head$/;"	l	language:latex
 sonia_Bishop	/Volumes/SSD/googleDrive/papers/texNote/sixtNov/SoniaBishop/current_projects.tex	/^%%%sonia_Bishop$/;"	l	language:latex
 sop_head	/Volumes/SSD/googleDrive/papers/texNote/SOP/sopBerkeley/SOPtex.tex	/^%%%sop_head$/;"	l	language:latex
 striatumPsychopathy	/Volumes/SSD/googleDrive/papers/texNote/fourtJan/JoshuaBuckholtz/bridgeLawAndNeuroscience/bridgeLawAndNeuroscience.tex	/^%%%striatumPsychopathy$/;"	l	language:latex
@@ -21,8 +23,12 @@ todos	/Volumes/SSD/googleDrive/papers/texNote/journal/todos.tex	/^%%%todos$/;"	l
 todo_read_behrens2007	/Volumes/SSD/googleDrive/papers/texNote/sixtNov/SoniaBishop/current_projects.tex	/^%%%todo_read_behrens2007$/;"	l	language:latex
 todo_read_index	/Volumes/SSD/googleDrive/papers/texNote/journal/todoReadIndex.tex	/^%%%todo_read_index$/;"	l	language:latex
 todo_read_mackay2003	/Volumes/SSD/googleDrive/papers/texNote/sixtNov/SoniaBishop/current_projects.tex	/^%%%todo_read_mackay2003$/;"	l	language:latex
+toefl_prepare	/Volumes/SSD/googleDrive/papers/texNote/journal/N20180529000000.tex	/^%%%toefl_prepare$/;"	l	language:latex
 Toggl_google_calendar_head	/Volumes/SSD/googleDrive/papers/texNote/journal/N20161102000000.tex	/^%%%Toggl_google_calendar_head$/;"	l	language:latex
 transDn_head	/Volumes/SSD/googleDrive/papers/texNote/fourtJan/RandyBunkner/transDn/head/transDn.tex	/^%%%transDn_head$/;"	l	language:latex
+transdn_northoff_head	/Volumes/SSD/googleDrive/papers/texNote/201801/northoff/transDn/head/transDn.tex	/^%%%transdn_northoff_head$/;"	l	language:latex
+transdn_northoff_note	/Volumes/SSD/googleDrive/papers/texNote/journal/N20180102000000.tex	/^%%%transdn_northoff_note$/;"	l	language:latex
+transdn_northoff_reference	/Volumes/SSD/googleDrive/papers/texNote/201801/northoff/spatiotemporal/spatiotemporal.tex	/^%%%transdn_northoff_reference$/;"	l	language:latex
 transDN_ref	/Volumes/SSD/googleDrive/papers/texNote/fourtJan/RandyBunkner/transDn/201711_ref/201711_ref.tex	/^%%%transDN_ref$/;"	l	language:latex
 Trello_google_calendar_head	/Volumes/SSD/googleDrive/papers/texNote/journal/N20161120000000.tex	/^%%%Trello_google_calendar_head$/;"	l	language:latex
 UC_Berkeley_CS188_Intro_to_AI	/Volumes/SSD/googleDrive/papers/texNote/journal/N20160121000000.tex	/^%%%UC_Berkeley_CS188_Intro_to_AI -- Course Materials$/;"	l	language:latex

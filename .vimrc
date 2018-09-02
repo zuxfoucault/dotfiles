@@ -162,6 +162,10 @@ set background=dark
 " noremap <leader>p :set paste<CR>:put  *<CR>:set nopaste<CR>
 
 " powerline setting !!!following 3 lines could be delete some day...
+"let g:powerline_pycmd="python3"
+"let g:powerline_pyeval="python3"
+"let g:powerline_pyeval="/usr/local/bin/python3"
+"let g:powerline_pyeval="/Volumes/SSD/Space/miniconda3/bin/python3"
 "let g:Powerline_symbols = 'fancy'
 "set rtp+=~/.vim/vim-addons/powerline/powerline/bindings/vim
 "set noshowmode
@@ -888,8 +892,8 @@ let g:wheel#map#down = '<D-j>'
 let r_syntax_folding = 1
 
 " invoke suggest words
-"inoremap <F3> <ESC>z=
-inoremap <F3> <C-x><C-k>
+inoremap <F3> <ESC>z=
+"inoremap <F3> <C-x><C-k>
 nnoremap <F3> i<C-x><C-s>
 "noremap <F3> z=
 "noremap <F3> <LEADER>s
@@ -901,7 +905,7 @@ autocmd BufRead *.py set expandtab "shiftwidth=4 tabstop=4
 " avoid key map conflict between py-mode and buffergator
 let g:pymode_breakpoint_bind = '<leader><leader>b'
 let g:pymode_rope = 0
-"let g:pymode_python = 'python3'
+let g:pymode_python = 'python3'
 "let g:pymode_rope_completion = 0
 "let g:pymode_lint = 0
 "let g:pymode_virtualenv = 0
@@ -911,6 +915,7 @@ let g:pymode_rope = 0
 " YCM
 "let g:ycm_path_to_python_interpreter = '/usr/bin/python'
 let g:ycm_path_to_python_interpreter = '/usr/local/bin/python3'
+"let g:ycm_path_to_python_interpreter = '/Volumes/SSD/Space/miniconda3/bin/python'
 "let g:ycm_path_to_python_interpreter = '/Volumes/SSD/Space/miniconda3/bin/python'
 "show the completion menu even when typing inside comments.
 let g:ycm_complete_in_comments = 1
