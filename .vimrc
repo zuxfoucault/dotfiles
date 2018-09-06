@@ -56,7 +56,7 @@ fun! SetupVAM()
   "let &rtp.=(empty(&rtp)?'':',').plugin_root_dir.'/vim-addon-manager'
   " 'powerline', 'AutomaticLaTeXPlugin' 
   " Tell VAM which plugins to fetch & load:
-  call vam#ActivateAddons(['powerline', 'LaTeX-Suite_aka_Vim-LaTeX', 'ctrlp', 'Solarized', 'The_NERD_tree', 'vim-multiple-cursors', 'YouCompleteMe', 'Buffergator', 'fugitive', 'Screen_vim__gnu_screentmux', 'EasyMotion', 'Gundo' , 'yankstack', 'Syntastic','UltiSnips', 'vim-snippets', 'Python-mode-klen', 'jedi-vim', 'virtualenv', 'unimpaired', 'Tagbar', 'ack', 'surround', 'easytags', 'vim-misc', 'autocorrect', 'goyo', 'vim-textobj-quote', 'textobj-user', 'vim-lexical', 'limelight', 'vim-textobj-sentence', 'vim-wordy', 'MatlabFilesEdition', 'Tabular', 'vim-online-thesaurus', 'indentLine', 'vim-signature', 'vim-expand-region', 'ALE_-_Asynchronous_Lint_Engine', 'vim-easy-align', 'vim-pandoc', 'vim-pandoc-syntax', 'fzf-vim'], {'auto_install' : 1})
+  call vam#ActivateAddons(['powerline', 'LaTeX-Suite_aka_Vim-LaTeX', 'ctrlp', 'Solarized', 'The_NERD_tree', 'vim-multiple-cursors', 'YouCompleteMe', 'Buffergator', 'fugitive', 'Screen_vim__gnu_screentmux', 'EasyMotion', 'Gundo' , 'yankstack', 'Syntastic','UltiSnips', 'vim-snippets', 'Python-mode-klen', 'jedi-vim', 'virtualenv', 'unimpaired', 'Tagbar', 'ack', 'surround', 'easytags', 'vim-misc', 'autocorrect', 'goyo', 'vim-textobj-quote', 'textobj-user', 'vim-lexical', 'limelight', 'vim-textobj-sentence', 'vim-wordy', 'MatlabFilesEdition', 'Tabular', 'thesaurus_query', 'indentLine', 'vim-signature', 'vim-expand-region', 'ALE_-_Asynchronous_Lint_Engine', 'vim-easy-align', 'vim-pandoc', 'vim-pandoc-syntax', 'fzf-vim'], {'auto_install' : 1})
 
 " sample: call vam#ActivateAddons(['pluginA','pluginB', , 'LaTeX-Suite_aka_Vim-LaTeX' 'AutomaticLaTeXPlugin', 'Vim-R-plugin', 'Supertab', 'vim-online-thesaurus', 'Indent_Guides', 'python%790'...], {'auto_install' : 0})
 
@@ -603,9 +603,18 @@ let g:lexical#thesaurus_key = '<leader>[' " Thesaurus lookup
 let g:lexical#dictionary_key = '<leader>k' " Dictionary completion
 
 
-"vim-online-thesaurus
-let g:online_thesaurus_map_keys = 0
-nnoremap <leader>] :OnlineThesaurusCurrentWord<CR>
+" thesaurus_query
+let g:tq_language=['en']
+let g:tq_openoffice_en_file="/Users/zuxfoucault/.vim/thesaurus/MyThes-1.0/th_en_US_new"
+let g:tq_enabled_backends = ["thesaurus_com",
+							\"datamuse_com",
+							\"openoffice_en",
+							\"mthesaur_txt"]
+"nnoremap <Leader>cs :ThesaurusQueryReplaceCurrentWord<CR>
+"vnoremap <Leader>cs y:ThesaurusQueryReplace <C-r>"<CR>
+nnoremap <Leader>] :ThesaurusQueryReplaceCurrentWord<CR>
+vnoremap <Leader>] y:ThesaurusQueryReplace <C-r>"<CR>
+
 
 "" Limelight integrated with Goyo
 "autocmd User GoyoEnter Limelight
