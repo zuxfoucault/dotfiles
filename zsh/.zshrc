@@ -107,7 +107,7 @@ alias mynetcon='sudo lsof -n -P -i +c 15'
 alias tt='open -a TexShop'
 alias mkmk='mkdir `date +R%Y%m%d`'
 alias mkm='mkdir `date +%Y%m%d`'
-alias todo='ag "todo"'
+alias todos='ag "todo"'
 alias mtodos='mm /Volumes/SSD/googleDrive/papers/texNote/journal/todos.tex'
 
 # For tmux
