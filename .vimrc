@@ -596,11 +596,11 @@ augroup lexical
 augroup END
 
 let g:lexical#spell = 1
-let g:lexical#thesaurus = ['~/.vim/thesaurus/mthesaur.txt',] " define paths to thesauruses
-let g:lexical#dictionary = ['/usr/share/dict/words', '/usr/share/dict/web2a', '~/.vim/spell/en.utf-8.add',]
+let g:lexical#dictionary = ['/usr/share/dict/words', '/usr/share/dict/web2a', '~/.vim/spell/en.utf-8.add', '~/.vim/thesaurus/mthesaur.txt',]
 let g:lexical#spell_key = '<leader>s' " Spell-check
-let g:lexical#thesaurus_key = '<leader>[' " Thesaurus lookup
 let g:lexical#dictionary_key = '<leader>k' " Dictionary completion
+"let g:lexical#thesaurus = ['~/.vim/thesaurus/mthesaur.txt',] " define paths to thesauruses
+"let g:lexical#thesaurus_key = '<leader>[' " Thesaurus lookup
 
 
 " thesaurus_query
@@ -866,6 +866,7 @@ let g:vim_search_pulse_duration = 50
 
 " Toggle Gundo
 nnoremap <F2> :GundoToggle<CR>
+let g:gundo_prefer_python3 = 1
 
 "NERD Tree\
 nnoremap  <F6> :NERDTreeToggle<cr>

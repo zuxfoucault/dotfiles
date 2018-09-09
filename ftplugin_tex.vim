@@ -188,6 +188,7 @@ call IMAP('TODO:', '{\color{Yellow}TODO: }', 'tex')
 call IMAP('TT', '$todo$', 'tex')
 call IMAP('RRR', '%||reflection', 'tex')
 call IMAP('VVV', "\\begin{verbatim}\<cr><++>\<cr>\\end{verbatim}<++>", 'tex')
+call IMAP('VVB', "\\verb|<++>|<++>", 'tex')
 
 
 "call IMAP('EFI', "\\begin{figure}[htb]\<cr>\\centering\<cr>\\includegraphics[width=3in]{<+file+>}\<cr>\\caption{<+caption text+>}\<cr>\\label{fig:<+label+>}\<cr>\\end{figure}<++>", "tex")
