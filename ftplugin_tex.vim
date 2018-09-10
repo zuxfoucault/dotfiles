@@ -167,7 +167,6 @@ let g:Tex_HotKeyMappings='align*,align,bmatrix'
 let g:Tex_PromptedCommands='parencite,textcite,phantomsection\label,hyperref,footnote,pageref'
 
 
-
 "call IMAP('REQ', 'Eq.~\eqref{eq:<++>}<++>', 'tex')
 "call IMAP('REEQ', 'Eqs.~\eqref{eqs:<++>}<++>', 'tex')
 "call IMAP('FIT', '\textit{<++>}<++>', 'tex')
