@@ -56,7 +56,7 @@ fun! SetupVAM()
   "let &rtp.=(empty(&rtp)?'':',').plugin_root_dir.'/vim-addon-manager'
   " 'powerline', 'AutomaticLaTeXPlugin' 
   " Tell VAM which plugins to fetch & load:
-  call vam#ActivateAddons(['powerline', 'LaTeX-Suite_aka_Vim-LaTeX', 'ctrlp', 'Solarized', 'The_NERD_tree', 'vim-multiple-cursors', 'YouCompleteMe', 'Buffergator', 'fugitive', 'Screen_vim__gnu_screentmux', 'EasyMotion', 'Gundo' , 'yankstack', 'Syntastic','UltiSnips', 'vim-snippets', 'Python-mode-klen', 'jedi-vim', 'virtualenv', 'unimpaired', 'Tagbar', 'ack', 'surround', 'easytags', 'vim-misc', 'autocorrect', 'goyo', 'vim-textobj-quote', 'textobj-user', 'vim-lexical', 'limelight', 'vim-textobj-sentence', 'vim-wordy', 'MatlabFilesEdition', 'Tabular', 'thesaurus_query', 'indentLine', 'vim-signature', 'vim-expand-region', 'ALE_-_Asynchronous_Lint_Engine', 'vim-easy-align', 'vim-pandoc', 'vim-pandoc-syntax', 'fzf-vim', 'Crunch', 'vim-gitgutter',], {'auto_install' : 1})
+  call vam#ActivateAddons(['powerline', 'LaTeX-Suite_aka_Vim-LaTeX', 'ctrlp', 'Solarized', 'The_NERD_tree', 'vim-visual-multi', 'YouCompleteMe', 'Buffergator', 'fugitive', 'Screen_vim__gnu_screentmux', 'EasyMotion', 'Gundo' , 'yankstack', 'Syntastic','UltiSnips', 'vim-snippets', 'Python-mode-klen', 'jedi-vim', 'virtualenv', 'unimpaired', 'Tagbar', 'ack', 'surround', 'easytags', 'vim-misc', 'autocorrect', 'goyo', 'vim-textobj-quote', 'textobj-user', 'vim-lexical', 'limelight', 'vim-textobj-sentence', 'vim-wordy', 'MatlabFilesEdition', 'Tabular', 'thesaurus_query', 'indentLine', 'vim-signature', 'vim-expand-region', 'ALE_-_Asynchronous_Lint_Engine', 'vim-easy-align', 'vim-pandoc', 'vim-pandoc-syntax', 'fzf-vim', 'fzf-preview', 'neomru', 'Crunch', 'vim-gitgutter',], {'auto_install' : 1})
 
 " sample: call vam#ActivateAddons(['pluginA','pluginB', , 'LaTeX-Suite_aka_Vim-LaTeX' 'AutomaticLaTeXPlugin', 'Vim-R-plugin', 'Supertab', 'vim-online-thesaurus', 'Indent_Guides', 'python%790'...], {'auto_install' : 0})
 " some interesting and useful plugins: editorconfig-vim eg. indentation space
@@ -413,6 +413,45 @@ imap <c-x><c-l> <plug>(fzf-complete-line)
 " explicitly bind the keys to down and up in your $FZF_DEFAULT_OPTS.
 let g:fzf_history_dir = '~/.local/share/fzf-history'
 
+" Narrow ag results within vim
+function! s:ag_to_qf(line)
+  let parts = split(a:line, ':')
+  return {'filename': parts[0], 'lnum': parts[1], 'col': parts[2],
+        \ 'text': join(parts[3:], ':')}
+endfunction
+
+function! s:ag_handler(lines)
+  if len(a:lines) < 2 | return | endif
+
+  let cmd = get({'ctrl-x': 'split',
+               \ 'ctrl-v': 'vertical split',
+               \ 'ctrl-t': 'tabe'}, a:lines[0], 'e')
+  let list = map(a:lines[1:], 's:ag_to_qf(v:val)')
+
+  let first = list[0]
+  execute cmd escape(first.filename, ' %#\')
+  execute first.lnum
+  execute 'normal!' first.col.'|zz'
+
+  if len(list) > 1
+    call setqflist(list)
+    copen
+    wincmd p
+  endif
+endfunction
+
+" orig: ag --nogroup --column --color "%s"
+command! -nargs=* Ag call fzf#run({
+\ 'source':  printf('ag --smart-case --nogroup --column --color "%s"',
+\                   escape(empty(<q-args>) ? '^(?=.)' : <q-args>, '"\')),
+\ 'sink*':    function('<sid>ag_handler'),
+\ 'options': '--ansi --expect=ctrl-t,ctrl-v,ctrl-x --delimiter : --nth 4.. '.
+\            '--multi --bind=ctrl-a:select-all,ctrl-d:deselect-all '.
+\            '--color hl:68,hl+:110',
+\ 'down':    '50%'
+\ })
+
+
 " fuzzy search files in parent directory of current file
 function! s:fzf_neighbouring_files()
   let current_file =expand("%")
@@ -427,6 +466,12 @@ function! s:fzf_neighbouring_files()
 endfunction
 
 command! FFNeigh call s:fzf_neighbouring_files()
+
+
+" fzf-preview
+if has('gui_macvim')
+let g:fzf_preview_command = 'ccat -G Decimal="lightgrey" -G Keyword="lightgrey" -G Plaintext="lightgrey" --color=always {}'
+endif
 
 "numbers setting
 let g:numbers_exclude = ['tagbar', 'gundo', 'nerdtree']
