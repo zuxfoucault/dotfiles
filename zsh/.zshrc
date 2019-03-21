@@ -5,6 +5,7 @@ ZSH=$HOME/.oh-my-zsh
 export PATH="/usr/local/bin:$PATH:$HOME/.rvm/bin:/Volumes/SSD/Space/playGround/shCollection"
 #export TERM="xterm-256color-italic"
 export TERM="xterm-256color"
+export LC_TIME="en_US.UTF-8"
 
 #PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 
@@ -71,6 +72,16 @@ export KEYTIMEOUT=1 # kill the lag of transition between modes
 export CLICOLOR=1
 export LS_COLORS='di=1:fi=0:ln=31:pi=5:so=5:bd=5:cd=5:or=31:mi=0:ex=35:*.rpm=90'
 
+function mkm() {
+	mkdir -p $(($1+7))/figures;
+	cp $1/main_*.tex $(($1+7))/main_$(($1+7)).tex;
+}
+
+function mvmkm() {
+	mv $(($1+7)) $2;
+	mv $2/main_$(($1+7)).tex $2/main_$2.tex;
+}
+
 function cl() {cd $1; l;}
 #function pdfl() {
 #if [ "$#" -ne "0" ]
@@ -91,6 +102,7 @@ alias l='ls -lawtr'
 alias lu='ls -altuw'
 alias vimnote='mvim `date +N%Y%m%d%H%M%S`.tex'
 alias m='mvim `date +N%Y%m%d`000000.tex'
+alias mbeamer='mvim `date +main_%Y%m%d`.tex'
 #alias vimnote='mvim `date +N%Y%m%d%H%M%S`.md'
 #alias vimdate='mvim `date +N%Y%m%d`000000.md'
 alias vimvo='mvim `date +V%Y%m%d`000000.tex'
@@ -107,7 +119,7 @@ alias mm='mvim'
 alias mynetcon='sudo lsof -n -P -i +c 15'
 alias tt='open -a TexShop'
 alias mkmk='mkdir `date +R%Y%m%d`'
-alias mkm='mkdir `date +%Y%m%d`'
+#alias mkm='mkdir `date +%Y%m%d`'
 alias todos='ag "todo"'
 alias mtodos='mm /Volumes/SSD/googleDrive/papers/texNote/journal/todos.tex'
 

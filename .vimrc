@@ -56,7 +56,7 @@ fun! SetupVAM()
   "let &rtp.=(empty(&rtp)?'':',').plugin_root_dir.'/vim-addon-manager'
   " 'powerline', 'AutomaticLaTeXPlugin' 
   " Tell VAM which plugins to fetch & load:
-  call vam#ActivateAddons(['powerline', 'LaTeX-Suite_aka_Vim-LaTeX', 'ctrlp', 'Solarized', 'The_NERD_tree', 'vim-visual-multi', 'YouCompleteMe', 'Buffergator', 'fugitive', 'Screen_vim__gnu_screentmux', 'EasyMotion', 'Gundo' , 'yankstack', 'Syntastic','UltiSnips', 'vim-snippets', 'Python-mode-klen', 'jedi-vim', 'virtualenv', 'unimpaired', 'Tagbar', 'ack', 'surround', 'easytags', 'vim-misc', 'autocorrect', 'goyo', 'vim-textobj-quote', 'textobj-user', 'vim-lexical', 'limelight', 'vim-textobj-sentence', 'vim-wordy', 'MatlabFilesEdition', 'Tabular', 'thesaurus_query', 'indentLine', 'vim-signature', 'vim-expand-region', 'ALE_-_Asynchronous_Lint_Engine', 'vim-easy-align', 'vim-pandoc', 'vim-pandoc-syntax', 'fzf-vim', 'fzf-preview', 'neomru', 'Crunch', 'vim-gitgutter',], {'auto_install' : 1})
+  call vam#ActivateAddons(['powerline', 'LaTeX-Suite_aka_Vim-LaTeX', 'ctrlp', 'Solarized', 'The_NERD_tree', 'vim-visual-multi', 'YouCompleteMe', 'Buffergator', 'fugitive', 'Screen_vim__gnu_screentmux', 'EasyMotion', 'Gundo' , 'yankstack', 'Syntastic','UltiSnips', 'vim-snippets', 'Python-mode-klen', 'jedi-vim', 'virtualenv', 'unimpaired', 'Tagbar', 'ack', 'surround', 'easytags', 'vim-misc', 'autocorrect', 'goyo', 'vim-textobj-quote', 'textobj-user', 'vim-lexical', 'limelight', 'vim-textobj-sentence', 'vim-wordy', 'MatlabFilesEdition', 'Tabular', 'thesaurus_query', 'indentLine', 'vim-signature', 'vim-expand-region', 'ALE_-_Asynchronous_Lint_Engine', 'vim-easy-align', 'vim-pandoc', 'vim-pandoc-syntax', 'fzf-vim', 'fzf-preview', 'The_NERD_Commenter', 'neomru', 'Crunch', 'vim-gitgutter',], {'auto_install' : 1})
 
 " sample: call vam#ActivateAddons(['pluginA','pluginB', , 'LaTeX-Suite_aka_Vim-LaTeX' 'AutomaticLaTeXPlugin', 'Vim-R-plugin', 'Supertab', 'vim-online-thesaurus', 'Indent_Guides', 'python%790'...], {'auto_install' : 0})
 " some interesting and useful plugins: editorconfig-vim eg. indentation space
@@ -180,6 +180,12 @@ let g:tex_flavor='latex'
 "let g:Tex_DefaultTargetFormat = 'pdf'
 "let g:Tex_CompileRule_pdf = 'latexmk -synctex=1 -pdf -pvc $*'
 "set iskeyword+=:
+
+" latex related
+autocmd FileType tex setlocal tabstop=2 shiftwidth=2 softtabstop=2
+"autocmd BufRead *.tex set expandtab
+
+"autocmd FileType javascript setlocal tabstop=2 shiftwidth=2 softtabstop=2
 
 " ATP-setting
 "let g:atp_tab_map = 1
@@ -598,6 +604,8 @@ nnoremap <silent> K :NextWordy<cr>
 "nnoremap <C-K> <C-W><C-K>
 "nnoremap <C-L> <C-W><C-L>
 "nnoremap <C-H> <C-W><C-H>
+noremap <C-L> <C-W>w
+
 
 "Max out the height of the current split
 "ctrl + w _
@@ -1257,3 +1265,19 @@ au BufNewFile *.tex
 	\ else |
 	\ 0r /Volumes/SSD/googleDrive/papers/texNote/journal/template.tex |
 	\ endif
+
+
+au BufNewFile,BufRead *.py
+    \ set tabstop=4
+    \ set softtabstop=4
+    \ set shiftwidth=4
+    \ set textwidth=79
+    \ set expandtab
+    \ set autoindent
+    \ set fileformat=unix
+
+
+au BufNewFile,BufRead *.js, *.html, *.css
+    \ set tabstop=2
+    \ set softtabstop=2
+    \ set shiftwidth=2
