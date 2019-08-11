@@ -73,9 +73,14 @@ export CLICOLOR=1
 export LS_COLORS='di=1:fi=0:ln=31:pi=5:so=5:bd=5:cd=5:or=31:mi=0:ex=35:*.rpm=90'
 
 function mkm() {
-	mkdir -p $(($1+7))/figures;
+	mkdir -p $(($1+7));
 	cp $1/main_*.tex $(($1+7))/main_$(($1+7)).tex;
 }
+
+#function mkm() {
+	#mkdir -p $(($1+7))/figures;
+	#cp $1/main_*.tex $(($1+7))/main_$(($1+7)).tex;
+#}
 
 function mvmkm() {
 	mv $(($1+7)) $2;
@@ -268,9 +273,6 @@ test -e ${HOME}/.iterm2_shell_integration.zsh && source ${HOME}/.iterm2_shell_in
 # setup java home
 export  JAVA_HOME="/Library/Internet Plug-Ins/JavaAppletPlugin.plugin/Contents/Home/"
 
-# added by Miniconda3 4.3.21 installer
-export PATH="/Volumes/SSD/Space/miniconda3/bin:$PATH"
-
 # fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export FZF_DEFAULT_COMMAND='fd --type f'
@@ -341,4 +343,23 @@ p () {
         | awk 'BEGIN {FS="\t"; OFS="\t"}; {print "\""$1"\""}' \
         | xargs $open > /dev/null 2> /dev/null
 }
+
+
+# added by Miniconda3 4.3.21 installer
+export PATH="/Volumes/SSD/Space/miniconda3/bin:$PATH"  # commented out by conda initialize
+#
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+#__conda_setup="$('/Volumes/SSD/Space/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+#if [ $? -eq 0 ]; then
+#    eval "$__conda_setup"
+#else
+#    if [ -f "/Volumes/SSD/Space/miniconda3/etc/profile.d/conda.sh" ]; then
+#        . "/Volumes/SSD/Space/miniconda3/etc/profile.d/conda.sh"
+#    else
+#        export PATH="/Volumes/SSD/Space/miniconda3/bin:$PATH"
+#    fi
+#fi
+#unset __conda_setup
+# <<< conda initialize <<<
 

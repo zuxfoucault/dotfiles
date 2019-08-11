@@ -1,56 +1,114 @@
+
+" put this line first in ~/.vimrc
 set nocompatible | filetype indent plugin on | syn on
-" Plugins will be downloaded under the specified directory.
-call plug#begin('~/.vim/plugged')
-" Declare the list of plugins.
-Plug 'Lokaltog/powerline'
-Plug 'vim-latex/vim-latex'
-Plug 'Valloric/YouCompleteMe'
-Plug 'kien/ctrlp.vim'
-Plug 'altercation/vim-colors-solarized'
-Plug 'scrooloose/nerdtree'
-Plug 'mg979/vim-visual-multi'
-Plug 'jeetsukumaran/vim-buffergator'
-Plug 'tpope/vim-fugitive'
-Plug 'Lokaltog/vim-easymotion'
-Plug 'sjl/gundo.vim'
-Plug 'maxbrunsfeld/vim-yankstack'
-Plug 'honza/vim-snippets'
-Plug 'SirVer/ultisnips'
-Plug 'python-mode/python-mode'
-Plug 'davidhalter/jedi-vim'
-Plug 'jmcantrell/vim-virtualenv'
-Plug 'tpope/vim-unimpaired'
-Plug 'majutsushi/tagbar'
-Plug 'mileszs/ack.vim'
-Plug 'tpope/vim-surround'
-Plug 'xolox/vim-easytags'
-Plug 'xolox/vim-misc'
-Plug 'panozzaj/vim-autocorrect'
-Plug 'reedes/vim-textobj-quote'
-Plug 'reedes/vim-textobj-sentence'
-Plug 'kana/vim-textobj-user'
-Plug 'vim-scripts/MatlabFilesEdition'
-Plug 'godlygeek/tabular'
-Plug 'ron89/thesaurus_query.vim'
-Plug 'Yggdroot/indentLine'
-Plug 'kshenoy/vim-signature'
-Plug 'terryma/vim-expand-region'
-Plug 'junegunn/vim-easy-align'
-Plug 'vim-airline/vim-airline'
-Plug 'ludovicchabant/vim-gutentags'
-Plug 'vim-pandoc/vim-pandoc'
-Plug 'vim-pandoc/vim-pandoc-syntax'
-Plug 'jiangmiao/auto-pairs'
-Plug 'scrooloose/nerdcommenter'
-Plug 'tmhedberg/SimpylFold'
-Plug 'junegunn/fzf.vim'
-Plug 'yuki-ycino/fzf-preview.vim'
-Plug 'Shougo/neomru.vim'
-Plug 'arecarn/crunch'
-Plug 'airblade/vim-gitgutter'
-Plug 'zxqfl/tabnine-vim'
-" List ends here. Plugins become visible to Vim after this call.
-call plug#end()
+
+fun! EnsureVamIsOnDisk(plugin_root_dir)
+  " windows users may want to use http://mawercer.de/~marc/vam/index.php
+  " to fetch VAM, VAM-known-repositories and the listed plugins
+  " without having to install curl, 7-zip and git tools first
+  " -> BUG [4] (git-less installation)
+  let vam_autoload_dir = a:plugin_root_dir.'/vim-addon-manager/autoload'
+  if isdirectory(vam_autoload_dir)
+    return 1
+  else
+    if 1 == confirm("Clone VAM into ".a:plugin_root_dir."?","&Y\n&N")
+      " I'm sorry having to add this reminder. Eventually it'll pay off.
+      call confirm("Remind yourself that most plugins ship with ".
+                  \"documentation (README*, doc/*.txt). It is your ".
+                  \"first source of knowledge. If you can't find ".
+                  \"the info you're looking for in reasonable ".
+                  \"time ask maintainers to improve documentation")
+      call mkdir(a:plugin_root_dir, 'p')
+      execute '!git clone --depth=1 git://github.com/MarcWeber/vim-addon-manager '.
+                  \       shellescape(a:plugin_root_dir, 1).'/vim-addon-manager'
+      " VAM runs helptags automatically when you install or update 
+      " plugins
+      exec 'helptags '.fnameescape(a:plugin_root_dir.'/vim-addon-manager/doc')
+    endif
+    return isdirectory(vam_autoload_dir)
+  endif
+endfun
+
+fun! SetupVAM()
+  " Set advanced options like this:
+  " let g:vim_addon_manager = {}
+  " let g:vim_addon_manager.key = value
+  "     Pipe all output into a buffer which gets written to disk
+  " let g:vim_addon_manager.log_to_buf =1
+
+  " Example: drop git sources unless git is in PATH. Same plugins can
+  " be installed from www.vim.org. Lookup MergeSources to get more control
+  " let g:vim_addon_manager.drop_git_sources = !executable('git')
+  " let g:vim_addon_manager.debug_activation = 1
+
+  " VAM install location:
+  let c = get(g:, 'vim_addon_manager', {})
+  let g:vim_addon_manager = c
+  let c.plugin_root_dir = expand('$HOME/.vim/vim-addons', 1)
+  if !EnsureVamIsOnDisk(c.plugin_root_dir)
+  " old version
+  "let plugin_root_dir = expand('$HOME/.vim/vim-addons')
+  "if !EnsureVamIsOnDisk(plugin_root_dir)
+    echohl ErrorMsg | echomsg "No VAM found!" | echohl NONE
+    return
+  endif
+  let &rtp.=(empty(&rtp)?'':',').c.plugin_root_dir.'/vim-addon-manager'
+  "let &rtp.=(empty(&rtp)?'':',').plugin_root_dir.'/vim-addon-manager'
+  " 'powerline', 'AutomaticLaTeXPlugin' 
+  " Tell VAM which plugins to fetch & load:
+  call vam#ActivateAddons(['powerline', 'LaTeX-Suite_aka_Vim-LaTeX', 'ctrlp', 'Solarized', 'The_NERD_tree', 'vim-visual-multi', 'YouCompleteMe', 'Buffergator', 'fugitive', 'Screen_vim__gnu_screentmux', 'EasyMotion', 'Gundo' , 'yankstack', 'UltiSnips', 'vim-snippets', 'Python-mode-klen', 'jedi-vim', 'virtualenv', 'unimpaired', 'Tagbar', 'ack', 'surround', 'easytags', 'vim-misc', 'autocorrect', 'goyo', 'vim-textobj-quote', 'textobj-user', 'vim-lexical', 'limelight', 'vim-textobj-sentence', 'vim-wordy', 'MatlabFilesEdition', 'Tabular', 'thesaurus_query', 'indentLine', 'vim-signature', 'vim-expand-region', 'ALE_-_Asynchronous_Lint_Engine', 'vim-easy-align', 'vim-pandoc', 'vim-pandoc-syntax', 'fzf-vim', 'fzf-preview', 'The_NERD_Commenter', 'neomru', 'Crunch', 'vim-gitgutter',], {'auto_install' : 1})
+
+" sample: call vam#ActivateAddons(['pluginA','pluginB', , 'Syntastic','LaTeX-Suite_aka_Vim-LaTeX' 'AutomaticLaTeXPlugin', 'Vim-R-plugin', 'Supertab', 'vim-online-thesaurus', 'Indent_Guides', 'python%790'...], {'auto_install' : 0})
+" some interesting and useful plugins: editorconfig-vim eg. indentation space
+" or tab
+" vim-gitgutter: git diff in the gutter
+
+" need self-updated: 'vim-lexical', 'limelight', 'vim-textobj-sentence', 'vim-wordy'
+
+  " Also See "plugins-per-line" below
+
+  " Addons are put into plugin_root_dir/plugin-name directory
+  " unless those directories exist. Then they are activated.
+  " Activating means adding addon dirs to rtp and do some additional
+  " magic
+
+  " How to find addon names?
+  " - look up source from pool
+  " - (<c-x><c-p> complete plugin names):
+  " You can use name rewritings to point to sources:
+  "    ..ActivateAddons(["github:foo", .. => github://foo/vim-addon-foo
+  "    ..ActivateAddons(["github:user/repo", .. => github://user/repo
+  " Also see section "2.2. names of addons and addon sources" in VAM's documentation
+endfun
+call SetupVAM()
+
+" experimental [E1]: load plugins lazily depending on filetype, See
+" NOTES
+" on_ft: If Vim knows the filetype
+" on_name: If Vim does not know about the filetype (eg if the plugin you
+" want to load contains the ftdetect/* support code 
+"let ft_addons = [
+"	\ {'on_ft': '^\%(c\|cpp\)$', 'activate': [ 'plugin-for-c-development' ]},
+"	\ {'on_ft': 'javascript', 'activate': [ 'plugin-for-javascript' ]},
+"	\ {'on_name': '\.scad$', 'activate': [ 'plugin-for-javascript' ]}
+"\ ]
+"au FileType * for l in filter(copy(ft_addons), 'has_key(v:val, "on_ft") && '.string(expand('<amatch>')).' =~ v:val.on_ft') | call vam#ActivateAddons(l.activate, {'force_loading_plugins_now':1}) | endfor		
+"au BufNewFile,BufRead * for l in filter(copy(ft_addons), 'has_key(v:val, "on_name") && '.string(expand('<amatch>')).' =~ v:val.on_name') | call vam#ActivateAddons(l.activate, {'force_loading_plugins_now':1}) | endfor
+
+" Vim does not autodetect scad files, thus no filetype event gets
+" triggered. BufNewFile and BufRead solve this, but they would not work
+" for files without extension such as ".bashrc" which have filetype "sh"
+" usually.
+
+" experimental [E2]: run after gui has been started (gvim) [3]
+" option1:  au VimEnter * call SetupVAM()
+" option2:  au GUIEnter * call SetupVAM()
+" See BUGS sections below [*]
+" Vim 7.0 users see BUGS section [3]
+
+" System vimrc file for MacVim
+" Maintainer:	Bjorn Winckler <bjorn.winckler@gmail.com>
+" Last Change:	Sat Aug 29 2009
 
 "29 set nocompatible
 set laststatus=2   " Always show the statusline 1210l
