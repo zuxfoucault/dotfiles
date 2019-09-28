@@ -4,8 +4,8 @@ call plug#begin('~/.vim/plugged')
 " Declare the list of plugins.
 Plug 'Lokaltog/powerline'
 Plug 'vim-latex/vim-latex'
-Plug 'Valloric/YouCompleteMe'
-Plug 'kien/ctrlp.vim'
+"Plug 'Valloric/YouCompleteMe'
+"Plug 'kien/ctrlp.vim'
 Plug 'altercation/vim-colors-solarized'
 Plug 'scrooloose/nerdtree'
 Plug 'mg979/vim-visual-multi'
@@ -29,6 +29,7 @@ Plug 'panozzaj/vim-autocorrect'
 Plug 'reedes/vim-textobj-quote'
 Plug 'reedes/vim-textobj-sentence'
 Plug 'kana/vim-textobj-user'
+Plug 'reedes/vim-lexical'
 Plug 'vim-scripts/MatlabFilesEdition'
 Plug 'godlygeek/tabular'
 Plug 'ron89/thesaurus_query.vim'
@@ -43,13 +44,13 @@ Plug 'vim-pandoc/vim-pandoc-syntax'
 Plug 'jiangmiao/auto-pairs'
 Plug 'scrooloose/nerdcommenter'
 Plug 'tmhedberg/SimpylFold'
+Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'yuki-ycino/fzf-preview.vim'
 Plug 'Shougo/neomru.vim'
 Plug 'arecarn/crunch'
 Plug 'airblade/vim-gitgutter'
 Plug 'zxqfl/tabnine-vim'
-" List ends here. Plugins become visible to Vim after this call.
 call plug#end()
 
 "29 set nocompatible
@@ -115,6 +116,10 @@ set background=dark
 "set rtp+=~/.vim/vim-addons/powerline/powerline/bindings/vim
 "set noshowmode
 "set laststatus=2
+
+
+"airline setting
+"let g:airline#extensions#tabline#enabled = 1
 
 " vim-latex setting
 "set grepprg=grep\ -nH\ $*
@@ -283,7 +288,7 @@ let g:ctrlp_max_height = 20
 
 
 " fzf
-set rtp+=/usr/local/opt/fzf
+"set rtp+=/usr/local/opt/fzf
 let g:fzf_command_prefix = 'FF'
 let g:fzf_launcher = '/Users/zuxfoucault/dotfiles/fzf_MacVim.sh %s'
 " [Tags] Command to generate tags file
@@ -420,6 +425,13 @@ command! FFNeigh call s:fzf_neighbouring_files()
 if has('gui_macvim')
 let g:fzf_preview_command = 'ccat -G Decimal="lightgrey" -G Keyword="lightgrey" -G Plaintext="lightgrey" --color=always {}'
 endif
+
+
+nnoremap <C-p> :FFHistory<Cr>
+nnoremap <C-h> :Files<Cr>
+nnoremap <C-b>b :FFBuffers<CR>
+nnoremap <C-b><Space> :FFTags<CR>
+
 
 "numbers setting
 let g:numbers_exclude = ['tagbar', 'gundo', 'nerdtree']
@@ -1210,16 +1222,16 @@ au BufNewFile *.tex
 
 
 au BufNewFile,BufRead *.py
-    \ set tabstop=4
-    \ set softtabstop=4
-    \ set shiftwidth=4
-    \ set textwidth=79
-    \ set expandtab
-    \ set autoindent
+    \ set tabstop=4 |
+    \ set softtabstop=4 |
+    \ set shiftwidth=4 |
+    \ set textwidth=79 |
+    \ set expandtab |
+    \ set autoindent |
     \ set fileformat=unix
 
 
 au BufNewFile,BufRead *.js, *.html, *.css
-    \ set tabstop=2
-    \ set softtabstop=2
+    \ set tabstop=2 |
+    \ set softtabstop=2 |
     \ set shiftwidth=2
