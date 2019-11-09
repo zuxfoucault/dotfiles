@@ -2,7 +2,9 @@
 ZSH=$HOME/.oh-my-zsh
 
 #export PATH="/usr/local/bin:/usr/local/sbin:~/bin:$PATH:$HOME/.rvm/bin:/usr/texbin:$HOME/playGround/shCollection"
-export PATH="/usr/local/bin:$PATH:$HOME/.rvm/bin:/Volumes/SSD/Space/playGround/shCollection"
+#export PATH="/usr/local/bin:$PATH:$HOME/.rvm/bin:/Volumes/SSD/Space/playGround/shCollection"
+#aname new
+export PATH="/usr/local/bin:$PATH:$HOME/.rvm/bin:/Users/zuxfoucault/SSD/Space/playGround/shCollection"
 #export TERM="xterm-256color-italic"
 export TERM="xterm-256color"
 export LC_TIME="en_US.UTF-8"

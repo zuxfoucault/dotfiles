@@ -1212,12 +1212,12 @@ endfunction
 "au BufNewFile N2016*0000.tex 0r /Volumes/SSD/googleDrive/papers/texNote/journal/template.tex
 "au BufNewFile *.tex 0r /Volumes/SSD/googleDrive/papers/texNote/journal/template.tex
 au BufNewFile *.tex
-	\ if expand('%:p') =~ '/Volumes/SSD/googleDrive/papers/texNote/journal/N20.*0000' |
-	\ 0r /Volumes/SSD/googleDrive/papers/texNote/journal/templateJournal.tex |
+	\ if expand('%:p') =~ '/Users/zuxfoucault/SSD/googleDrive/papers/texNote/journal/N20.*0000' |
+	\ 0r /Users/zuxfoucault/SSD/googleDrive/papers/texNote/journal/templateJournal.tex |
 	\ execute 'r !date "+\%\%>>\%Y\%m\%d \%H:\%M:\%S \%A \%Z"' |
 	\ execute "normal! j" | start |
 	\ else |
-	\ 0r /Volumes/SSD/googleDrive/papers/texNote/journal/template.tex |
+	\ 0r /Users/zuxfoucault/SSD/googleDrive/papers/texNote/journal/template.tex |
 	\ endif
 
 
