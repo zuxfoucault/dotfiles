@@ -112,7 +112,7 @@ alias m='mvim `date +N%Y%m%d`000000.tex'
 alias mbeamer='mvim `date +main_%Y%m%d`.tex'
 #alias vimnote='mvim `date +N%Y%m%d%H%M%S`.md'
 #alias vimdate='mvim `date +N%Y%m%d`000000.md'
-alias vimvo='mvim `date +V%Y%m%d`000000.tex'
+alias mmv='mvim `date +V%Y%m%d`000000.tex'
 #alias -g skim='-a /Applications/Skim.app'
 #alias ag='ag -S'
 alias ag='rg -S'
@@ -128,7 +128,7 @@ alias tt='open -a TexShop'
 alias mkmk='mkdir `date +R%Y%m%d`'
 #alias mkm='mkdir `date +%Y%m%d`'
 alias todos='ag "todo"'
-alias mtodos='mm /Volumes/SSD/googleDrive/papers/texNote/journal/todos.tex'
+alias mtodos='mm /Users/zuxfoucault/SSD/googleDrive/papers/texNote/journal/todos.tex'
 
 # For tmux
 #alias tmn='tmux new -s $(basename $(pwd))'
@@ -466,14 +466,14 @@ z() {
 #
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/Volumes/SSD/Space/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+__conda_setup="$('/Users/zuxfoucault/SSD/Space/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
     eval "$__conda_setup"
 else
-    if [ -f "/Volumes/SSD/Space/miniconda3/etc/profile.d/conda.sh" ]; then
-        . "/Volumes/SSD/Space/miniconda3/etc/profile.d/conda.sh"
+    if [ -f "/Users/zuxfoucault/SSD/Space/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/Users/zuxfoucault/SSD/Space/miniconda3/etc/profile.d/conda.sh"
     else
-        export PATH="/Volumes/SSD/Space/miniconda3/bin:$PATH"
+        export PATH="/Users/zuxfoucault/SSD/Space/miniconda3/bin:$PATH"
     fi
 fi
 unset __conda_setup

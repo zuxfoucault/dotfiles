@@ -1,5 +1,6 @@
 set nocompatible | filetype indent plugin on | syn on
 " Plugins will be downloaded under the specified directory.
+let g:python3_host_prog = "/Volumes/SSD/Space/miniconda3/bin/python"
 call plug#begin('~/.vim/plugged')
 " Declare the list of plugins.
 Plug 'Lokaltog/powerline'
@@ -59,7 +60,7 @@ set showcmd " show information about how the current command going on
 set encoding=utf-8 " Necessary to show Unicode glyphs 1210
 set fillchars+=stl:\ ,stlnc:\
 if !has('gui_macvim')
-	set term=xterm-256color
+	"set term=xterm-256color
 	set t_Co=256 " Explicitly tell Vim that the terminal supports 256 colors 1210
 	set t_AB=[48;5;%dm
 	set t_AF=[38;5;%dm
@@ -890,7 +891,7 @@ if has('gui_macvim')
 "set guifont==Monaco:h26
 "set guifont=Menlo\ Regular:h24
 "set guifont=Consolas:h28
-set guifont=Anonymous\ Pro:h38
+set guifont=Anonymous\ Pro:h30
 
 "MacVim: switch OSX windows with swipes
 "nnoremap <silent> <SwipeLeft> :macaction _cycleWindowsBackwards:<CR>
@@ -1212,12 +1213,12 @@ endfunction
 "au BufNewFile N2016*0000.tex 0r /Volumes/SSD/googleDrive/papers/texNote/journal/template.tex
 "au BufNewFile *.tex 0r /Volumes/SSD/googleDrive/papers/texNote/journal/template.tex
 au BufNewFile *.tex
-	\ if expand('%:p') =~ '/Users/zuxfoucault/SSD/googleDrive/papers/texNote/journal/N20.*0000' |
-	\ 0r /Users/zuxfoucault/SSD/googleDrive/papers/texNote/journal/templateJournal.tex |
+	\ if expand('%:p') =~ '/Volumes/SSD/googleDrive/papers/texNote/journal/N20.*0000' |
+	\ 0r /Volumes/SSD/googleDrive/papers/texNote/journal/templateJournal.tex |
 	\ execute 'r !date "+\%\%>>\%Y\%m\%d \%H:\%M:\%S \%A \%Z"' |
 	\ execute "normal! j" | start |
 	\ else |
-	\ 0r /Users/zuxfoucault/SSD/googleDrive/papers/texNote/journal/template.tex |
+	\ 0r /Volumes/SSD/googleDrive/papers/texNote/journal/template.tex |
 	\ endif
 
 

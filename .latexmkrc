@@ -1,6 +1,6 @@
-$pdflatex = "xelatex --synctex=1 -interaction=nonstopmode -file-line-error %O %S"; $postscript_mode = $dvi_mode = 0;
+#$pdflatex = "xelatex --synctex=1 -interaction=nonstopmode -file-line-error %O %S"; $postscript_mode = $dvi_mode = 0;
 #$pdflatex = "lualatex --synctex=1 -interaction=nonstopmode -file-line-error %O %S"; $postscript_mode = $dvi_mode = 0;
-#$pdflatex = "pdflatex -synctex=1 -interaction=nonstopmode -file-line-error %O %S";
+$pdflatex = "pdflatex -synctex=1 -interaction=nonstopmode -file-line-error %O %S";
 #$pdflatex = "latex -synctex=1 -interaction=nonstopmode -file-line-error %O %S";
 # add --shell-escape will have live-update function in some file
 $pdf_mode = 1;

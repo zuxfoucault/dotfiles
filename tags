@@ -1,0 +1,442 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_OUTPUT_MODE	u-ctags	/u-ctags or e-ctags/
+!_TAG_PROGRAM_AUTHOR	Universal Ctags Team	//
+!_TAG_PROGRAM_NAME	Universal Ctags	/Derived from Exuberant Ctags/
+!_TAG_PROGRAM_URL	https://ctags.io/	/official site/
+!_TAG_PROGRAM_VERSION	0.0.0	/c775c46/
+#	.vimrc	/^nmap # #zzzv<Plug>Pulse$/;"	m
+#	init.vim	/^nmap # #zzzv<Plug>Pulse$/;"	m
+$	.vimrc	/^nnoremap $ gT$/;"	m
+$	init.vim	/^nnoremap $ gT$/;"	m
+*	.vimrc	/^nmap * *zzzv<Plug>Pulse$/;"	m
+*	init.vim	/^nmap * *zzzv<Plug>Pulse$/;"	m
+/	.vimrc	/^map  \/ <Plug>(easymotion-sn)$/;"	m
+/	.vimrc	/^omap \/ <Plug>(easymotion-tn)$/;"	m
+/	init.vim	/^map  \/ <Plug>(easymotion-sn)$/;"	m
+/	init.vim	/^omap \/ <Plug>(easymotion-tn)$/;"	m
+:	.vimrc	/^nnoremap : ;$/;"	m
+:	init.vim	/^nnoremap : ;$/;"	m
+;	.vimrc	/^nnoremap ; :$/;"	m
+;	init.vim	/^nnoremap ; :$/;"	m
+<Bar>	.vimrc	/^inoremap <silent> <Bar>   <Bar><Esc>:call <SID>align()<CR>a$/;"	m
+<Bar>	init.vim	/^inoremap <silent> <Bar>   <Bar><Esc>:call <SID>align()<CR>a$/;"	m
+<C-L>	.vimrc	/^noremap <C-L> <C-W>w$/;"	m
+<C-L>	init.vim	/^noremap <C-L> <C-W>w$/;"	m
+<C-Left>	.vimrc	/^nnoremap <C-Left> 5<C-W><$/;"	m
+<C-Left>	init.vim	/^nnoremap <C-Left> 5<C-W><$/;"	m
+<C-Right>	.vimrc	/^nnoremap <C-Right> 5<C-W>>$/;"	m
+<C-Right>	init.vim	/^nnoremap <C-Right> 5<C-W>>$/;"	m
+<C-a>	.vimrc	/^inoremap <C-a> <ESC>A$/;"	m
+<C-a>	init.vim	/^inoremap <C-a> <ESC>A$/;"	m
+<C-b><Space>	.vimrc	/^nnoremap <C-b><Space> :FFTags<CR>$/;"	m
+<C-b><Space>	init.vim	/^nnoremap <C-b><Space> :FFTags<CR>$/;"	m
+<C-b>b	.vimrc	/^nnoremap <C-b>b :FFBTags<CR>$/;"	m
+<C-b>b	.vimrc	/^nnoremap <C-b>b :FFBuffers<CR>$/;"	m
+<C-b>b	init.vim	/^nnoremap <C-b>b :FFBTags<CR>$/;"	m
+<C-b>b	init.vim	/^nnoremap <C-b>b :FFBuffers<CR>$/;"	m
+<C-f>	ftplugin_tex.vim	/^imap <C-f> <Plug>IMAP_JumpForward$/;"	m
+<C-h>	.vimrc	/^nnoremap <C-h> :Files<Cr>$/;"	m
+<C-h>	init.vim	/^nnoremap <C-h> :Files<Cr>$/;"	m
+<C-p>	.vimrc	/^nnoremap <C-p> :FFHistory<Cr>$/;"	m
+<C-p>	init.vim	/^nnoremap <C-p> :FFHistory<Cr>$/;"	m
+<C-v>	.vimrc	/^vmap <C-v> <Plug>(expand_region_shrink)$/;"	m
+<C-v>	init.vim	/^vmap <C-v> <Plug>(expand_region_shrink)$/;"	m
+<D-e>	ftplugin_tex.vim	/^map <D-e> ;only<CR>$/;"	m
+<D-i>	ftplugin_tex.vim	/^nmap <D-i> ;TTemplate<CR>$/;"	m
+<D-r>	.vimrc	/^  nnoremap <D-r> :silent !open -a MacDown.app '%:p'<cr>$/;"	m
+<D-r>	ftplugin_tex.vim	/^imap <D-r> <ESC><D-r>$/;"	m
+<D-r>	ftplugin_tex.vim	/^map <D-r> <leader>ll<leader>ls<C-w>_$/;"	m
+<D-r>	init.vim	/^  nnoremap <D-r> :silent !open -a MacDown.app '%:p'<cr>$/;"	m
+<F10>	.vimrc	/^nnoremap <F10> :r !date "+\\%\\%>>\\%Y\\%m\\%d \\%H:\\%M:\\%S \\%A \\%Z"<CR>$/;"	m
+<F10>	init.vim	/^nnoremap <F10> :r !date "+\\%\\%>>\\%Y\\%m\\%d \\%H:\\%M:\\%S \\%A \\%Z"<CR>$/;"	m
+<F1>	.vimrc	/^inoremap <F1> <ESC>:SyntasticReset<CR>$/;"	m
+<F1>	.vimrc	/^noremap <F1> :SyntasticReset<CR>$/;"	m
+<F1>	init.vim	/^inoremap <F1> <ESC>:SyntasticReset<CR>$/;"	m
+<F1>	init.vim	/^noremap <F1> :SyntasticReset<CR>$/;"	m
+<F2>	.vimrc	/^nnoremap <F2> :GundoToggle<CR>$/;"	m
+<F2>	init.vim	/^nnoremap <F2> :GundoToggle<CR>$/;"	m
+<F3>	.vimrc	/^inoremap <F3> <ESC>z=$/;"	m
+<F3>	.vimrc	/^nnoremap <F3> i<C-x><C-s>$/;"	m
+<F3>	init.vim	/^inoremap <F3> <ESC>z=$/;"	m
+<F3>	init.vim	/^nnoremap <F3> i<C-x><C-s>$/;"	m
+<F6>	.vimrc	/^nnoremap  <F6> :NERDTreeToggle<cr>$/;"	m
+<F6>	init.vim	/^nnoremap  <F6> :NERDTreeToggle<cr>$/;"	m
+<F8>	.vimrc	/^nnoremap <F8> :TagbarToggle<CR>$/;"	m
+<F8>	init.vim	/^nnoremap <F8> :TagbarToggle<CR>$/;"	m
+<Leader>/	.vimrc	/^nnoremap <silent><Leader>\/ :execute 'vimgrep \/'.@\/.'\/g %'<CR>:copen<CR>$/;"	m
+<Leader>/	init.vim	/^nnoremap <silent><Leader>\/ :execute 'vimgrep \/'.@\/.'\/g %'<CR>:copen<CR>$/;"	m
+<Leader>A	.vimrc	/^nnoremap <silent><Leader>A :Ack!<space>$/;"	m
+<Leader>A	init.vim	/^nnoremap <silent><Leader>A :Ack!<space>$/;"	m
+<Leader>]	.vimrc	/^nnoremap <Leader>] :ThesaurusQueryReplaceCurrentWord<CR>$/;"	m
+<Leader>]	.vimrc	/^vnoremap <Leader>] y:ThesaurusQueryReplace <C-r>"<CR>$/;"	m
+<Leader>]	init.vim	/^nnoremap <Leader>] :ThesaurusQueryReplaceCurrentWord<CR>$/;"	m
+<Leader>]	init.vim	/^vnoremap <Leader>] y:ThesaurusQueryReplace <C-r>"<CR>$/;"	m
+<Leader>a:	.vimrc	/^	nmap <Leader>a: :Tabularize \/:\\zs<CR>$/;"	m
+<Leader>a:	.vimrc	/^	vmap <Leader>a: :Tabularize \/:\\zs<CR>$/;"	m
+<Leader>a:	init.vim	/^	nmap <Leader>a: :Tabularize \/:\\zs<CR>$/;"	m
+<Leader>a:	init.vim	/^	vmap <Leader>a: :Tabularize \/:\\zs<CR>$/;"	m
+<Leader>a=	.vimrc	/^	nmap <Leader>a= :Tabularize \/=<CR>$/;"	m
+<Leader>a=	.vimrc	/^	vmap <Leader>a= :Tabularize \/=<CR>$/;"	m
+<Leader>a=	init.vim	/^	nmap <Leader>a= :Tabularize \/=<CR>$/;"	m
+<Leader>a=	init.vim	/^	vmap <Leader>a= :Tabularize \/=<CR>$/;"	m
+<M-d>	.vimrc	/^	nnoremap <M-d> :put =expand('%:p')<CR>$/;"	m
+<M-d>	init.vim	/^	nnoremap <M-d> :put =expand('%:p')<CR>$/;"	m
+<M-s>	.vimrc	/^	nnoremap <M-s> :call Aasa()<CR>$/;"	m
+<M-s>	init.vim	/^	nnoremap <M-s> :call Aasa()<CR>$/;"	m
+<M-u>	.vimrc	/^	nnoremap <M-u> :UpdateTags! %<CR>$/;"	m
+<M-u>	init.vim	/^	nnoremap <M-u> :UpdateTags! %<CR>$/;"	m
+<M-z>	.vimrc	/^	nnoremap <M-z> mzzMzvzz10<c-e>`z:call PulseCursorLine()<cr>$/;"	m
+<M-z>	init.vim	/^	nnoremap <M-z> mzzMzvzz10<c-e>`z:call PulseCursorLine()<cr>$/;"	m
+<Nop>	ftplugin_tex.vim	/^imap <Nop> <Plug>Tex_Help$/;"	m
+<Nop>	ftplugin_tex.vim	/^map <Nop> <Plug>Tex_Help$/;"	m
+<Space>	.vimrc	/^nnoremap <Space> za$/;"	m
+<Space>	.vimrc	/^vnoremap <Space> za$/;"	m
+<Space>	init.vim	/^nnoremap <Space> za$/;"	m
+<Space>	init.vim	/^vnoremap <Space> za$/;"	m
+<bs>	.vimrc	/^nnoremap <bs> :Ack! <c-r><c-w><cr>$/;"	m
+<bs>	.vimrc	/^xnoremap <silent> <bs> :<C-U>call <SID>AckMotion(visualmode())<CR>$/;"	m
+<bs>	init.vim	/^nnoremap <bs> :Ack! <c-r><c-w><cr>$/;"	m
+<bs>	init.vim	/^xnoremap <silent> <bs> :<C-U>call <SID>AckMotion(visualmode())<CR>$/;"	m
+<c-x><c-f>	.vimrc	/^imap <c-x><c-f> <plug>(fzf-complete-path)$/;"	m
+<c-x><c-f>	init.vim	/^imap <c-x><c-f> <plug>(fzf-complete-path)$/;"	m
+<c-x><c-j>	.vimrc	/^imap <c-x><c-j> <plug>(fzf-complete-file-ag)$/;"	m
+<c-x><c-j>	init.vim	/^imap <c-x><c-j> <plug>(fzf-complete-file-ag)$/;"	m
+<c-x><c-k>	.vimrc	/^imap <c-x><c-k> <plug>(fzf-complete-word)$/;"	m
+<c-x><c-k>	init.vim	/^imap <c-x><c-k> <plug>(fzf-complete-word)$/;"	m
+<c-x><c-l>	.vimrc	/^imap <c-x><c-l> <plug>(fzf-complete-line)$/;"	m
+<c-x><c-l>	init.vim	/^imap <c-x><c-l> <plug>(fzf-complete-line)$/;"	m
+<enter>	.vimrc	/^cmap <enter> <enter>$/;"	m
+<enter>	init.vim	/^cmap <enter> <enter>$/;"	m
+<leader>0	.vimrc	/^nnoremap <silent> <leader>0 :call clearmatches()<cr>$/;"	m
+<leader>0	init.vim	/^nnoremap <silent> <leader>0 :call clearmatches()<cr>$/;"	m
+<leader>1	.vimrc	/^nnoremap <silent> <leader>1 :call HiInterestingWord(1)<cr>$/;"	m
+<leader>1	init.vim	/^nnoremap <silent> <leader>1 :call HiInterestingWord(1)<cr>$/;"	m
+<leader>2	.vimrc	/^nnoremap <silent> <leader>2 :call HiInterestingWord(2)<cr>$/;"	m
+<leader>2	init.vim	/^nnoremap <silent> <leader>2 :call HiInterestingWord(2)<cr>$/;"	m
+<leader>3	.vimrc	/^nnoremap <silent> <leader>3 :call HiInterestingWord(3)<cr>$/;"	m
+<leader>3	init.vim	/^nnoremap <silent> <leader>3 :call HiInterestingWord(3)<cr>$/;"	m
+<leader>4	.vimrc	/^nnoremap <silent> <leader>4 :call HiInterestingWord(4)<cr>$/;"	m
+<leader>4	init.vim	/^nnoremap <silent> <leader>4 :call HiInterestingWord(4)<cr>$/;"	m
+<leader>5	.vimrc	/^nnoremap <silent> <leader>5 :call HiInterestingWord(5)<cr>$/;"	m
+<leader>5	init.vim	/^nnoremap <silent> <leader>5 :call HiInterestingWord(5)<cr>$/;"	m
+<leader>6	.vimrc	/^nnoremap <silent> <leader>6 :call HiInterestingWord(6)<cr>$/;"	m
+<leader>6	init.vim	/^nnoremap <silent> <leader>6 :call HiInterestingWord(6)<cr>$/;"	m
+<leader><space>	.vimrc	/^nnoremap <leader><space> :noh<cr>$/;"	m
+<leader><space>	init.vim	/^nnoremap <leader><space> :noh<cr>$/;"	m
+<leader><tab>	.vimrc	/^nmap <leader><tab> <plug>(fzf-maps-n)$/;"	m
+<leader><tab>	.vimrc	/^omap <leader><tab> <plug>(fzf-maps-o)$/;"	m
+<leader><tab>	.vimrc	/^xmap <leader><tab> <plug>(fzf-maps-x)$/;"	m
+<leader><tab>	init.vim	/^nmap <leader><tab> <plug>(fzf-maps-n)$/;"	m
+<leader><tab>	init.vim	/^omap <leader><tab> <plug>(fzf-maps-o)$/;"	m
+<leader><tab>	init.vim	/^xmap <leader><tab> <plug>(fzf-maps-x)$/;"	m
+<leader>a	.vimrc	/^nnoremap <silent><leader>a :Ack! '\\b<c-r><c-w>\\b'<cr>$/;"	m
+<leader>a	init.vim	/^nnoremap <silent><leader>a :Ack! '\\b<c-r><c-w>\\b'<cr>$/;"	m
+<leader>y	.vimrc	/^ noremap <leader>y "*y$/;"	m
+<leader>y	init.vim	/^ noremap <leader>y "*y$/;"	m
+<leader>yy	.vimrc	/^ noremap <leader>yy "*Y$/;"	m
+<leader>yy	init.vim	/^ noremap <leader>yy "*Y$/;"	m
+Aasa	.vimrc	/^fun Aasa()$/;"	f
+Aasa	init.vim	/^fun Aasa()$/;"	f
+Ag	.vimrc	/^command! -bang -nargs=* Ag$/;"	c
+Ag	.vimrc	/^command! -nargs=* Ag call fzf#run({$/;"	c
+Ag	init.vim	/^command! -bang -nargs=* Ag$/;"	c
+Ag	init.vim	/^command! -nargs=* Ag call fzf#run({$/;"	c
+Colors	.vimrc	/^command! -bang Colors$/;"	c
+Colors	init.vim	/^command! -bang Colors$/;"	c
+Compute	tex_templates.vim	/^function! <SID>Compute(what)$/;"	f
+CursorColumn	.vimrc	/^augroup CursorColumn$/;"	a
+CursorColumn	init.vim	/^augroup CursorColumn$/;"	a
+CursorLine	.vimrc	/^augroup CursorLine$/;"	a
+CursorLine	init.vim	/^augroup CursorLine$/;"	a
+Exec	tex_templates.vim	/^function! <SID>Exec(what)$/;"	f
+FFNeigh	.vimrc	/^command! FFNeigh call s:fzf_neighbouring_files()$/;"	c
+FFNeigh	init.vim	/^command! FFNeigh call s:fzf_neighbouring_files()$/;"	c
+Files	.vimrc	/^command! -bang -nargs=? -complete=dir Files$/;"	c
+Files	init.vim	/^command! -bang -nargs=? -complete=dir Files$/;"	c
+FindInTemplateDir	tex_templates.vim	/^function! <SID>FindInTemplateDir(filename, ...)$/;"	f
+FollowSymlink	.vimrc	/^function! FollowSymlink()$/;"	f
+FollowSymlink	init.vim	/^function! FollowSymlink()$/;"	f
+GGrep	.vimrc	/^command! -bang -nargs=* GGrep$/;"	c
+GGrep	init.vim	/^command! -bang -nargs=* GGrep$/;"	c
+H	.vimrc	/^noremap H ^$/;"	m
+H	init.vim	/^noremap H ^$/;"	m
+HiInterestingWord	.vimrc	/^function! HiInterestingWord(n) "{{{$/;"	f
+HiInterestingWord	init.vim	/^function! HiInterestingWord(n) "{{{$/;"	f
+K	.vimrc	/^nnoremap <silent> K :NextWordy<cr>$/;"	m
+K	init.vim	/^nnoremap <silent> K :NextWordy<cr>$/;"	m
+L	.vimrc	/^noremap L \$$/;"	m
+L	.vimrc	/^vnoremap L g_$/;"	m
+L	init.vim	/^noremap L \$$/;"	m
+L	init.vim	/^vnoremap L g_$/;"	m
+N	.vimrc	/^nmap N Nzzzv<Plug>Pulse$/;"	m
+N	init.vim	/^nmap N Nzzzv<Plug>Pulse$/;"	m
+NerdPreviewToggle	.vimrc	/^function! NerdPreviewToggle()$/;"	f
+NerdPreviewToggle	init.vim	/^function! NerdPreviewToggle()$/;"	f
+NerdTreePreview	.vimrc	/^function! NerdTreePreview()$/;"	f
+NerdTreePreview	init.vim	/^function! NerdTreePreview()$/;"	f
+OpenNonTextFile	.vimrc	/^function OpenNonTextFile()$/;"	f
+OpenNonTextFile	init.vim	/^function OpenNonTextFile()$/;"	f
+P	.vimrc	/^nnoremap P gP$/;"	m
+P	init.vim	/^nnoremap P gP$/;"	m
+ProcessTemplate	tex_templates.vim	/^function! <SID>ProcessTemplate()$/;"	f
+Pulse	.vimrc	/^command! -nargs=0 Pulse call s:Pulse()$/;"	c
+Pulse	init.vim	/^command! -nargs=0 Pulse call s:Pulse()$/;"	c
+PulseCursorLine	.vimrc	/^function! PulseCursorLine()$/;"	f
+PulseCursorLine	init.vim	/^function! PulseCursorLine()$/;"	f
+Q	.vimrc	/^nnoremap Q 0yt=A<C-r>=<C-r>"<CR><Esc>$/;"	m
+Q	init.vim	/^nnoremap Q 0yt=A<C-r>=<C-r>"<CR><Esc>$/;"	m
+ReadTemplate	tex_templates.vim	/^function! <SID>ReadTemplate(...)$/;"	f
+Rg	.vimrc	/^command! -bang -nargs=* Rg$/;"	c
+Rg	init.vim	/^command! -bang -nargs=* Rg$/;"	c
+SRJMainFile	ftplugin_tex.vim	/^function! SRJMainFile(fmod)$/;"	f
+SetProjectRoot	.vimrc	/^function! SetProjectRoot()$/;"	f
+SetProjectRoot	init.vim	/^function! SetProjectRoot()$/;"	f
+SetTemplateMenu	tex_templates.vim	/^function! <SID>SetTemplateMenu()$/;"	f
+SplitToLines	.vimrc	/^function SplitToLines() range$/;"	f
+SplitToLines	init.vim	/^function SplitToLines() range$/;"	f
+StripTrailingWhitespace	.vimrc	/^function! StripTrailingWhitespace()$/;"	f
+StripTrailingWhitespace	init.vim	/^function! StripTrailingWhitespace()$/;"	f
+TTemplate	tex_templates.vim	/^	com! -complete=custom,Tex_CompleteTemplateName -nargs=? TTemplate :se paste$/;"	c
+TTemplate	tex_templates.vim	/^	com! -nargs=? TTemplate :call <SID>ReadTemplate(<f-args>)$/;"	c
+Tex_CompleteTemplateName	tex_templates.vim	/^	function! Tex_CompleteTemplateName(A,P,L)$/;"	f
+W	.vimrc	/^command W :execute ':silent w !sudo tee % > \/dev\/null' | :edit!$/;"	c
+W	init.vim	/^command W :execute ':silent w !sudo tee % > \/dev\/null' | :edit!$/;"	c
+^	.vimrc	/^nnoremap ^ gt$/;"	m
+^	init.vim	/^nnoremap ^ gt$/;"	m
+backmatter	.ctags	/^--regex-tex2=\/^\\\\backmatter\/BACKMATTER\/S,backmatter\/$/;"	k
+bibliography	.ctags	/^--regex-tex2=\/^\\\\bibliography\\{\/BIBLIOGRAPHY\/S,bibliography\/$/;"	k
+chapter	.ctags	/^--regex-tex2=\/^\\\\chapter[[:space:]]*(\\[[^]]*\\])?[[:space:]]*\\{([^}]*[[:space:]]*[^}]*[[:sp/;"	k
+chapter	.ctags	/^--regex-tex2=\/^\\\\chapter[[:space:]]*\\*[[:space:]]*\\{([^}]*[[:space:]]*[^}]*[[:space:]]*[^}]/;"	k
+frontmatter	.ctags	/^--regex-tex2=\/^\\\\frontmatter\/FRONTMATTER\/S,frontmatter\/$/;"	k
+g:NERDTreeHijackNetrw	.vimrc	/^let g:NERDTreeHijackNetrw=1$/;"	v
+g:NERDTreeHijackNetrw	init.vim	/^let g:NERDTreeHijackNetrw=1$/;"	v
+g:PulseColorList	.vimrc	/^let g:PulseColorList = [ '#2a2a2a', '#333333', '#3a3a3a', '#444444', '#4a4a4a' ]$/;"	v
+g:PulseColorList	.vimrc	/^let g:PulseColorList = [ 'DarkGrey', 'DarkGrey', 'DarkGrey' ]$/;"	v
+g:PulseColorList	init.vim	/^let g:PulseColorList = [ '#2a2a2a', '#333333', '#3a3a3a', '#444444', '#4a4a4a' ]$/;"	v
+g:PulseColorList	init.vim	/^let g:PulseColorList = [ 'DarkGrey', 'DarkGrey', 'DarkGrey' ]$/;"	v
+g:PulseColorattr	.vimrc	/^let g:PulseColorattr = 'ctermbg'$/;"	v
+g:PulseColorattr	.vimrc	/^let g:PulseColorattr = 'guibg'$/;"	v
+g:PulseColorattr	init.vim	/^let g:PulseColorattr = 'ctermbg'$/;"	v
+g:PulseColorattr	init.vim	/^let g:PulseColorattr = 'guibg'$/;"	v
+g:SignatureIncludeMarks	.vimrc	/^let g:SignatureIncludeMarks = 'abcdefghijklmnopqrstuvwxyABCDEFGHIJKLMNOPQRSTUVWXYZ'$/;"	v
+g:SignatureIncludeMarks	init.vim	/^let g:SignatureIncludeMarks = 'abcdefghijklmnopqrstuvwxyABCDEFGHIJKLMNOPQRSTUVWXYZ'$/;"	v
+g:Tex_AdvancedMath	ftplugin_tex.vim	/^let g:Tex_AdvancedMath = 1$/;"	v
+g:Tex_CompileRule_pdf	ftplugin_tex.vim	/^let g:Tex_CompileRule_pdf = 'latexmk $*'$/;"	v
+g:Tex_GotoError	ftplugin_tex.vim	/^let g:Tex_GotoError = 1$/;"	v
+g:Tex_HotKeyMappings	ftplugin_tex.vim	/^let g:Tex_HotKeyMappings='align*,align,bmatrix'$/;"	v
+g:Tex_IgnoreLevel	ftplugin_tex.vim	/^let g:Tex_IgnoreLevel = 8$/;"	v
+g:Tex_IgnoredWarnings	ftplugin_tex.vim	/^let g:Tex_IgnoredWarnings =$/;"	v
+g:Tex_MainFileExpression	ftplugin_tex.vim	/^let g:Tex_MainFileExpression = 'SRJMainFile(modifier)'$/;"	v
+g:Tex_PromptedCommands	ftplugin_tex.vim	/^let g:Tex_PromptedCommands='parencite,textcite,phantomsection\\label,hyperref,footnote,pageref'$/;"	v
+g:Tex_SmartKeyQuote	ftplugin_tex.vim	/^let g:Tex_SmartKeyQuote = 0$/;"	v
+g:Tex_TreatMacViewerAsUNIX	ftplugin_tex.vim	/^let g:Tex_TreatMacViewerAsUNIX = '1'$/;"	v
+g:Tex_UseMakefile	ftplugin_tex.vim	/^let g:Tex_UseMakefile = 0$/;"	v
+g:Tex_ViewRule_pdf	ftplugin_tex.vim	/^let g:Tex_ViewRule_pdf = 'Skim'$/;"	v
+g:UltiSnipsExpandTrigger	.vimrc	/^let g:UltiSnipsExpandTrigger="<c-j>"$/;"	v
+g:UltiSnipsExpandTrigger	init.vim	/^let g:UltiSnipsExpandTrigger="<c-j>"$/;"	v
+g:UltiSnipsJumpForwardTrigger	.vimrc	/^let g:UltiSnipsJumpForwardTrigger="<c-j>"$/;"	v
+g:UltiSnipsJumpForwardTrigger	init.vim	/^let g:UltiSnipsJumpForwardTrigger="<c-j>"$/;"	v
+g:UltiSnipsListSnippets	.vimrc	/^let g:UltiSnipsListSnippets="<c-e>"$/;"	v
+g:UltiSnipsListSnippets	init.vim	/^let g:UltiSnipsListSnippets="<c-e>"$/;"	v
+g:UltiSnipsSnippetDirectories	.vimrc	/^let g:UltiSnipsSnippetDirectories=["UltiSnips"]$/;"	v
+g:UltiSnipsSnippetDirectories	init.vim	/^let g:UltiSnipsSnippetDirectories=["UltiSnips"]$/;"	v
+g:ackprg	.vimrc	/^let g:ackprg = 'ag --smart-case --nogroup --nocolor --column'$/;"	v
+g:ackprg	init.vim	/^let g:ackprg = 'ag --smart-case --nogroup --nocolor --column'$/;"	v
+g:ale_emit_conflict_warnings	.vimrc	/^let g:ale_emit_conflict_warnings = 0$/;"	v
+g:ale_emit_conflict_warnings	init.vim	/^let g:ale_emit_conflict_warnings = 0$/;"	v
+g:ctrlp_cmd	.vimrc	/^let g:ctrlp_cmd = 'CtrlPMRU'$/;"	v
+g:ctrlp_cmd	init.vim	/^let g:ctrlp_cmd = 'CtrlPMRU'$/;"	v
+g:ctrlp_max_height	.vimrc	/^let g:ctrlp_max_height = 20$/;"	v
+g:ctrlp_max_height	init.vim	/^let g:ctrlp_max_height = 20$/;"	v
+g:easytags_async	.vimrc	/^let g:easytags_async = 1$/;"	v
+g:easytags_async	init.vim	/^let g:easytags_async = 1$/;"	v
+g:easytags_auto_update	.vimrc	/^let g:easytags_auto_update = 0$/;"	v
+g:easytags_auto_update	init.vim	/^let g:easytags_auto_update = 0$/;"	v
+g:easytags_by_filetype	.vimrc	/^let g:easytags_by_filetype = '\/Users\/zuxfoucault\/dotfiles\/vimtags'$/;"	v
+g:easytags_by_filetype	init.vim	/^let g:easytags_by_filetype = '\/Users\/zuxfoucault\/dotfiles\/vimtags'$/;"	v
+g:easytags_ignored_filetypes	.vimrc	/^let g:easytags_ignored_filetypes = '^vim$'$/;"	v
+g:easytags_ignored_filetypes	init.vim	/^let g:easytags_ignored_filetypes = '^vim$'$/;"	v
+g:fzf_command_prefix	.vimrc	/^let g:fzf_command_prefix = 'FF'$/;"	v
+g:fzf_command_prefix	init.vim	/^let g:fzf_command_prefix = 'FF'$/;"	v
+g:fzf_history_dir	.vimrc	/^let g:fzf_history_dir = '~\/.local\/share\/fzf-history'$/;"	v
+g:fzf_history_dir	init.vim	/^let g:fzf_history_dir = '~\/.local\/share\/fzf-history'$/;"	v
+g:fzf_launcher	.vimrc	/^let g:fzf_launcher = '\/Users\/zuxfoucault\/dotfiles\/fzf_MacVim.sh %s'$/;"	v
+g:fzf_launcher	init.vim	/^let g:fzf_launcher = '\/Users\/zuxfoucault\/dotfiles\/fzf_MacVim.sh %s'$/;"	v
+g:fzf_preview_command	.vimrc	/^let g:fzf_preview_command = 'ccat -G Decimal="lightgrey" -G Keyword="lightgrey" -G Plaintext="li/;"	v
+g:fzf_preview_command	init.vim	/^let g:fzf_preview_command = 'ccat -G Decimal="lightgrey" -G Keyword="lightgrey" -G Plaintext="li/;"	v
+g:fzf_tags_command	.vimrc	/^let g:fzf_tags_command = 'ctags -R'$/;"	v
+g:fzf_tags_command	init.vim	/^let g:fzf_tags_command = 'ctags -R'$/;"	v
+g:gundo_prefer_python3	.vimrc	/^let g:gundo_prefer_python3 = 1$/;"	v
+g:gundo_prefer_python3	init.vim	/^let g:gundo_prefer_python3 = 1$/;"	v
+g:indentLine_color_gui	.vimrc	/^let g:indentLine_color_gui = '#005f87'$/;"	v
+g:indentLine_color_gui	init.vim	/^let g:indentLine_color_gui = '#005f87'$/;"	v
+g:indentLine_color_term	.vimrc	/^let g:indentLine_color_term = 24$/;"	v
+g:indentLine_color_term	init.vim	/^let g:indentLine_color_term = 24$/;"	v
+g:indent_guides_enable_on_vim_startup	.vimrc	/^let g:indent_guides_enable_on_vim_startup=1$/;"	v
+g:indent_guides_enable_on_vim_startup	init.vim	/^let g:indent_guides_enable_on_vim_startup=1$/;"	v
+g:indent_guides_guide_size	.vimrc	/^let g:indent_guides_guide_size=1$/;"	v
+g:indent_guides_guide_size	init.vim	/^let g:indent_guides_guide_size=1$/;"	v
+g:indent_guides_start_level	.vimrc	/^let g:indent_guides_start_level=2$/;"	v
+g:indent_guides_start_level	init.vim	/^let g:indent_guides_start_level=2$/;"	v
+g:lexical#dictionary	.vimrc	/^let g:lexical#dictionary = ['\/usr\/share\/dict\/words', '\/usr\/share\/dict\/web2a', '~\/.vim\//;"	v
+g:lexical#dictionary	init.vim	/^let g:lexical#dictionary = ['\/usr\/share\/dict\/words', '\/usr\/share\/dict\/web2a', '~\/.vim\//;"	v
+g:lexical#dictionary_key	.vimrc	/^let g:lexical#dictionary_key = '<leader>k' " Dictionary completion$/;"	v
+g:lexical#dictionary_key	init.vim	/^let g:lexical#dictionary_key = '<leader>k' " Dictionary completion$/;"	v
+g:lexical#spell	.vimrc	/^let g:lexical#spell = 1$/;"	v
+g:lexical#spell	init.vim	/^let g:lexical#spell = 1$/;"	v
+g:lexical#spell_key	.vimrc	/^let g:lexical#spell_key = '<leader>s' " Spell-check$/;"	v
+g:lexical#spell_key	init.vim	/^let g:lexical#spell_key = '<leader>s' " Spell-check$/;"	v
+g:nerd_preview_enabled	.vimrc	/^    let g:nerd_preview_enabled = 0$/;"	v
+g:nerd_preview_enabled	.vimrc	/^    let g:nerd_preview_enabled = 1$/;"	v
+g:nerd_preview_enabled	.vimrc	/^let g:nerd_preview_enabled = 0$/;"	v
+g:nerd_preview_enabled	init.vim	/^    let g:nerd_preview_enabled = 0$/;"	v
+g:nerd_preview_enabled	init.vim	/^    let g:nerd_preview_enabled = 1$/;"	v
+g:nerd_preview_enabled	init.vim	/^let g:nerd_preview_enabled = 0$/;"	v
+g:numbers_exclude	.vimrc	/^let g:numbers_exclude = ['tagbar', 'gundo', 'nerdtree']$/;"	v
+g:numbers_exclude	init.vim	/^let g:numbers_exclude = ['tagbar', 'gundo', 'nerdtree']$/;"	v
+g:preview_last_buffer	.vimrc	/^        let g:preview_last_buffer = 0$/;"	v
+g:preview_last_buffer	.vimrc	/^        let g:preview_last_buffer = bufnr(l:filename)$/;"	v
+g:preview_last_buffer	.vimrc	/^    let g:preview_last_buffer = 0$/;"	v
+g:preview_last_buffer	.vimrc	/^let g:preview_last_buffer  = 0$/;"	v
+g:preview_last_buffer	init.vim	/^        let g:preview_last_buffer = 0$/;"	v
+g:preview_last_buffer	init.vim	/^        let g:preview_last_buffer = bufnr(l:filename)$/;"	v
+g:preview_last_buffer	init.vim	/^    let g:preview_last_buffer = 0$/;"	v
+g:preview_last_buffer	init.vim	/^let g:preview_last_buffer  = 0$/;"	v
+g:pymode_breakpoint_bind	.vimrc	/^let g:pymode_breakpoint_bind = '<leader><leader>b'$/;"	v
+g:pymode_breakpoint_bind	init.vim	/^let g:pymode_breakpoint_bind = '<leader><leader>b'$/;"	v
+g:pymode_python	.vimrc	/^let g:pymode_python = 'python3'$/;"	v
+g:pymode_python	init.vim	/^let g:pymode_python = 'python3'$/;"	v
+g:pymode_rope	.vimrc	/^let g:pymode_rope = 0$/;"	v
+g:pymode_rope	init.vim	/^let g:pymode_rope = 0$/;"	v
+g:python3_host_prog	init.vim	/^let g:python3_host_prog = "\/Volumes\/SSD\/Space\/miniconda3\/bin\/python"$/;"	v
+g:solarized_termtrans	.vimrc	/^let g:solarized_termtrans = 1$/;"	v
+g:solarized_termtrans	init.vim	/^let g:solarized_termtrans = 1$/;"	v
+g:syntastic_always_populate_loc_list	.vimrc	/^let g:syntastic_always_populate_loc_list = 1$/;"	v
+g:syntastic_always_populate_loc_list	init.vim	/^let g:syntastic_always_populate_loc_list = 1$/;"	v
+g:syntastic_tex_checkers	ftplugin_tex.vim	/^let g:syntastic_tex_checkers = ['chktex']$/;"	v
+g:tagbar_compact	.vimrc	/^let g:tagbar_compact = 1$/;"	v
+g:tagbar_compact	init.vim	/^let g:tagbar_compact = 1$/;"	v
+g:tagbar_type_tex	.vimrc	/^let g:tagbar_type_tex = {$/;"	v
+g:tagbar_type_tex	init.vim	/^let g:tagbar_type_tex = {$/;"	v
+g:tex_conceal	ftplugin_tex.vim	/^let g:tex_conceal = ""$/;"	v
+g:tex_flavor	.vimrc	/^let g:tex_flavor='latex'$/;"	v
+g:tex_flavor	init.vim	/^let g:tex_flavor='latex'$/;"	v
+g:tq_enabled_backends	.vimrc	/^let g:tq_enabled_backends = ["thesaurus_com",$/;"	v
+g:tq_enabled_backends	init.vim	/^let g:tq_enabled_backends = ["thesaurus_com",$/;"	v
+g:tq_language	.vimrc	/^let g:tq_language=['en']$/;"	v
+g:tq_language	init.vim	/^let g:tq_language=['en']$/;"	v
+g:tq_openoffice_en_file	.vimrc	/^let g:tq_openoffice_en_file="\/Users\/zuxfoucault\/.vim\/thesaurus\/MyThes-1.0\/th_en_US_new"$/;"	v
+g:tq_openoffice_en_file	init.vim	/^let g:tq_openoffice_en_file="\/Users\/zuxfoucault\/.vim\/thesaurus\/MyThes-1.0\/th_en_US_new"$/;"	v
+g:vim_search_pulse_disable_auto_mappings	.vimrc	/^let g:vim_search_pulse_disable_auto_mappings = 1$/;"	v
+g:vim_search_pulse_disable_auto_mappings	init.vim	/^let g:vim_search_pulse_disable_auto_mappings = 1$/;"	v
+g:vim_search_pulse_duration	.vimrc	/^let g:vim_search_pulse_duration = 50$/;"	v
+g:vim_search_pulse_duration	init.vim	/^let g:vim_search_pulse_duration = 50$/;"	v
+g:vim_search_pulse_mode	.vimrc	/^let g:vim_search_pulse_mode = 'pattern'$/;"	v
+g:vim_search_pulse_mode	init.vim	/^let g:vim_search_pulse_mode = 'pattern'$/;"	v
+g:wheel#map#down	.vimrc	/^let g:wheel#map#down = '<D-j>'$/;"	v
+g:wheel#map#down	init.vim	/^let g:wheel#map#down = '<D-j>'$/;"	v
+g:wheel#map#up	.vimrc	/^let g:wheel#map#up   = '<D-k>'$/;"	v
+g:wheel#map#up	init.vim	/^let g:wheel#map#up   = '<D-k>'$/;"	v
+g:wordy#ring	.vimrc	/^let g:wordy#ring = [$/;"	v
+g:wordy#ring	init.vim	/^let g:wordy#ring = [$/;"	v
+g:ycm_collect_identifiers_from_comments_and_strings	.vimrc	/^let g:ycm_collect_identifiers_from_comments_and_strings = 1$/;"	v
+g:ycm_collect_identifiers_from_comments_and_strings	init.vim	/^let g:ycm_collect_identifiers_from_comments_and_strings = 1$/;"	v
+g:ycm_collect_identifiers_from_tags_files	.vimrc	/^let g:ycm_collect_identifiers_from_tags_files = 1$/;"	v
+g:ycm_collect_identifiers_from_tags_files	init.vim	/^let g:ycm_collect_identifiers_from_tags_files = 1$/;"	v
+g:ycm_complete_in_comments	.vimrc	/^let g:ycm_complete_in_comments = 1$/;"	v
+g:ycm_complete_in_comments	init.vim	/^let g:ycm_complete_in_comments = 1$/;"	v
+g:ycm_path_to_python_interpreter	.vimrc	/^let g:ycm_path_to_python_interpreter = '\/usr\/local\/bin\/python3'$/;"	v
+g:ycm_path_to_python_interpreter	init.vim	/^let g:ycm_path_to_python_interpreter = '\/usr\/local\/bin\/python3'$/;"	v
+g:ycm_seed_identifiers_with_syntax	.vimrc	/^let g:ycm_seed_identifiers_with_syntax = 1$/;"	v
+g:ycm_seed_identifiers_with_syntax	init.vim	/^let g:ycm_seed_identifiers_with_syntax = 1$/;"	v
+gP	.vimrc	/^nnoremap gP P$/;"	m
+gP	init.vim	/^nnoremap gP P$/;"	m
+gj	.vimrc	/^noremap gj j$/;"	m
+gj	init.vim	/^noremap gj j$/;"	m
+gk	.vimrc	/^noremap gk k$/;"	m
+gk	init.vim	/^noremap gk k$/;"	m
+gl	.vimrc	/^nnoremap gl :call OpenNonTextFile()<CR>$/;"	m
+gl	init.vim	/^nnoremap gl :call OpenNonTextFile()<CR>$/;"	m
+gp	.vimrc	/^nnoremap gp p$/;"	m
+gp	init.vim	/^nnoremap gp p$/;"	m
+graphic+listing	.ctags	/^--regex-tex2=\/^\\\\includegraphics[[:space:]]*(\\[[^]]*\\])?[[:space:]]*(\\[[^]]*\\])?[[:space:/;"	k
+graphic+listing	.ctags	/^--regex-tex2=\/^\\\\lstinputlisting[[:space:]]*(\\[[^]]*\\])?[[:space:]]*(\\[[^]]*\\])?[[:space:/;"	k
+j	.vimrc	/^noremap j gj$/;"	m
+j	init.vim	/^noremap j gj$/;"	m
+k	.vimrc	/^noremap k gk$/;"	m
+k	init.vim	/^noremap k gk$/;"	m
+label	.ctags	/^--regex-latex=\/^%%%[ \\t]*([A-za-z0-9_]+)\/\\1\/l,label\/$/;"	k
+label	.ctags	/^--regex-tex2=\/\\\\label[[:space:]]*\\{([^}]+)\\}\/\\1\/l,label\/$/;"	k
+label	.ctags	/^--regex-tex2=\/^%%%[ \\t]*([A-za-z0-9_]+)\/\\1\/l,label\/$/;"	k
+lexical	.vimrc	/^augroup lexical$/;"	a
+lexical	init.vim	/^augroup lexical$/;"	a
+line_return	.vimrc	/^augroup line_return$/;"	a
+line_return	init.vim	/^augroup line_return$/;"	a
+mainmatter	.ctags	/^--regex-tex2=\/^\\\\mainmatter\/MAINMATTER\/S,mainmatter\/$/;"	k
+man	zsh/colored-man-pages_mod.plugin.zsh	/^man() {$/;"	f
+n	.vimrc	/^nmap n nzzzv<Plug>Pulse$/;"	m
+n	init.vim	/^nmap n nzzzv<Plug>Pulse$/;"	m
+nerdpreview	.vimrc	/^    augroup nerdpreview$/;"	a
+nerdpreview	init.vim	/^    augroup nerdpreview$/;"	a
+p	.vimrc	/^nnoremap p gp$/;"	m
+p	init.vim	/^nnoremap p gp$/;"	m
+p ssh	.tmux.conf	/^bind-key S command-prompt -p ssh: "new-window -n %1 'ssh %1'"$/;"	k
+pageref	.ctags	/^--regex-tex2=\/\\\\pageref[[:space:]]*\\{([^}]+)\\}\/\\1\/p,pageref\/$/;"	k
+paragraph	.ctags	/^--regex-tex2=\/^\\\\paragraph[[:space:]]*(\\[[^]]*\\])?[[:space:]]*\\{([^}]+)\\}\/\\_ \\2\/S,par/;"	k
+paragraph	.ctags	/^--regex-tex2=\/^\\\\paragraph[[:space:]]*\\*[[:space:]]*\\{([^}]+)\\}\/\\_ \\1\/S,paragraph\/$/;"	k
+part	.ctags	/^--regex-tex2=\/^\\\\part[[:space:]]*(\\[[^]]*\\])?[[:space:]]*\\{([^}]+)\\}\/PART \\2\/S,part\/$/;"	k
+part	.ctags	/^--regex-tex2=\/^\\\\part[[:space:]]*\\*[[:space:]]*\\{([^}]+)\\}\/PART \\1\/S,part\/$/;"	k
+r_syntax_folding	.vimrc	/^let r_syntax_folding = 1$/;"	v
+r_syntax_folding	init.vim	/^let r_syntax_folding = 1$/;"	v
+ref	.ctags	/^--regex-tex2=\/\\\\ref[[:space:]]*\\{([^}]+)\\}\/\\1\/r,ref\/$/;"	k
+ref	.ctags	/^--regex-tex2=\/^%\\+\\+[ \\t]*([A-za-z0-9_]+)\/\\1\/r,ref\/$/;"	k
+s:AckMotion	.vimrc	/^function! s:AckMotion(type) abort$/;"	f
+s:AckMotion	init.vim	/^function! s:AckMotion(type) abort$/;"	f
+s:CopyMotionForType	.vimrc	/^function! s:CopyMotionForType(type)$/;"	f
+s:CopyMotionForType	init.vim	/^function! s:CopyMotionForType(type)$/;"	f
+s:Pulse	.vimrc	/^function! s:Pulse() " {{{$/;"	f
+s:Pulse	init.vim	/^function! s:Pulse() " {{{$/;"	f
+s:ag_handler	.vimrc	/^function! s:ag_handler(lines)$/;"	f
+s:ag_handler	init.vim	/^function! s:ag_handler(lines)$/;"	f
+s:ag_to_qf	.vimrc	/^function! s:ag_to_qf(line)$/;"	f
+s:ag_to_qf	init.vim	/^function! s:ag_to_qf(line)$/;"	f
+s:align	.vimrc	/^function! s:align()$/;"	f
+s:align	init.vim	/^function! s:align()$/;"	f
+s:fzf_neighbouring_files	.vimrc	/^function! s:fzf_neighbouring_files()$/;"	f
+s:fzf_neighbouring_files	init.vim	/^function! s:fzf_neighbouring_files()$/;"	f
+s:path	tex_templates.vim	/^let s:path = fnameescape(expand("<sfile>:p:h"))$/;"	v
+s:setupMarkup	.vimrc	/^function! s:setupMarkup()$/;"	f
+s:setupMarkup	init.vim	/^function! s:setupMarkup()$/;"	f
+section	.ctags	/^--regex-tex2=\/^\\\\section[[:space:]]*(\\[[^]]*\\])?[[:space:]]*\\{([^}]*[[:space:]]*[^}]*[[:sp/;"	k
+section	.ctags	/^--regex-tex2=\/^\\\\section[[:space:]]*\\*[[:space:]]*\\{([^}]*[[:space:]]*[^}]*[[:space:]]*[^}]/;"	k
+subsection	.ctags	/^--regex-tex2=\/^\\\\subsection[[:space:]]*(\\[[^]]*\\])?[[:space:]]*\\{([^}]+)\\}\/\\.\\. \\2\/S/;"	k
+subsection	.ctags	/^--regex-tex2=\/^\\\\subsection[[:space:]]*\\*[[:space:]]*\\{([^}]+)\\}\/\\.\\. \\1\/S,subsection/;"	k
+subsubsection	.ctags	/^--regex-tex2=\/^\\\\subsubsection[[:space:]]*(\\[[^]]*\\])?[[:space:]]*\\{([^}]+)\\}\/\\.\\.\\. /;"	k
+subsubsection	.ctags	/^--regex-tex2=\/^\\\\subsubsection[[:space:]]*\\*[[:space:]]*\\{([^}]+)\\}\/\\.\\.\\. \\1\/S,subs/;"	k
+targets	.ctags	/^--regex-make=\/^([^:# \\t]+)[ \\t]*[:]{1,2}\/\\1\/t,targets\/$/;"	k
+textobj_quote	.vimrc	/^augroup textobj_quote$/;"	a
+textobj_quote	init.vim	/^augroup textobj_quote$/;"	a
+textobj_sentence	.vimrc	/^augroup textobj_sentence$/;"	a
+textobj_sentence	init.vim	/^augroup textobj_sentence$/;"	a
+timestamp	.ctags	/^--regex-tex2=\/%\\>\\>[ \\t]*(.*)\/\\1\/T,timestamp\/$/;"	k
+toc	.ctags	/^--regex-tex2=\/^\\\\tableofcontents\/TABLE OF CONTENTS\/S,toc\/$/;"	k
+topic	.ctags	/^--regex-tex2=\/%\\|\\|[ \\t]*(.*)\/\\1\/t,topic\/$/;"	k
+trailing	.vimrc	/^augroup trailing " don't know why cause some trouble => it's encoding error$/;"	a
+trailing	init.vim	/^augroup trailing " don't know why cause some trouble => it's encoding error$/;"	a
+v	.vimrc	/^vmap v <Plug>(expand_region_expand)$/;"	m
+v	init.vim	/^vmap v <Plug>(expand_region_expand)$/;"	m
+zO	.vimrc	/^nnoremap zO zczO$/;"	m
+zO	init.vim	/^nnoremap zO zczO$/;"	m
+¨	.vimrc	/^	nnoremap ¨ :UpdateTags! %<CR>$/;"	m
+¨	init.vim	/^	nnoremap ¨ :UpdateTags! %<CR>$/;"	m
+ó	.vimrc	/^	nnoremap ó :call Aasa()<CR>$/;"	m
+ó	init.vim	/^	nnoremap ó :call Aasa()<CR>$/;"	m
+Ω	.vimrc	/^	nnoremap Ω  mzzMzvzz`z:call PulseCursorLine()<cr>$/;"	m
+Ω	init.vim	/^	nnoremap Ω  mzzMzvzz`z:call PulseCursorLine()<cr>$/;"	m
+π	.vimrc	/^nmap π <Plug>yankstack_substitute_older_paste$/;"	m
+π	init.vim	/^nmap π <Plug>yankstack_substitute_older_paste$/;"	m
+∂	.vimrc	/^	nnoremap ∂ :put =expand('%:p')<CR>$/;"	m
+∂	init.vim	/^	nnoremap ∂ :put =expand('%:p')<CR>$/;"	m
+∏	.vimrc	/^nmap ∏ <Plug>yankstack_substitute_newer_paste$/;"	m
+∏	init.vim	/^nmap ∏ <Plug>yankstack_substitute_newer_paste$/;"	m
